@@ -53,11 +53,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`scroll-smooth ${cormorant.variable} ${jakarta.variable}`}>
-      <body className="min-h-screen bg-ivory text-earth flex flex-col font-sans selection:bg-forest selection:text-ivory font-jakarta">
+      <body className="min-h-screen bg-ivory text-earth flex flex-col font-sans selection:bg-forest selection:text-ivory font-jakarta w-full max-w-[100vw] overflow-x-hidden relative">
         <AnnouncementBar />
         <Navbar />
         
-        <main className="flex-1">
+        <main className="flex-1 w-full max-w-[100vw] overflow-x-hidden">
           {children}
         </main>
 

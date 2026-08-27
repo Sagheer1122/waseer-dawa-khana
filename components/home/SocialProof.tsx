@@ -48,11 +48,11 @@ export const SocialProof: React.FC = () => {
         </div>
 
         {/* Editorial Asymmetric Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
           {images.map((item, idx) => (
             <div
               key={idx}
-              className={`relative rounded-2xl overflow-hidden bg-cream-100 border border-cream-200 shadow-sm group ${item.aspect}`}
+              className={`relative rounded-2xl overflow-hidden bg-cream-100 border border-cream-200 shadow-sm group ${item.aspect} ${idx === 4 ? 'hidden md:block' : ''}`}
             >
               <Image
                 src={item.src}

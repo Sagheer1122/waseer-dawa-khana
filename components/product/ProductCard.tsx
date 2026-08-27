@@ -113,48 +113,48 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       {/* Product Details (Clean, Spacious, Uncluttered) */}
-      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
-        <div className="space-y-1.5">
+      <div className="p-3 sm:p-4.5 flex-1 flex flex-col justify-between space-y-2.5">
+        <div className="space-y-1">
           {/* Category & Rating */}
           <div className="flex items-center justify-between text-xs">
             <span className="font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-sage">
               {product.category}
             </span>
-            <span className="flex items-center text-[11px] font-bold text-earth-800">
+            <span className="flex items-center text-[10px] sm:text-[11px] font-bold text-earth-800">
               <Star className="w-3 h-3 text-gold fill-gold mr-0.5" />
               {product.rating}
             </span>
           </div>
 
-          {/* Product Name */}
+          {/* Product Name (2 Lines for complete readability) */}
           <Link href={`/product/${product.slug}`} className="block group-hover:text-sage transition-colors">
-            <h3 className="font-serif text-base sm:text-lg font-bold text-forest leading-snug line-clamp-1">
+            <h3 className="font-serif text-sm sm:text-base font-bold text-forest leading-snug line-clamp-2 min-h-[2.4rem] sm:min-h-[2.6rem]">
               {product.name}
             </h3>
           </Link>
 
-          {/* Short description */}
-          <p className="font-sans text-xs text-earth-600 line-clamp-2 leading-relaxed font-normal">
+          {/* Short description (Visible on larger screens) */}
+          <p className="font-sans text-xs text-earth-600 line-clamp-2 leading-relaxed font-normal hidden sm:block">
             {product.subtitle}
           </p>
         </div>
 
         {/* Pricing & Add to Bag CTA */}
-        <div className="pt-3 border-t border-cream-200 flex items-center justify-between gap-2">
-          <div className="flex flex-col">
-            <span className="font-sans text-base sm:text-lg font-bold text-forest leading-none">
+        <div className="pt-2.5 border-t border-cream-200 flex items-center justify-between gap-1.5">
+          <div className="flex flex-col min-w-0">
+            <span className="font-sans text-xs sm:text-base font-bold text-forest leading-none whitespace-nowrap">
               {formatPrice(defaultPrice)}
             </span>
-            <span className="text-[10px] font-sans text-earth-500 mt-0.5">
+            <span className="text-[9px] sm:text-[10px] font-sans text-earth-500 mt-0.5">
               {defaultSize}
             </span>
           </div>
 
           <motion.button
-            whileTap={{ scale: 0.96 }}
+            whileTap={{ scale: 0.94 }}
             onClick={handleAddToCart}
             disabled={isAdding}
-            className={`flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-full font-sans text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs ${
+            className={`flex items-center justify-center gap-1 py-1.5 px-2.5 sm:py-2 sm:px-3.5 rounded-full font-sans text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs flex-shrink-0 whitespace-nowrap ${
               isAdding
                 ? 'bg-sage text-ivory'
                 : 'bg-forest text-ivory hover:bg-forest-700'
@@ -168,7 +168,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             ) : (
               <>
                 <ShoppingBag className="w-3.5 h-3.5" />
-                <span>Add to Bag</span>
+                <span className="hidden xs:inline sm:inline">Add</span>
+                <span className="hidden sm:inline"> to Bag</span>
               </>
             )}
           </motion.button>

@@ -23,7 +23,7 @@ export const PRODUCTS: Product[] = [
     images: [
       'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
       'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=1200&q=85',
     ],
     description: 'An invigorating multi-correctional scalp treatment crafted with wild-harvested French rosemary, cold-pressed Jamaican black castor oil, and desert golden jojoba. Formulated to stimulate follicular micro-circulation, soothe inflammation, and fortify roots for noticeably denser, resilient hair.',
     ritualStory: 'Handcrafted in small artisan batches using traditional single-press cold extraction. No hexane, no synthetic preservatives, and zero dilution. Every single drop retains the full bio-active lipid matrix of living plants.',
@@ -99,7 +99,7 @@ export const PRODUCTS: Product[] = [
     ],
     images: [
       'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=1200&q=85',
       'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
     ],
     description: 'First cold-pressed virgin Moroccan argan oil blended with Japanese camellia seed and golden meadowfoam. Instantly restores lost moisture to brittle cuticles, tames humidity-induced frizz, and leaves hair glowing with natural, weightless light.',
@@ -159,7 +159,7 @@ export const PRODUCTS: Product[] = [
       { size: '150ml', price: 5699, label: 'Ritualist Value' },
     ],
     images: [
-      'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1200&q=85',
       'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
       'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
     ],
@@ -184,7 +184,7 @@ export const PRODUCTS: Product[] = [
         name: 'Australian Tea Tree',
         origin: 'New South Wales, Australia',
         role: 'Potent natural antimicrobial botanical to decongest follicles and purify flaky buildup',
-        image: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=400&q=80'
+        image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80'
       }
     ],
     usage: {
@@ -220,7 +220,7 @@ export const PRODUCTS: Product[] = [
       { size: '150ml', price: 4999, label: 'Salon Size' },
     ],
     images: [
-      'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
       'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
     ],
     description: 'An ancient Ayurvedic-inspired infusion of raw Sri Lankan virgin coconut oil and wild Indian gooseberry (Amla). Penetrates deep into the hair cortex to prevent protein loss and revive dry, porous curls with bounce.',
@@ -243,7 +243,7 @@ export const PRODUCTS: Product[] = [
         name: 'Wild Amla (Indian Gooseberry)',
         origin: 'Kerala, India',
         role: 'Concentrated source of natural vitamin C to strengthen strand tensile core',
-        image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80'
+        image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80'
       }
     ],
     usage: {
@@ -390,7 +390,7 @@ export const PRODUCTS: Product[] = [
       { size: '100ml', price: 4699, label: 'Standard Ritual', isPopular: true },
     ],
     images: [
-      'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
       'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
     ],
     description: 'Cold-pressed Moroccan prickly pear seed oil combined with Namibian wild marula. Contains the highest concentration of botanical vitamin E and sterols of any cosmetic oil, imparting glass-like shine with absolute zero weight.',
@@ -413,7 +413,7 @@ export const PRODUCTS: Product[] = [
         name: 'Prickly Pear Seed',
         origin: 'Guelmim, Morocco',
         role: 'Precious antioxidant oil with the highest natural vitamin E concentration for light reflection',
-        image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80'
+        image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80'
       }
     ],
     usage: {

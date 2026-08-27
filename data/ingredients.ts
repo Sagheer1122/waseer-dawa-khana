@@ -97,7 +97,7 @@ export const INGREDIENTS: BotanicalIngredient[] = [
     botanicalName: 'Melaleuca Alternifolia',
     origin: 'New South Wales, Australia',
     extraction: 'Pure Steam Distillation of Fresh Leaves',
-    image: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=800&q=85',
+    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=85',
     colorTone: '#2B6852',
     description: 'Renowned for its clarifying properties, our wild-harvested Australian tea tree oil helps gently eliminate dead skin flakes, balance oiliness, and maintain a fresh, healthy scalp environment.',
     benefits: [

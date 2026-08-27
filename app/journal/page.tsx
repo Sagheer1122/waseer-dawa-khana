@@ -110,12 +110,12 @@ export default function JournalPage() {
 
         {/* Filter & Search Bar */}
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-cream-200 pb-6">
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 w-full sm:w-auto">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 w-full sm:w-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-colors flex-shrink-0 ${
+                className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-colors flex-shrink-0 whitespace-nowrap ${
                   selectedCategory === cat.id
                     ? 'bg-forest text-ivory'
                     : 'bg-cream-100 text-earth-700 hover:bg-cream-200'

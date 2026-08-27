@@ -42,11 +42,11 @@ export const Hero: React.FC = () => {
       {/* Subtle organic background aura */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sage-50 rounded-full blur-3xl opacity-50 pointer-events-none -z-0" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           
           {/* Left Column: Clean Editorial Headline & Actions */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
+          <div className="lg:col-span-7 space-y-5 sm:space-y-8 text-left">
             
             {/* Eyebrow badge */}
             <motion.div
@@ -54,10 +54,10 @@ export const Hero: React.FC = () => {
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-200/80 border border-cream-300"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-cream-200/80 border border-cream-300 max-w-full"
             >
-              <span className="w-2 h-2 rounded-full bg-forest animate-pulse" />
-              <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-forest">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-forest animate-pulse flex-shrink-0" />
+              <span className="font-sans text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-forest">
                 100% ORGANIC BOTANICAL HAIR OIL
               </span>
             </motion.div>
@@ -68,7 +68,7 @@ export const Hero: React.FC = () => {
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-forest leading-[1.08]"
+              className="font-serif text-3xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-forest leading-[1.1] break-words"
             >
               Healthy Hair <br />
               <span className="italic font-normal font-serif text-sage-600">Starts With Nature.</span>
@@ -80,7 +80,7 @@ export const Hero: React.FC = () => {
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="font-sans text-base sm:text-lg text-earth-600 max-w-lg leading-relaxed font-normal"
+              className="font-sans text-sm sm:text-lg text-earth-600 max-w-lg leading-relaxed font-normal"
             >
               Pure single-origin botanical oils crafted to nourish your scalp microbiome, strengthen roots, and restore natural shine. One honest formula for every hair texture.
             </motion.p>
@@ -91,21 +91,21 @@ export const Hero: React.FC = () => {
               initial="hidden"
               animate="visible"
               variants={textVariants}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2"
             >
               <Link
                 href="/shop"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-forest text-ivory font-sans text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-forest-700 active:scale-[0.98] transition-all shadow-md group"
+                className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-forest text-ivory font-sans text-xs sm:text-sm font-bold uppercase tracking-wider sm:tracking-widest hover:bg-forest-700 active:scale-[0.98] transition-all shadow-md group text-center"
               >
                 <span>Shop All Rituals</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-cream-200 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
                 href="/ingredients"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-forest/30 text-forest font-sans text-xs sm:text-sm font-semibold uppercase tracking-wider hover:bg-cream-100 hover:border-forest active:scale-[0.98] transition-all"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-full border border-forest text-forest font-sans text-xs sm:text-sm font-bold uppercase tracking-wider sm:tracking-widest hover:bg-forest hover:text-ivory active:scale-[0.98] transition-all text-center"
               >
-                <span>Explore Botanicals</span>
+                Explore Botanicals
               </Link>
             </motion.div>
 

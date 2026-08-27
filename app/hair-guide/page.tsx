@@ -125,7 +125,7 @@ export default function HairGuidePage() {
           </div>
 
           {/* Category tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 w-full sm:w-auto">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 w-full sm:w-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {[
               { id: 'all', label: 'All Topics' },
               { id: 'science', label: 'Hair Science' },
@@ -135,7 +135,7 @@ export default function HairGuidePage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveCategory(tab.id)}
-                className={`px-4 py-2 rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-colors flex-shrink-0 ${
+                className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-colors flex-shrink-0 whitespace-nowrap ${
                   activeCategory === tab.id
                     ? 'bg-forest text-ivory'
                     : 'bg-cream-100 text-earth-700 hover:bg-cream-200'
@@ -173,16 +173,17 @@ export default function HairGuidePage() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="p-8 rounded-3xl bg-forest text-ivory flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-forest text-ivory flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6">
           <div className="space-y-1 text-center sm:text-left">
-            <h3 className="font-serif text-2xl font-bold text-cream-100">Ready to begin your ritual?</h3>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-cream-100">Ready to begin your ritual?</h3>
             <p className="font-sans text-xs text-cream-300">Discover our certified cold-pressed botanical hair oils.</p>
           </div>
           <Link
             href="/shop"
-            className="px-6 py-3 rounded-full bg-gold text-forest font-sans text-xs font-bold uppercase tracking-widest hover:bg-gold-400 transition-colors shadow-md"
+            className="inline-flex items-center justify-center gap-1.5 px-6 py-3 rounded-full bg-gold text-forest font-sans text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:bg-gold-400 transition-colors shadow-md whitespace-nowrap flex-shrink-0"
           >
-            Explore Apothecary &rarr;
+            <span>Explore Apothecary</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 

@@ -101,7 +101,7 @@ export const useCartStore = create<CartState>()(
       getTotal: () => {
         const subtotal = get().getSubtotal();
         const discount = subtotal * get().discountAmount;
-        const shipping = subtotal >= 50 || subtotal === 0 ? 0 : 4.95;
+        const shipping = subtotal >= 3000 || subtotal === 0 ? 0 : 250;
         return Math.max(0, subtotal - discount + shipping);
       },
 

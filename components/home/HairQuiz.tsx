@@ -234,11 +234,11 @@ export const HairQuiz: React.FC = () => {
                 </div>
 
                 {/* Navigation Buttons */}
-                <div className="flex items-center justify-between pt-6 border-t border-cream-200">
+                <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-cream-200 gap-2">
                   <button
                     onClick={handleBack}
                     disabled={step === 1}
-                    className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors ${
+                    className={`inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors flex-shrink-0 ${
                       step === 1 ? 'opacity-0 pointer-events-none' : 'text-earth-600 hover:text-forest hover:bg-cream-100'
                     }`}
                   >
@@ -249,10 +249,10 @@ export const HairQuiz: React.FC = () => {
                   <motion.button
                     whileTap={{ scale: 0.98 }}
                     onClick={handleNext}
-                    className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-forest text-ivory font-sans text-xs font-bold uppercase tracking-widest hover:bg-forest-700 active:scale-98 transition-all shadow-md"
+                    className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-5 sm:px-8 py-3 sm:py-3.5 rounded-full bg-forest text-ivory font-sans text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:bg-forest-700 active:scale-98 transition-all shadow-md whitespace-nowrap flex-shrink-0"
                   >
                     <span>{step === 4 ? 'Reveal Ritual' : 'Next Step'}</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </motion.button>
                 </div>
               </motion.div>

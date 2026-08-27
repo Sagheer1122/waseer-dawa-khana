@@ -184,13 +184,13 @@ export default function ProductDetailPage() {
     <div className="bg-ivory min-h-screen pb-24">
       
       {/* Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <nav className="flex items-center gap-2 text-xs font-sans text-earth-500">
-          <Link href="/" className="hover:text-forest">Home</Link>
-          <span>/</span>
-          <Link href="/shop" className="hover:text-forest">Shop</Link>
-          <span>/</span>
-          <span className="text-forest font-semibold truncate max-w-xs">{product.name}</span>
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 min-w-0">
+        <nav className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-sans text-earth-500 min-w-0">
+          <Link href="/" className="hover:text-forest flex-shrink-0">Home</Link>
+          <span className="flex-shrink-0">/</span>
+          <Link href="/shop" className="hover:text-forest flex-shrink-0">Shop</Link>
+          <span className="flex-shrink-0">/</span>
+          <span className="text-forest font-semibold truncate max-w-[140px] sm:max-w-xs">{product.name}</span>
         </nav>
       </div>
 
@@ -221,17 +221,17 @@ export default function ProductDetailPage() {
               </p>
 
               {/* Price */}
-              <div className="flex items-baseline gap-3 pt-2">
-                <span className="font-sans text-3xl font-bold text-forest">
+              <div className="flex flex-wrap items-baseline gap-2 pt-2 min-w-0">
+                <span className="font-sans text-2xl sm:text-3xl font-bold text-forest whitespace-nowrap">
                   {formatPrice(currentPrice * quantity)}
                 </span>
                 {product.originalPrice && (
-                  <span className="font-sans text-lg text-earth-400 line-through">
+                  <span className="font-sans text-base sm:text-lg text-earth-400 line-through whitespace-nowrap">
                     {formatPrice(product.originalPrice)}
                   </span>
                 )}
                 {quantity > 1 && (
-                  <span className="font-sans text-xs text-earth-500">
+                  <span className="font-sans text-xs text-earth-500 whitespace-nowrap">
                     ({formatPrice(currentPrice)} each)
                   </span>
                 )}
@@ -246,19 +246,19 @@ export default function ProductDetailPage() {
                 </span>
                 <span className="font-bold text-forest">{selectedSize}</span>
               </div>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
                 {product.sizes.map((s) => (
                   <button
                     key={s.size}
                     onClick={() => setSelectedSize(s.size)}
-                    className={`p-3 rounded-2xl border text-center font-sans transition-all ${
+                    className={`p-2 sm:p-3 rounded-2xl border text-center font-sans transition-all ${
                       selectedSize === s.size
                         ? 'border-forest bg-forest text-ivory shadow-sm'
                         : 'border-cream-300 bg-ivory text-earth-800 hover:border-forest/50'
                     }`}
                   >
                     <span className="block text-xs font-bold">{s.size}</span>
-                    <span className="block text-[11px] opacity-80 mt-0.5">{formatPrice(s.price)}</span>
+                    <span className="block text-[10px] sm:text-[11px] opacity-80 mt-0.5 whitespace-nowrap">{formatPrice(s.price)}</span>
                   </button>
                 ))}
               </div>

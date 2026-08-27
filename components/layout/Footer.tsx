@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Leaf, Globe } from 'lucide-react';
+import { Leaf, Globe, Truck, CreditCard, ShieldCheck, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -67,11 +67,46 @@ export const Footer: React.FC = () => {
 
         </div>
 
+        {/* Pakistan Trust & Payment Strip */}
+        <div className="mt-8 pt-6 border-t border-forest-700/60 grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-sans">
+          <div className="flex items-center gap-2.5 text-cream-200">
+            <Truck className="w-4 h-4 text-gold flex-shrink-0" />
+            <div>
+              <strong className="block text-ivory text-[11px] font-semibold">TCS / Leopards Courier</strong>
+              <span className="text-[10px] text-cream-300">2–3 Days Nationwide Delivery</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2.5 text-cream-200">
+            <CreditCard className="w-4 h-4 text-gold flex-shrink-0" />
+            <div>
+              <strong className="block text-ivory text-[11px] font-semibold">COD & Mobile Wallets</strong>
+              <span className="text-[10px] text-cream-300">Cash on Delivery • JazzCash • EasyPaisa</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2.5 text-cream-200">
+            <ShieldCheck className="w-4 h-4 text-gold flex-shrink-0" />
+            <div>
+              <strong className="block text-ivory text-[11px] font-semibold">100% Pure & Halal Organic</strong>
+              <span className="text-[10px] text-cream-300">Cold-Pressed Single Origin</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2.5 text-cream-200">
+            <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
+            <div>
+              <strong className="block text-ivory text-[11px] font-semibold">Gulberg III, Lahore, PK</strong>
+              <span className="text-[10px] text-cream-300">WhatsApp: +92 300 1234567</span>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Copyright Strip */}
-        <div className="mt-10 pt-6 border-t border-forest-700/60 flex flex-col sm:flex-row items-center justify-between gap-3 font-sans text-xs text-cream-300">
-          <div className="flex items-center gap-1.5">
-            <Globe className="w-3.5 h-3.5 text-sage-300" />
-            <span>Pakistan Nationwide Delivery (PKR Rs.) • TCS / Leopards Courier</span>
+        <div className="mt-6 pt-4 border-t border-forest-700/40 flex flex-col sm:flex-row items-center justify-between gap-3 font-sans text-xs text-cream-300">
+          <div className="flex items-center gap-2 text-center sm:text-left">
+            <Leaf className="w-3.5 h-3.5 text-gold flex-shrink-0" />
+            <span>Mindfully Formulated with 100% Single-Press Organic Botanicals</span>
           </div>
           <p>© {new Date().getFullYear()} AURA BOTANICA. All Rights Reserved.</p>
         </div>

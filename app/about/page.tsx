@@ -107,10 +107,11 @@ export default function AboutPage() {
           <div className="pt-4">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-forest text-ivory font-sans text-xs font-bold uppercase tracking-widest hover:bg-forest-700 transition-all shadow-md"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-forest text-ivory font-sans text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:bg-forest-700 transition-all shadow-md text-center max-w-full"
             >
-              <span>Explore The Botanical Collection</span>
-              <ArrowRight className="w-4 h-4" />
+              <span className="hidden sm:inline">Explore The Botanical Collection</span>
+              <span className="sm:hidden">Explore Collection</span>
+              <ArrowRight className="w-3.5 h-3.5 flex-shrink-0" />
             </Link>
           </div>
         </div>

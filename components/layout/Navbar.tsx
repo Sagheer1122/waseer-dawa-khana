@@ -53,24 +53,24 @@ export const Navbar: React.FC = () => {
           : 'bg-ivory/90 backdrop-blur-sm border-b border-cream-200 py-5 sm:py-6'
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 flex items-center justify-between gap-1 min-w-0">
         
         {/* Left: Brand Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
           <button
             onClick={toggleMobileMenu}
-            className="lg:hidden p-1.5 text-forest hover:text-sage transition-colors"
+            className="lg:hidden p-1 text-forest hover:text-sage transition-colors"
             aria-label="Open mobile menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
-          <Link href="/" className="inline-flex items-center gap-2 group">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-forest flex items-center justify-center text-ivory group-hover:bg-sage transition-colors shadow-sm flex-shrink-0">
-              <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cream-100" />
+          <Link href="/" className="inline-flex items-center gap-1.5 sm:gap-2 group">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-forest flex items-center justify-center text-ivory group-hover:bg-sage transition-colors shadow-sm flex-shrink-0">
+              <Leaf className="w-3 h-3 sm:w-4 sm:h-4 text-cream-100" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="font-serif text-lg sm:text-2xl font-bold tracking-wider sm:tracking-widest text-forest group-hover:text-sage transition-colors leading-none">
+              <span className="font-serif text-base sm:text-2xl font-bold tracking-wider sm:tracking-widest text-forest group-hover:text-sage transition-colors leading-none whitespace-nowrap">
                 AURA BOTANICA
               </span>
               <span className="font-sans text-[8px] sm:text-[9px] tracking-[0.2em] sm:tracking-[0.25em] uppercase text-earth-500 font-semibold mt-0.5 hidden xs:block">
@@ -106,14 +106,14 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right: Actions (Search, Account, Wishlist, Cart) */}
-        <div className="flex items-center gap-1 sm:gap-3">
+        <div className="flex items-center gap-0.5 sm:gap-2 flex-shrink-0">
           {/* Search Trigger */}
           <button
             onClick={openSearch}
-            className="p-2 text-earth-700 hover:text-forest hover:bg-cream-100 rounded-full transition-colors"
+            className="p-1.5 sm:p-2 text-earth-700 hover:text-forest hover:bg-cream-100 rounded-full transition-colors"
             aria-label="Search products and journal"
           >
-            <Search className="w-5 h-5" />
+            <Search className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
           {/* Account */}
@@ -126,11 +126,11 @@ export const Navbar: React.FC = () => {
             <User className="w-5 h-5" />
           </Link>
 
-          {/* Wishlist */}
+          {/* Wishlist (Desktop & Tablet) */}
           <Link
             href="/wishlist"
             prefetch={true}
-            className="p-2 text-earth-700 hover:text-forest hover:bg-cream-100 rounded-full transition-colors relative"
+            className="hidden md:inline-flex p-2 text-earth-700 hover:text-forest hover:bg-cream-100 rounded-full transition-colors relative"
             aria-label="Wishlist"
           >
             <Heart className="w-5 h-5" />
@@ -144,12 +144,12 @@ export const Navbar: React.FC = () => {
           {/* Cart Drawer Trigger */}
           <button
             onClick={openCart}
-            className="flex items-center gap-1.5 sm:gap-2 bg-forest text-ivory hover:bg-forest-700 active:scale-95 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full transition-all duration-200 shadow-sm group ml-1 whitespace-nowrap flex-shrink-0"
+            className="flex items-center gap-1 bg-forest text-ivory hover:bg-forest-700 active:scale-95 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-full transition-all duration-200 shadow-sm group whitespace-nowrap flex-shrink-0"
             aria-label={`Open shopping cart with ${totalCartItems} items`}
           >
-            <ShoppingBag className="w-4 h-4 text-cream-200 group-hover:scale-105 transition-transform flex-shrink-0" />
-            <span className="font-sans text-xs font-semibold tracking-wider flex items-center gap-1">
-              <span>BAG</span>
+            <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cream-200 group-hover:scale-105 transition-transform flex-shrink-0" />
+            <span className="font-sans text-xs font-semibold tracking-wider flex items-center gap-0.5">
+              <span className="hidden sm:inline">BAG</span>
               {isMounted && <span className="text-gold font-bold">({totalCartItems})</span>}
             </span>
           </button>

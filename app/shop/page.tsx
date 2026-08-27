@@ -90,38 +90,38 @@ function ShopContent() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10">
         
         {/* Top Controls Bar */}
-        <div className="flex items-center justify-between pb-6 border-b border-cream-200">
+        <div className="flex items-center justify-between gap-2 pb-4 sm:pb-6 border-b border-cream-200 min-w-0">
           
           {/* Mobile Filter Button */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <button
               onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cream-100 border border-cream-300 text-xs font-sans font-semibold text-forest hover:bg-cream-200"
+              className="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream-100 border border-cream-300 text-xs font-sans font-semibold text-forest hover:bg-cream-200 flex-shrink-0"
             >
               <SlidersHorizontal className="w-3.5 h-3.5" />
               <span>Filters {hasActiveFilters && '(Active)'}</span>
             </button>
 
-            <span className="font-sans text-xs sm:text-sm text-earth-600">
-              Showing <strong className="text-forest font-bold">{filteredProducts.length}</strong> botanical formulations
+            <span className="font-sans text-[11px] sm:text-sm text-earth-600 truncate hidden xs:inline-block">
+              <strong className="text-forest font-bold">{filteredProducts.length}</strong> oils
             </span>
           </div>
 
           {/* Right: Sort Dropdown */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 flex-shrink-0">
             <label className="font-sans text-xs text-earth-600 font-semibold hidden sm:inline-block">
-              Sort By:
+              Sort:
             </label>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-3.5 py-1.5 rounded-full bg-ivory border border-cream-300 text-xs font-sans font-medium text-forest focus:outline-none focus:border-forest cursor-pointer"
+              className="px-2.5 sm:px-3.5 py-1.5 rounded-full bg-ivory border border-cream-300 text-[11px] sm:text-xs font-sans font-medium text-forest focus:outline-none focus:border-forest cursor-pointer"
             >
-              <option value="featured">Featured First</option>
-              <option value="rating">Top Rated (4.8+)</option>
-              <option value="reviews">Most Reviewed</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
+              <option value="featured">Featured</option>
+              <option value="rating">Top Rated</option>
+              <option value="reviews">Reviews</option>
+              <option value="price-asc">Price: Low</option>
+              <option value="price-desc">Price: High</option>
             </select>
           </div>
 

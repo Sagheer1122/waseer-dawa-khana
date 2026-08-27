@@ -74,7 +74,7 @@ export const BeforeAfterSlider: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: luxuryEase }}
-            className="relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl border border-cream-300 bg-cream-200 cursor-ew-resize select-none touch-none"
+            className="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-cream-300 bg-cream-200 cursor-ew-resize select-none touch-none"
           >
             {/* After Image (Full background - Week 6 Healthy, Glossy, Nourished Hair) */}
             <div className="absolute inset-0">
@@ -85,8 +85,9 @@ export const BeforeAfterSlider: React.FC = () => {
                 priority
                 className="object-cover"
               />
-              <div className="absolute top-4 right-4 bg-forest/90 text-ivory backdrop-blur-md px-3.5 py-1.5 rounded-full font-sans text-xs font-bold tracking-widest uppercase shadow-md">
-                Week 6 (After Ritual)
+              <div className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 bg-forest/90 text-ivory backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full font-sans text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest uppercase shadow-md">
+                <span className="hidden sm:inline">Week 6 (After Ritual)</span>
+                <span className="sm:hidden">After</span>
               </div>
             </div>
 
@@ -102,8 +103,9 @@ export const BeforeAfterSlider: React.FC = () => {
                 priority
                 className="object-cover"
               />
-              <div className="absolute top-4 left-4 bg-earth/90 text-ivory backdrop-blur-md px-3.5 py-1.5 rounded-full font-sans text-xs font-bold tracking-widest uppercase shadow-md">
-                Week 0 (Before Ritual)
+              <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 bg-earth/90 text-ivory backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full font-sans text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest uppercase shadow-md">
+                <span className="hidden sm:inline">Week 0 (Before Ritual)</span>
+                <span className="sm:hidden">Before</span>
               </div>
             </div>
 
@@ -115,15 +117,15 @@ export const BeforeAfterSlider: React.FC = () => {
               <motion.div
                 animate={{ scale: isDragging ? 1.15 : 1 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-forest text-ivory border-2 border-ivory shadow-xl flex items-center justify-center pointer-events-auto"
+                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-forest text-ivory border-2 border-ivory shadow-xl flex items-center justify-center pointer-events-auto"
               >
-                <MoveHorizontal className="w-5 h-5 text-gold" />
+                <MoveHorizontal className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
               </motion.div>
             </div>
 
             {/* Hint overlay */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-ivory/85 backdrop-blur-md text-[11px] font-sans font-medium text-earth-700 pointer-events-none shadow-sm">
-              ⇄ Drag slider horizontally to compare
+            <div className="absolute bottom-2.5 sm:bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-ivory/90 backdrop-blur-md text-[10px] sm:text-[11px] font-sans font-medium text-earth-700 pointer-events-none shadow-sm whitespace-nowrap">
+              ⇄ Slide to compare
             </div>
           </motion.div>
 

@@ -24,7 +24,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: 'Scalp Health & Balance',
     tagline: 'Microbiome Calming Care',
     description: 'Clarifying and purifying treatments that gently remove buildup, soothe dryness, and restore harmonic scalp balance.',
-    image: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=900&q=85',
+    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=900&q=85',
     itemCount: 3,
   },
   {

@@ -120,19 +120,19 @@ export const FeaturedProduct: React.FC = () => {
                 </span>
                 <span className="font-bold text-forest">{selectedSize}</span>
               </div>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {featuredProduct.sizes.map((s) => (
                   <button
                     key={s.size}
                     onClick={() => setSelectedSize(s.size)}
-                    className={`p-3 rounded-xl border text-center font-sans transition-all ${
+                    className={`p-2.5 sm:p-3 rounded-xl border text-center font-sans transition-all ${
                       selectedSize === s.size
                         ? 'border-forest bg-forest text-ivory shadow-sm'
                         : 'border-cream-300 bg-ivory text-earth-800 hover:border-forest/50'
                     }`}
                   >
                     <span className="block text-xs font-bold">{s.size}</span>
-                    <span className="block text-[11px] opacity-85 mt-0.5">{formatPrice(s.price)}</span>
+                    <span className="block text-[10px] sm:text-[11px] opacity-85 mt-0.5 whitespace-nowrap">{formatPrice(s.price)}</span>
                   </button>
                 ))}
               </div>
@@ -140,33 +140,33 @@ export const FeaturedProduct: React.FC = () => {
 
             {/* Price & Quantity & Actions */}
             <div className="space-y-4 pt-2">
-              <div className="flex items-baseline justify-between">
-                <div>
-                  <span className="font-sans text-3xl font-bold text-forest">
+              <div className="flex items-center justify-between gap-2">
+                <div className="min-w-0">
+                  <span className="font-sans text-2xl sm:text-3xl font-bold text-forest whitespace-nowrap block">
                     {formatPrice(currentPrice * quantity)}
                   </span>
                   {quantity > 1 && (
-                    <span className="font-sans text-xs text-earth-500 ml-2">
+                    <span className="font-sans text-[11px] text-earth-500 block">
                       ({formatPrice(currentPrice)} each)
                     </span>
                   )}
                 </div>
 
                 {/* Qty */}
-                <div className="flex items-center border border-cream-300 rounded-full bg-ivory p-1">
+                <div className="flex items-center border border-cream-300 rounded-full bg-ivory p-0.5 sm:p-1 flex-shrink-0">
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="w-8 h-8 flex items-center justify-center text-earth-700 hover:text-forest rounded-full hover:bg-cream-100 font-bold"
+                    className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-earth-700 hover:text-forest rounded-full hover:bg-cream-100 font-bold text-sm"
                     aria-label="Decrease quantity"
                   >
                     -
                   </button>
-                  <span className="w-8 text-center font-sans text-xs font-bold text-forest">
+                  <span className="w-7 sm:w-8 text-center font-sans text-xs font-bold text-forest">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity((q) => q + 1)}
-                    className="w-8 h-8 flex items-center justify-center text-earth-700 hover:text-forest rounded-full hover:bg-cream-100 font-bold"
+                    className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-earth-700 hover:text-forest rounded-full hover:bg-cream-100 font-bold text-sm"
                     aria-label="Increase quantity"
                   >
                     +

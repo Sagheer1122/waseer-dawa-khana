@@ -72,13 +72,14 @@ export const IngredientSection: React.FC = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-12 text-center">
+        <div className="mt-10 sm:mt-12 text-center px-2">
           <Link
             href="/ingredients"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-forest text-forest hover:bg-forest hover:text-ivory font-sans text-xs font-bold uppercase tracking-widest transition-all shadow-xs"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border border-forest text-forest hover:bg-forest hover:text-ivory font-sans text-xs font-bold uppercase tracking-wider sm:tracking-widest transition-all shadow-xs text-center max-w-full"
           >
-            <span>Explore Full Botanical Encyclopedia (10+ Botanicals)</span>
-            <ArrowRight className="w-4 h-4" />
+            <span className="hidden sm:inline">Explore Full Botanical Encyclopedia (10+ Botanicals)</span>
+            <span className="sm:hidden">Explore All 10+ Botanicals</span>
+            <ArrowRight className="w-3.5 h-3.5 flex-shrink-0" />
           </Link>
         </div>
 
