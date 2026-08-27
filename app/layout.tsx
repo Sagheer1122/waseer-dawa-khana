@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Cormorant_Garamond, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
 import { Navbar } from '@/components/layout/Navbar';
@@ -8,6 +9,20 @@ import { MobileMenu } from '@/components/layout/MobileMenu';
 import { SearchModal } from '@/components/layout/SearchModal';
 import { QuickViewModal } from '@/components/layout/QuickViewModal';
 import { ToastContainer } from '@/components/ui/Toast';
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-jakarta',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'AURA BOTANICA — 100% Organic Unisex Botanical Hair & Scalp Oil',
@@ -37,8 +52,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-ivory text-earth flex flex-col font-sans selection:bg-forest selection:text-ivory">
+    <html lang="en" className={`scroll-smooth ${cormorant.variable} ${jakarta.variable}`}>
+      <body className="min-h-screen bg-ivory text-earth flex flex-col font-sans selection:bg-forest selection:text-ivory font-jakarta">
         <AnnouncementBar />
         <Navbar />
         

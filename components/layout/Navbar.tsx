@@ -88,6 +88,7 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 href={link.href}
+                prefetch={true}
                 className={cn(
                   'font-sans text-[13px] font-medium tracking-wider uppercase transition-colors relative py-1',
                   isActive
@@ -118,6 +119,7 @@ export const Navbar: React.FC = () => {
           {/* Account */}
           <Link
             href="/account"
+            prefetch={true}
             className="hidden sm:inline-flex p-2 text-earth-700 hover:text-forest hover:bg-cream-100 rounded-full transition-colors"
             aria-label="Account Dashboard"
           >
@@ -127,6 +129,7 @@ export const Navbar: React.FC = () => {
           {/* Wishlist */}
           <Link
             href="/wishlist"
+            prefetch={true}
             className="p-2 text-earth-700 hover:text-forest hover:bg-cream-100 rounded-full transition-colors relative"
             aria-label="Wishlist"
           >

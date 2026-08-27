@@ -84,15 +84,15 @@ export const MobileMenu: React.FC = () => {
 
             {/* Quick Actions Strip */}
             <div className="grid grid-cols-3 divide-x divide-cream-200 border-b border-cream-200 bg-ivory text-center py-3 text-xs font-sans">
-              <Link href="/account" className="flex flex-col items-center gap-1 text-earth-700 hover:text-forest">
+              <Link href="/account" prefetch={true} className="flex flex-col items-center gap-1 text-earth-700 hover:text-forest">
                 <User className="w-4 h-4 text-forest" />
                 <span>Account</span>
               </Link>
-              <Link href="/wishlist" className="flex flex-col items-center gap-1 text-earth-700 hover:text-forest">
+              <Link href="/wishlist" prefetch={true} className="flex flex-col items-center gap-1 text-earth-700 hover:text-forest">
                 <Heart className="w-4 h-4 text-forest" />
                 <span>Saved ({wishlistCount})</span>
               </Link>
-              <Link href="/cart" className="flex flex-col items-center gap-1 text-earth-700 hover:text-forest">
+              <Link href="/cart" prefetch={true} className="flex flex-col items-center gap-1 text-earth-700 hover:text-forest">
                 <ShoppingBag className="w-4 h-4 text-forest" />
                 <span>Bag ({cartCount})</span>
               </Link>
@@ -104,6 +104,7 @@ export const MobileMenu: React.FC = () => {
                 <Link
                   key={link.name}
                   href={link.href}
+                  prefetch={true}
                   className={`flex items-center justify-between p-3.5 rounded-lg text-sm font-sans font-medium transition-colors ${
                     pathname === link.href
                       ? 'bg-cream-200/70 text-forest font-semibold'
