@@ -29,7 +29,7 @@ export default function CartPage() {
 
   const subtotal = getSubtotal();
   const total = getTotal();
-  const { progress, remaining, unlocked } = calculateFreeShippingProgress(subtotal, 50);
+  const { progress, remaining, unlocked } = calculateFreeShippingProgress(subtotal, 3000);
 
   const handleApplyPromo = (e: React.FormEvent) => {
     e.preventDefault();

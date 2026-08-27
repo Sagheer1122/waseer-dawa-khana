@@ -14,7 +14,7 @@ function ShopContent() {
   const paramCategory = searchParams.get('category') as ProductCategory | null;
 
   const [selectedCategory, setSelectedCategory] = useState<string>(paramCategory || 'all');
-  const [maxPrice, setMaxPrice] = useState<number>(120);
+  const [maxPrice, setMaxPrice] = useState<number>(10000);
   const [sortBy, setSortBy] = useState<string>('featured');
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
 
@@ -36,7 +36,7 @@ function ShopContent() {
     { label: 'Ritual Bundles (Sets)', value: 'bundles', count: PRODUCTS.filter((p) => p.category === 'bundles').length },
   ];
 
-  const hasActiveFilters = selectedCategory !== 'all' || maxPrice < 120;
+  const hasActiveFilters = selectedCategory !== 'all' || maxPrice < 10000;
 
   const handleCategorySelect = (val: string) => {
     setSelectedCategory(val);
@@ -46,7 +46,7 @@ function ShopContent() {
 
   const resetFilters = () => {
     setSelectedCategory('all');
-    setMaxPrice(120);
+    setMaxPrice(10000);
     setSortBy('featured');
     window.history.replaceState(null, '', '/shop');
   };
@@ -173,20 +173,20 @@ function ShopContent() {
             <div className="pt-5 border-t border-cream-200 space-y-3">
               <div className="flex items-center justify-between text-xs font-sans">
                 <span className="font-bold uppercase tracking-wider text-earth-700">Max Price:</span>
-                <span className="font-bold text-forest">${maxPrice}</span>
+                <span className="font-bold text-forest">Rs. {maxPrice.toLocaleString()}</span>
               </div>
               <input
                 type="range"
-                min="25"
-                max="120"
-                step="5"
+                min="2000"
+                max="10000"
+                step="500"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="w-full accent-forest cursor-pointer"
               />
               <div className="flex justify-between text-[10px] text-earth-400 font-sans">
-                <span>$25</span>
-                <span>$120</span>
+                <span>Rs. 2,000</span>
+                <span>Rs. 10,000</span>
               </div>
             </div>
 
@@ -267,13 +267,13 @@ function ShopContent() {
               <div className="pt-4 border-t border-cream-200 space-y-2">
                 <div className="flex justify-between items-center text-xs font-sans">
                   <span className="font-bold text-earth-700">Max Price:</span>
-                  <span className="font-bold text-forest">${maxPrice}</span>
+                  <span className="font-bold text-forest">Rs. {maxPrice.toLocaleString()}</span>
                 </div>
                 <input
                   type="range"
-                  min="25"
-                  max="120"
-                  step="5"
+                  min="2000"
+                  max="10000"
+                  step="500"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
                   className="w-full accent-forest cursor-pointer"

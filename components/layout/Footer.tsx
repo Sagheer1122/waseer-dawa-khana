@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
         <div className="mt-10 pt-6 border-t border-forest-700/60 flex flex-col sm:flex-row items-center justify-between gap-3 font-sans text-xs text-cream-300">
           <div className="flex items-center gap-1.5">
             <Globe className="w-3.5 h-3.5 text-sage-300" />
-            <span>Carbon-Neutral Worldwide Delivery</span>
+            <span>Pakistan Nationwide Delivery (PKR Rs.) • TCS / Leopards Courier</span>
           </div>
           <p>© {new Date().getFullYear()} AURA BOTANICA. All Rights Reserved.</p>
         </div>

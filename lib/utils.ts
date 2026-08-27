@@ -6,14 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatPrice(price: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format(price);
+  return `Rs. ${price.toLocaleString('en-PK')}`;
 }
 
-export function calculateFreeShippingProgress(subtotal: number, threshold = 50): {
+export function calculateFreeShippingProgress(subtotal: number, threshold = 3000): {
   progress: number;
   remaining: number;
   unlocked: boolean;

@@ -44,18 +44,18 @@ export default function ContactPage() {
   const faqItems: AccordionItem[] = [
     {
       id: 'shipping',
-      title: 'How long does carbon-neutral shipping take?',
-      content: 'Standard complimentary delivery on orders over $50 takes 2 to 4 business days within the United States. Priority courier options are also available at checkout.',
+      title: 'How long does delivery take across Pakistan?',
+      content: 'Standard delivery takes 2 to 3 business days nationwide via TCS and Leopards Courier. Free shipping is automatically applied on orders over Rs. 3,000.',
+    },
+    {
+      id: 'payments',
+      title: 'Which payment methods do you accept?',
+      content: 'We accept Cash on Delivery (COD) across all cities in Pakistan, JazzCash, EasyPaisa, Direct Bank Transfer / Raast (Meezan, HBL, etc.), and Visa / Mastercard / PayPak debit and credit cards.',
     },
     {
       id: 'returns',
       title: 'What is your 30-Day Ritual Return Guarantee?',
-      content: 'We want you to experience genuine hair transformation. If you are not completely satisfied with our botanical formulas within 30 days of receipt, simply contact us for a complimentary full refund or exchange.',
-    },
-    {
-      id: 'wholesale',
-      title: 'Do you offer salon partnership or wholesale distribution?',
-      content: 'Yes. We partner with select trichology clinics, holistic salons, and luxury spas worldwide. Please select "Wholesale & Partnerships" in the inquiry form.',
+      content: 'We want you to experience genuine hair transformation. If you are not completely satisfied with our cold-pressed botanical hair oils within 30 days, simply reach out to our WhatsApp support for a full refund or exchange.',
     },
   ];
 
@@ -182,15 +182,15 @@ export default function ContactPage() {
                   <Mail className="w-4 h-4 text-forest flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-forest">Direct Email</strong>
-                    <span>concierge@aurabotanica.com</span>
+                    <span>concierge@aurabotanica.pk</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <Phone className="w-4 h-4 text-forest flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-forest">Client Support Line</strong>
-                    <span>+1 (800) 492-AURA (Mon–Fri, 9am–6pm PST)</span>
+                    <strong className="block text-forest">WhatsApp & Client Concierge</strong>
+                    <span>+92 300 1234567 (Mon–Sat, 10am–8pm PKT)</span>
                   </div>
                 </div>
 
@@ -198,7 +198,7 @@ export default function ContactPage() {
                   <MapPin className="w-4 h-4 text-forest flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-forest">Formulation Studio & Apothecary</strong>
-                    <span>8424 Melrose Avenue, West Hollywood, CA 90069</span>
+                    <span>Plot 24-C, Main Boulevard, Gulberg III, Lahore, Pakistan</span>
                   </div>
                 </div>
               </div>
@@ -208,13 +208,13 @@ export default function ContactPage() {
             <div className="p-6 rounded-2xl bg-forest text-ivory space-y-2">
               <div className="flex items-center gap-2 text-gold">
                 <Clock className="w-4 h-4" />
-                <span className="font-sans text-xs font-bold uppercase tracking-wider">Studio Hours</span>
+                <span className="font-sans text-xs font-bold uppercase tracking-wider">Pakistan Studio Hours</span>
               </div>
               <p className="font-serif text-lg font-semibold text-cream-100">
-                Monday – Saturday: 10:00 AM – 7:00 PM PST
+                Monday – Saturday: 10:00 AM – 8:00 PM PKT
               </p>
               <p className="font-sans text-xs text-cream-300">
-                Complimentary in-studio hair porosity consultations available by appointment.
+                Same-day dispatch for orders placed before 3:00 PM via TCS / Leopards Courier.
               </p>
             </div>
           </div>

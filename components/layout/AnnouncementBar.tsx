@@ -26,7 +26,7 @@ export const AnnouncementBar: React.FC = () => {
           <div className="flex-1 text-center flex items-center justify-center gap-2">
             <Sparkles className="w-3.5 h-3.5 text-gold hidden sm:inline-block" />
             <p className="font-normal tracking-wide text-cream-100">
-              <span className="font-semibold text-ivory">COMPLIMENTARY SHIPPING</span> on orders over $50 • Handcrafted in Small Cold-Pressed Batches
+              <span className="font-semibold text-ivory">FREE DELIVERY ACROSS PAKISTAN</span> on orders over Rs. 3,000 • Cash on Delivery (COD), JazzCash & EasyPaisa
             </p>
           </div>
 
