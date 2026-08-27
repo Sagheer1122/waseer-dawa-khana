@@ -32,7 +32,6 @@ export default function ContactPage() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    await new Promise((resolve) => setTimeout(resolve, 600));
     setIsSent(true);
     reset();
     addToast({

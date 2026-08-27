@@ -29,8 +29,6 @@ export const Newsletter: React.FC = () => {
   });
 
   const onSubmit = async (data: NewsletterForm) => {
-    // Simulate brief network submission
-    await new Promise((resolve) => setTimeout(resolve, 600));
     setIsSuccess(true);
     reset();
     addToast({

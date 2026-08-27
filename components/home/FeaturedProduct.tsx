@@ -34,7 +34,7 @@ export const FeaturedProduct: React.FC = () => {
       title: 'Added to Ritual Bag',
       message: `${featuredProduct.name} (${selectedSize}) x ${quantity}`,
     });
-    setTimeout(() => setIsAdding(false), 1000);
+    setTimeout(() => setIsAdding(false), 350);
   };
 
   const handleWishlist = () => {

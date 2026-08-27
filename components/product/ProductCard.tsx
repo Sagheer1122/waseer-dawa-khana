@@ -37,7 +37,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       title: 'Added to Bag',
       message: `${product.name} (${defaultSize})`,
     });
-    setTimeout(() => setIsAdding(false), 1200);
+    setTimeout(() => setIsAdding(false), 350);
   };
 
   const handleWishlist = (e: React.MouseEvent) => {

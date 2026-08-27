@@ -81,7 +81,7 @@ export default function ProductDetailPage() {
       title: 'Added to Ritual Bag',
       message: `${product.name} (${selectedSize}) x ${quantity}`,
     });
-    setTimeout(() => setIsAdding(false), 1000);
+    setTimeout(() => setIsAdding(false), 350);
   };
 
   const handleBuyNow = () => {
