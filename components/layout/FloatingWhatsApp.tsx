@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageCircle, X } from 'lucide-react';
+import { MessageCircle, X, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const FloatingWhatsApp: React.FC = () => {
@@ -16,7 +16,7 @@ export const FloatingWhatsApp: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end">
+    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2.5">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -24,7 +24,7 @@ export const FloatingWhatsApp: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="mb-3 w-72 sm:w-80 rounded-2xl bg-white shadow-2xl border border-cream-200 overflow-hidden font-sans"
+            className="mb-1 w-72 sm:w-80 rounded-2xl bg-white shadow-2xl border border-cream-200 overflow-hidden font-sans"
           >
             {/* Header */}
             <div className="bg-[#075E54] text-white p-3.5 flex items-center justify-between">
@@ -89,20 +89,39 @@ export const FloatingWhatsApp: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Floating Toggle Button with Glowing Ring */}
+      {/* WhatsApp Toggle Button */}
       <motion.button
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Contact on WhatsApp"
-        className="relative group p-3.5 sm:p-4 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xl flex items-center justify-center transition-all"
+        className="relative group p-3.5 sm:p-4 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-2xl flex items-center justify-center transition-all cursor-pointer"
       >
         <span className="absolute -top-1 -right-1 flex h-3 w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
           <span className="relative inline-flex rounded-full h-3 w-3 bg-white" />
         </span>
         <MessageCircle className="w-6 h-6 fill-white" />
+        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-forest-950/90 text-white text-[11px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-md">
+          WhatsApp Support
+        </span>
       </motion.button>
+
+      {/* Floating Instagram Button */}
+      <motion.a
+        href="https://www.instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.94 }}
+        aria-label="Follow WASEER Herbal Hair Oil on Instagram"
+        className="relative group p-3.5 sm:p-4 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-2xl flex items-center justify-center transition-all cursor-pointer"
+      >
+        <Instagram className="w-6 h-6 text-white" />
+        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-forest-950/90 text-white text-[11px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-md">
+          Follow on Instagram
+        </span>
+      </motion.a>
     </div>
   );
 };
