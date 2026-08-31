@@ -34,7 +34,7 @@ export const Newsletter: React.FC = () => {
     addToast({
       type: 'success',
       title: "You're on the list.",
-      message: 'Welcome to the AURA BOTANICA ritual circle.',
+      message: 'Welcome to WASEER Herbal Hair Oil.',
     });
   };
 
@@ -44,7 +44,7 @@ export const Newsletter: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sage-600/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-        
+
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -55,7 +55,7 @@ export const Newsletter: React.FC = () => {
         >
           <Sparkles className="w-3.5 h-3.5 text-gold" />
           <span className="font-sans text-[11px] font-bold uppercase tracking-widest text-cream-200">
-            THE RITUAL CIRCLE
+            SPECIAL OFFERS &amp; DISCOUNTS
           </span>
         </motion.div>
 
@@ -67,7 +67,7 @@ export const Newsletter: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: luxuryEase }}
           className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ivory"
         >
-          Better Hair Starts Here.
+          Get Rs. 300 Off Your First Order.
         </motion.h2>
 
         {/* Copy */}
@@ -78,7 +78,7 @@ export const Newsletter: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2, ease: luxuryEase }}
           className="font-sans text-sm sm:text-base text-cream-200 max-w-xl mx-auto leading-relaxed"
         >
-          Receive mindful hair-care guides, seasonal cold-pressed harvest releases, and $10 toward your first botanical ritual order.
+          Subscribe to receive authentic hair care advice from WASEER Dawa Khana, Bait Hazari and special discount coupons.
         </motion.p>
 
         {/* Form Container */}

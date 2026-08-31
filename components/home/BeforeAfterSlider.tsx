@@ -53,12 +53,12 @@ export const BeforeAfterSlider: React.FC = () => {
           transition={{ duration: 0.6, ease: luxuryEase }}
           className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2.5"
         >
-          <Badge variant="sage">HONEST BOTANICAL PROGRESSION</Badge>
+          <Badge variant="sage">PROVEN REAL RESULTS</Badge>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-forest">
-            Visible Strand Vitality
+            Visible Results in 3–4 Weeks
           </h2>
           <p className="font-sans text-sm sm:text-base text-earth-600">
-            Drag the interactive slider to view the restorative effect of a 6-week organic botanical scalp and hair oil ritual.
+            Drag the slider to compare hair before and after regular use of WASEER Herbal Hair Oil. Notice reduced hair fall, stronger roots, and healthy natural shine.
           </p>
         </motion.div>
 

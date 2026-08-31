@@ -7,7 +7,7 @@ import { Leaf, ShieldCheck, HeartHandshake, Sparkles, Droplets, ArrowRight } fro
 export default function AboutPage() {
   return (
     <div className="bg-ivory min-h-screen pb-24">
-      
+
       {/* Editorial Hero */}
       <section className="relative py-20 sm:py-28 bg-cream-50 border-b border-cream-200 overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
@@ -17,35 +17,44 @@ export default function AboutPage() {
             <span className="italic font-normal font-serif text-sage-600">Made For You.</span>
           </h1>
           <p className="font-sans text-base sm:text-lg text-earth-600 max-w-2xl mx-auto leading-relaxed">
-            We founded AURA BOTANICA to dismantle artificial cosmetic complexity and return hair care to its most potent, grounding origin: living plant lipids.
+            WASEER Herbal Hair Oil is crafted by <strong className="text-forest font-semibold">WASEER Dawa Khana, Bait Hazari</strong> to bring authentic herbal remedies back to hair care—harnessing the pure healing power of unadulterated botanical bio-actives.
           </p>
         </div>
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 space-y-24">
-        
-        {/* Section 1: Why We Started */}
+
+        {/* Section 1: Heritage of Waseer Dawa Khana */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-5">
-            <Badge variant="sage">THE AWAKENING</Badge>
+            <Badge variant="sage">HERITAGE &amp; PURITY</Badge>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest">
-              Why We Started
+              By the Product of WASEER Dawa Khana, Bait Hazari
             </h2>
             <p className="font-sans text-sm sm:text-base text-earth-700 leading-relaxed">
-              For decades, the hair-care aisle has been dominated by two extremes: cheap synthetic cocktails loaded with non-biodegradable silicones, or hyper-gendered marketing gimmicks that prioritized artificial fragrances over follicular health.
+              Rooted in the healing traditions of Bait Hazari, WASEER Dawa Khana has formulated this authentic herbal oil to treat hair fall at its source. While commercial hair products flood the market with mineral oils, synthetic silicones, and artificial fragrances, our preparation stays 100% natural.
             </p>
             <p className="font-sans text-sm sm:text-base text-earth-700 leading-relaxed">
-              We spent three years working directly with botanical agriculturists and trichologists across France, Morocco, and the Sonoran desert to create unadulterated, single-press lipid formulations that genuinely restore hair vitality from root to tip.
+              Each batch is cold-extracted with traditional unani botanical herbs to nourish follicles, strengthen roots, stimulate natural hair growth, and provide deep conditioning shine.
             </p>
           </div>
 
-          <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-cream-200 border border-cream-300">
+          <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-cream-300 bg-cream-100 group">
             <Image
-              src="https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=1200&q=85"
-              alt="Wild botanical harvest in Provence"
+              src="/images/waseer-product-bottle.jpg"
+              alt="WASEER Herbal Hair Oil by WASEER Dawa Khana Bait Hazari"
               fill
-              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover group-hover:scale-104 transition-transform duration-700 ease-out"
             />
+            <div className="absolute bottom-4 left-4 right-4 py-2.5 px-4 rounded-xl bg-forest/90 backdrop-blur-md text-ivory flex items-center justify-between text-xs border border-gold/30">
+              <span className="font-sans font-bold tracking-wider uppercase text-gold text-[11px]">
+                WASEER Dawa Khana
+              </span>
+              <span className="text-cream-200 text-[10px] tracking-wider uppercase">
+                Bait Hazari Formulation
+              </span>
+            </div>
           </div>
         </div>
 
@@ -64,12 +73,13 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="lg:col-span-6 lg:order-1 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-cream-200 border border-cream-300">
+          <div className="lg:col-span-6 lg:order-1 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-cream-200 border border-cream-300 group">
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85"
-              alt="Unisex hair and beard ritual care"
+              src="/images/waseer-unisex-haircare.jpg"
+              alt="Unisex natural botanical hair oil ritual"
               fill
-              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover group-hover:scale-104 transition-transform duration-700 ease-out"
             />
           </div>
         </div>

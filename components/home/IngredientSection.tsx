@@ -12,12 +12,12 @@ export const IngredientSection: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2.5">
-          <Badge variant="sage">BOTANICAL INTEGRITY</Badge>
+          <Badge variant="sage">100% PURE INGREDIENTS</Badge>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-forest">
-            Powered By Nature
+            Natural Herbal Ingredients
           </h2>
           <p className="font-sans text-sm sm:text-base text-earth-600">
-            Carefully selected single-origin botanical oils, cold-pressed without heat or solvents for your everyday hair ritual.
+            Traditional unani botanicals carefully blended by WASEER Dawa Khana, Bait Hazari to nourish hair roots without chemicals.
           </p>
         </div>
 

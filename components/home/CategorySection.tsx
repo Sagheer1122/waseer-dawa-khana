@@ -13,12 +13,12 @@ export const CategorySection: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div className="space-y-3 max-w-xl">
-            <Badge variant="olive">TARGETED BOTANICAL RITUALS</Badge>
+            <Badge variant="olive">HERBAL HAIR SOLUTIONS</Badge>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest">
               Shop By Hair Goal
             </h2>
             <p className="font-sans text-sm sm:text-base text-earth-600">
-              Each formula is calibrated with specific botanical lipid ratios to address individual hair concerns and scalp environments.
+              Targeted unani herbal solutions crafted by WASEER Dawa Khana, Bait Hazari to treat hair fall, dandruff, and split ends naturally.
             </p>
           </div>
           <Link

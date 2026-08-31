@@ -52,12 +52,12 @@ export const FeaturedProduct: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2.5">
-          <Badge variant="sage">FEATURED SIGNATURE BLEND</Badge>
+          <Badge variant="sage">BEST-SELLER IN PAKISTAN</Badge>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-forest">
-            Your Hair&apos;s New Ritual
+            WASEER Herbal Hair Oil
           </h2>
           <p className="font-sans text-sm sm:text-base text-earth-600">
-            One powerful blend. Daily nourishment. Formulated with wild French rosemary, Jamaican black castor, and desert golden jojoba.
+            Handcrafted by WASEER Dawa Khana, Bait Hazari. Formulated with authentic Amla, Sikakai, and cold-pressed botanical oils to stop hair fall and strengthen roots naturally.
           </p>
         </div>
 

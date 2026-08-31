@@ -203,21 +203,21 @@ export default function CheckoutPage() {
             {placedOrderSummary.paymentMethod === 'jazzcash' && (
               <div className="p-3.5 bg-gold/10 rounded-xl border border-gold/30 text-xs font-sans space-y-1">
                 <p className="font-bold text-forest">JazzCash Payment Details:</p>
-                <p className="text-earth-700">Please transfer {formatPrice(placedOrderSummary.total)} to <strong>0300-1234567 (Aura Botanica)</strong> and send screenshot on WhatsApp.</p>
+                <p className="text-earth-700">Please transfer {formatPrice(placedOrderSummary.total)} to <strong>0300-1234567 (WASEER Dawa Khana)</strong> and send screenshot on WhatsApp.</p>
               </div>
             )}
 
             {placedOrderSummary.paymentMethod === 'easypaisa' && (
               <div className="p-3.5 bg-emerald-50 rounded-xl border border-emerald-200 text-xs font-sans space-y-1">
                 <p className="font-bold text-forest">EasyPaisa Payment Details:</p>
-                <p className="text-earth-700">Please send {formatPrice(placedOrderSummary.total)} to <strong>0345-1234567 (Aura Botanica)</strong>.</p>
+                <p className="text-earth-700">Please send {formatPrice(placedOrderSummary.total)} to <strong>0345-1234567 (WASEER Dawa Khana)</strong>.</p>
               </div>
             )}
 
             {placedOrderSummary.paymentMethod === 'bank' && (
               <div className="p-3.5 bg-blue-50 rounded-xl border border-blue-200 text-xs font-sans space-y-1">
                 <p className="font-bold text-forest">Bank Transfer / Raast IBAN:</p>
-                <p className="text-earth-700 font-mono text-[11px]">Meezan Bank | PK00MEZN0001234567890123</p>
+                <p className="text-earth-700 font-mono text-[11px]">Meezan Bank • WASEER Dawa Khana | PK00MEZN0001234567890123</p>
               </div>
             )}
           </div>
@@ -242,7 +242,7 @@ export default function CheckoutPage() {
         <div className="max-w-4xl mx-auto px-4 text-center space-y-3">
           <Badge variant="forest">SECURE NATIONWIDE CHECKOUT</Badge>
           <h1 className="font-serif text-3xl sm:text-5xl font-bold text-forest">
-            Aura Botanica Pakistan Checkout
+            WASEER Herbal Hair Oil Checkout
           </h1>
           <p className="font-sans text-xs sm:text-sm text-earth-600">
             Cash on Delivery (COD), JazzCash, EasyPaisa, Raast Bank Transfer & Card accepted.
@@ -252,10 +252,10 @@ export default function CheckoutPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          
+
           {/* Left Form (Steps 1, 2, 3) */}
           <div className="lg:col-span-7 space-y-8">
-            
+
             {/* Step Indicators */}
             <div className="flex items-center justify-between pb-6 border-b border-cream-200 font-sans text-xs font-bold uppercase tracking-wider">
               <span className={step >= 1 ? 'text-forest' : 'text-earth-400'}>
@@ -272,7 +272,7 @@ export default function CheckoutPage() {
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              
+
               {/* STEP 1: Shipping Details (Pakistan Focused) */}
               {step === 1 && (
                 <div className="space-y-4 animate-fade-in">
@@ -404,15 +404,14 @@ export default function CheckoutPage() {
                   </h3>
 
                   <div className="space-y-3">
-                    
+
                     {/* COD Option */}
                     <div
                       onClick={() => setSelectedPayment('cod')}
-                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${
-                        selectedPayment === 'cod'
+                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${selectedPayment === 'cod'
                           ? 'border-forest bg-cream-50 shadow-xs'
                           : 'border-cream-300 bg-ivory hover:border-cream-400'
-                      }`}
+                        }`}
                     >
                       <input
                         type="radio"
@@ -437,11 +436,10 @@ export default function CheckoutPage() {
                     {/* JazzCash Option */}
                     <div
                       onClick={() => setSelectedPayment('jazzcash')}
-                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${
-                        selectedPayment === 'jazzcash'
+                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${selectedPayment === 'jazzcash'
                           ? 'border-forest bg-cream-50 shadow-xs'
                           : 'border-cream-300 bg-ivory hover:border-cream-400'
-                      }`}
+                        }`}
                     >
                       <input
                         type="radio"
@@ -466,11 +464,10 @@ export default function CheckoutPage() {
                     {/* EasyPaisa Option */}
                     <div
                       onClick={() => setSelectedPayment('easypaisa')}
-                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${
-                        selectedPayment === 'easypaisa'
+                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${selectedPayment === 'easypaisa'
                           ? 'border-forest bg-cream-50 shadow-xs'
                           : 'border-cream-300 bg-ivory hover:border-cream-400'
-                      }`}
+                        }`}
                     >
                       <input
                         type="radio"
@@ -495,11 +492,10 @@ export default function CheckoutPage() {
                     {/* Raast / Bank Transfer */}
                     <div
                       onClick={() => setSelectedPayment('bank')}
-                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${
-                        selectedPayment === 'bank'
+                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${selectedPayment === 'bank'
                           ? 'border-forest bg-cream-50 shadow-xs'
                           : 'border-cream-300 bg-ivory hover:border-cream-400'
-                      }`}
+                        }`}
                     >
                       <input
                         type="radio"
@@ -524,11 +520,10 @@ export default function CheckoutPage() {
                     {/* Debit / Credit Card */}
                     <div
                       onClick={() => setSelectedPayment('card')}
-                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${
-                        selectedPayment === 'card'
+                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start gap-3.5 ${selectedPayment === 'card'
                           ? 'border-forest bg-cream-50 shadow-xs'
                           : 'border-cream-300 bg-ivory hover:border-cream-400'
-                      }`}
+                        }`}
                     >
                       <input
                         type="radio"

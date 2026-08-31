@@ -2,8 +2,9 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { X, ChevronRight, Leaf, Heart, User, ShoppingBag, PhoneCall, Sparkles } from 'lucide-react';
+import { X, ChevronRight, Heart, User, ShoppingBag, PhoneCall, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '@/store/uiStore';
 import { useWishlistStore } from '@/store/wishlistStore';
@@ -64,14 +65,31 @@ export const MobileMenu: React.FC = () => {
             className="fixed top-0 left-0 bottom-0 w-[85%] max-w-sm bg-ivory z-50 lg:hidden flex flex-col shadow-2xl overflow-y-auto"
           >
             {/* Header */}
-            <div className="p-5 border-b border-cream-200 flex items-center justify-between bg-cream-50">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-full bg-forest flex items-center justify-center text-ivory">
-                  <Leaf className="w-3.5 h-3.5 text-cream-100" />
+            <div className="p-4 sm:p-5 border-b border-cream-200 flex items-center justify-between bg-cream-50">
+              <div className="flex items-center gap-2.5">
+                <div className="relative w-9 h-9 flex-shrink-0">
+                  <Image
+                    src="/images/waseer-emblem.png"
+                    alt="WASEER Logo"
+                    fill
+                    sizes="36px"
+                    className="object-contain"
+                  />
                 </div>
-                <span className="font-serif text-lg font-bold tracking-widest text-forest">
-                  AURA BOTANICA
-                </span>
+                <div className="flex flex-col text-left">
+                  <div className="flex items-center gap-1 leading-none">
+                    <span className="font-serif text-lg font-bold tracking-widest text-forest">
+                      WASEER
+                    </span>
+                    <span className="text-[9px] font-sans font-bold text-forest -mt-1">®</span>
+                  </div>
+                  <span className="font-sans text-[8.5px] uppercase tracking-wider text-forest font-bold mt-0.5">
+                    Herbal Hair Oil
+                  </span>
+                  <span className="font-sans text-[7.5px] text-earth-500 font-semibold">
+                    By WASEER Dawa Khana, Bait Hazari
+                  </span>
+                </div>
               </div>
               <button
                 onClick={closeMobileMenu}
@@ -105,13 +123,12 @@ export const MobileMenu: React.FC = () => {
                   key={link.name}
                   href={link.href}
                   prefetch={true}
-                  className={`flex items-center justify-between p-3.5 rounded-lg text-sm font-sans font-medium transition-colors ${
-                    pathname === link.href
+                  className={`flex items-center justify-between p-3.5 rounded-lg text-sm font-sans font-medium transition-colors ${pathname === link.href
                       ? 'bg-cream-200/70 text-forest font-semibold'
                       : link.highlight
-                      ? 'bg-forest/5 text-forest font-semibold hover:bg-forest/10'
-                      : 'text-earth-700 hover:bg-cream-100 hover:text-forest'
-                  }`}
+                        ? 'bg-forest/5 text-forest font-semibold hover:bg-forest/10'
+                        : 'text-earth-700 hover:bg-cream-100 hover:text-forest'
+                    }`}
                 >
                   <span className="flex items-center gap-2">
                     {link.highlight && <Sparkles className="w-4 h-4 text-gold" />}

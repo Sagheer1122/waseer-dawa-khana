@@ -136,12 +136,12 @@ export const HairQuiz: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 space-y-2.5">
-          <Badge variant="forest">60-SECOND CONSULTATION</Badge>
+          <Badge variant="forest">FREE HAIR CONSULTATION</Badge>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-forest">
-            Find Your Custom Hair Ritual
+            Find Your Ideal Herbal Formula
           </h2>
           <p className="font-sans text-sm sm:text-base text-earth-600">
-            Answer 4 quick questions to receive a trichologist-calibrated botanical routine matched to your unique hair story.
+            Answer 4 quick questions to find the perfect WASEER herbal solution for your specific hair and scalp needs.
           </p>
         </div>
 

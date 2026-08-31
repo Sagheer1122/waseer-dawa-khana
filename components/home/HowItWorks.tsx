@@ -13,22 +13,22 @@ export const HowItWorks: React.FC = () => {
     {
       num: '01',
       title: 'APPLY',
-      tagline: 'Precision Dispensing',
-      desc: 'Section dry or damp hair into quadrants. Using the glass dropper, apply 4–6 drops directly along your scalp parting lines.',
+      tagline: 'Direct Scalp Application',
+      desc: 'Part your hair and use the dropper to apply a few drops of WASEER Herbal Hair Oil directly onto your scalp and thinning areas.',
       icon: Droplet,
     },
     {
       num: '02',
       title: 'MASSAGE',
-      tagline: 'Vascular Stimulation',
-      desc: 'Using fingertip pads, massage in gentle circular motions for 3–5 minutes. This wakes dormant follicles and distributes plant lipids.',
+      tagline: 'Stimulate Roots',
+      desc: 'Gently massage your scalp with fingertips for 3–5 minutes. This stimulates blood flow and allows herbal nutrients to absorb deeply.',
       icon: Hand,
     },
     {
       num: '03',
       title: 'NOURISH',
-      tagline: 'Lipid Saturation',
-      desc: 'Leave for 30–45 minutes, or wrap in a silk bonnet overnight. Wash out easily with your favorite natural shampoo for luminous strands.',
+      tagline: 'Leave & Wash',
+      desc: 'Leave for at least 1–2 hours or overnight for best results. Wash with mild shampoo for visibly thicker, stronger, and shinier hair.',
       icon: Sparkles,
     },
   ];
@@ -45,12 +45,12 @@ export const HowItWorks: React.FC = () => {
           transition={{ duration: 0.6, ease: luxuryEase }}
           className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2.5"
         >
-          <Badge variant="sage">THE 3-STEP SACRED RITUAL</Badge>
+          <Badge variant="sage">EASY 3-STEP APPLICATION</Badge>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-forest">
-            How It Works
+            How To Use WASEER Oil
           </h2>
           <p className="font-sans text-sm sm:text-base text-earth-600">
-            A simple, grounding 5-minute ritual designed to fit seamlessly into any morning or evening self-care routine.
+            A simple, effective routine for maximum hair growth and root strengthening.
           </p>
         </motion.div>
 

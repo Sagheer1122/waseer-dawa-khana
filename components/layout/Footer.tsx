@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Leaf, Globe, Truck, CreditCard, ShieldCheck, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -7,20 +8,40 @@ export const Footer: React.FC = () => {
     <footer className="bg-forest text-ivory border-t border-forest-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
+
           {/* Brand Info Column */}
           <div className="md:col-span-6 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-ivory text-forest flex items-center justify-center font-bold">
-                <Leaf className="w-4 h-4 text-forest" />
+            <Link href="/" className="inline-flex items-center gap-3">
+              <div className="relative w-12 h-12 flex-shrink-0">
+                <Image
+                  src="/images/waseer-emblem.png"
+                  alt="WASEER Logo"
+                  fill
+                  sizes="48px"
+                  className="object-contain drop-shadow-md"
+                />
               </div>
-              <span className="font-serif text-2xl font-bold tracking-widest text-ivory">
-                AURA BOTANICA
-              </span>
+              <div className="flex flex-col text-left">
+                <div className="flex items-center gap-1 leading-none">
+                  <span className="font-serif text-2xl font-bold tracking-widest text-ivory">
+                    WASEER
+                  </span>
+                  <span className="text-[10px] font-sans font-bold text-gold -mt-1">®</span>
+                </div>
+                <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold font-bold mt-0.5">
+                  HERBAL HAIR OIL
+                </span>
+                <span className="font-sans text-[9.5px] tracking-wider uppercase text-cream-200 font-semibold mt-1">
+                  By the product of WASEER Dawa Khana, Bait Hazari
+                </span>
+              </div>
             </Link>
             <p className="font-sans text-xs text-cream-300 leading-relaxed max-w-sm font-normal">
-              100% organic cold-pressed botanical hair oils crafted to restore scalp balance, nourish follicles, and celebrate every natural texture.
+              Pure botanical formulation handcrafted by WASEER Dawa Khana, Bait Hazari. Nature&apos;s care to nourish hair, strengthen roots, promote growth, and restore healthy shine.
             </p>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-forest-800/90 border border-gold/40 text-[10px] font-sans text-gold uppercase tracking-wider font-semibold">
+              <span>By the product of WASEER Dawa Khana, Bait Hazari</span>
+            </div>
           </div>
 
           {/* Clean 3 Navigation Columns */}
@@ -96,8 +117,8 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-2.5 text-cream-200">
             <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
             <div>
-              <strong className="block text-ivory text-[11px] font-semibold">Gulberg III, Lahore, PK</strong>
-              <span className="text-[10px] text-cream-300">WhatsApp: +92 300 1234567</span>
+              <strong className="block text-ivory text-[11px] font-semibold">WASEER Dawa Khana, Bait Hazari</strong>
+              <span className="text-[10px] text-cream-300">Punjab, Pakistan • Order Support</span>
             </div>
           </div>
         </div>
@@ -106,9 +127,9 @@ export const Footer: React.FC = () => {
         <div className="mt-6 pt-4 border-t border-forest-700/40 flex flex-col sm:flex-row items-center justify-between gap-3 font-sans text-xs text-cream-300">
           <div className="flex items-center gap-2 text-center sm:text-left">
             <Leaf className="w-3.5 h-3.5 text-gold flex-shrink-0" />
-            <span>Mindfully Formulated with 100% Single-Press Organic Botanicals</span>
+            <span>By the product of WASEER Dawa Khana, Bait Hazari • 100% Herbal &amp; Pure</span>
           </div>
-          <p>© {new Date().getFullYear()} AURA BOTANICA. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} WASEER HERBAL HAIR OIL. By the product of WASEER Dawa Khana, Bait Hazari. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

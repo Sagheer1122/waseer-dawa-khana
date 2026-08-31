@@ -53,7 +53,7 @@ export default function AccountPage() {
   return (
     <div className="bg-ivory min-h-screen py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="mb-10 space-y-1 border-b border-cream-200 pb-6">
           <Badge variant="forest">MOCK CLIENT DASHBOARD</Badge>
@@ -61,22 +61,21 @@ export default function AccountPage() {
             Welcome, Sarah
           </h1>
           <p className="font-sans text-xs sm:text-sm text-earth-600">
-            Aura Botanica Ritualist Member since January 2025 • 240 Ritual Reward Points
+            WASEER Herbal Club Member since January 2025 • 240 Reward Points
           </p>
         </div>
 
         {/* 2-Column Dashboard Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* Navigation Sidebar */}
           <aside className="lg:col-span-3 bg-cream-50 rounded-2xl p-2.5 sm:p-4 border border-cream-200 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-1.5 sm:gap-1">
             <button
               onClick={() => setActiveTab('profile')}
-              className={`w-full flex items-center justify-center sm:justify-start gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors text-left ${
-                activeTab === 'profile'
+              className={`w-full flex items-center justify-center sm:justify-start gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors text-left ${activeTab === 'profile'
                   ? 'bg-forest text-ivory shadow-xs'
                   : 'text-earth-700 hover:bg-cream-100 hover:text-forest'
-              }`}
+                }`}
             >
               <User className="w-4 h-4 flex-shrink-0" />
               <span className="truncate">Profile</span>
@@ -84,11 +83,10 @@ export default function AccountPage() {
 
             <button
               onClick={() => setActiveTab('orders')}
-              className={`w-full flex items-center justify-between gap-2 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors text-left ${
-                activeTab === 'orders'
+              className={`w-full flex items-center justify-between gap-2 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors text-left ${activeTab === 'orders'
                   ? 'bg-forest text-ivory shadow-xs'
                   : 'text-earth-700 hover:bg-cream-100 hover:text-forest'
-              }`}
+                }`}
             >
               <div className="flex items-center gap-2.5 truncate">
                 <Package className="w-4 h-4 flex-shrink-0" />
@@ -99,11 +97,10 @@ export default function AccountPage() {
 
             <button
               onClick={() => setActiveTab('addresses')}
-              className={`w-full flex items-center justify-center sm:justify-start gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors text-left ${
-                activeTab === 'addresses'
+              className={`w-full flex items-center justify-center sm:justify-start gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors text-left ${activeTab === 'addresses'
                   ? 'bg-forest text-ivory shadow-xs'
                   : 'text-earth-700 hover:bg-cream-100 hover:text-forest'
-              }`}
+                }`}
             >
               <MapPin className="w-4 h-4 flex-shrink-0" />
               <span className="truncate">Addresses</span>
@@ -111,16 +108,15 @@ export default function AccountPage() {
 
             <button
               onClick={() => setActiveTab('settings')}
-              className={`w-full flex items-center justify-center sm:justify-start gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors text-left ${
-                activeTab === 'settings'
+              className={`w-full flex items-center justify-center sm:justify-start gap-2.5 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-xs font-sans font-semibold uppercase tracking-wider transition-colors text-left ${activeTab === 'settings'
                   ? 'bg-forest text-ivory shadow-xs'
                   : 'text-earth-700 hover:bg-cream-100 hover:text-forest'
-              }`}
+                }`}
             >
               <Settings className="w-4 h-4 flex-shrink-0" />
               <span className="truncate">Preferences</span>
             </button>
-            
+
             <div className="hidden lg:block pt-4 border-t border-cream-200">
               <button
                 onClick={() => alert('Mock Sign Out Completed.')}
@@ -134,7 +130,7 @@ export default function AccountPage() {
 
           {/* Main Content Area */}
           <div className="lg:col-span-9 bg-cream-50/60 rounded-3xl p-6 sm:p-10 border border-cream-300 shadow-sm">
-            
+
             {/* PROFILE TAB */}
             {activeTab === 'profile' && (
               <div className="space-y-6 animate-fade-in">

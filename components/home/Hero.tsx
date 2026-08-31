@@ -1,157 +1,251 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Rating } from '@/components/ui/Rating';
-import { luxuryEase } from '@/lib/motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, MessageCircle, ShieldCheck, Sparkles } from 'lucide-react';
+
+interface SlideData {
+  id: string;
+  badge: string;
+  headline: string;
+  headlineAccent: string;
+  subtext: string;
+  primaryCtaText: string;
+  primaryCtaLink: string;
+  secondaryCtaText: string;
+  secondaryCtaLink: string;
+  productPrice: string;
+  productOriginalPrice: string;
+  bgImage: string;
+  productImage: string;
+  accentBadge: string;
+}
+
+const SLIDES: SlideData[] = [
+  {
+    id: 'slide-1',
+    badge: 'BY THE PRODUCT OF WASEER DAWA KHANA • BAIT HAZARI',
+    headline: 'Our Most Trusted',
+    headlineAccent: 'Herbal Hair Oil.',
+    subtext: 'Fast-absorbing, 100% steroid and chemical-free formula by WASEER Dawa Khana, Bait Hazari to stop excessive hair fall, awaken weak roots, and promote rapid natural growth.',
+    primaryCtaText: 'Shop Our Best-Seller',
+    primaryCtaLink: '/shop',
+    secondaryCtaText: 'WhatsApp Order',
+    secondaryCtaLink: 'https://wa.me/923001234567?text=Hello%20WASEER%20Dawa%20Khana,%20I%20want%20to%20order%20Waseer%20Herbal%20Hair%20Oil',
+    productPrice: 'Rs. 2,450',
+    productOriginalPrice: 'Rs. 2,950',
+    bgImage: '/images/waseer-hero-landscape.jpg',
+    productImage: '/images/waseer-product-bottle.jpg',
+    accentBadge: '100% Herbal • Cold Pressed',
+  },
+  {
+    id: 'slide-2',
+    badge: 'ANCIENT UNANI BOTANICAL REMEDY',
+    headline: 'Nourish Your Hair,',
+    headlineAccent: 'Naturally.',
+    subtext: 'Infused with precious hand-selected botanical roots and cold-pressed seeds. Formulated in Bait Hazari to restore mirror shine, strengthen split ends, and balance your scalp microbiome.',
+    primaryCtaText: 'Shop The Best Haircare',
+    primaryCtaLink: '/product/organic-botanical-hair-growth-oil',
+    secondaryCtaText: 'Free Hair Consultation',
+    secondaryCtaLink: 'https://wa.me/923001234567?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20a%20free%20consultation%20about%20my%20hair%20problem',
+    productPrice: 'Rs. 2,450',
+    productOriginalPrice: 'Rs. 2,950',
+    bgImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=85',
+    productImage: '/images/waseer-haircare-collection.jpg',
+    accentBadge: 'No Mineral Oil • Zero Chemicals',
+  },
+];
 
 export const Hero: React.FC = () => {
-  const prefersReducedMotion = useReducedMotion();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const textVariants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
-    visible: (custom: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.65,
-        delay: prefersReducedMotion ? 0 : custom * 0.12,
-        ease: luxuryEase,
-      },
-    }),
-  };
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+  }, []);
 
-  const imageVariants = {
-    hidden: { opacity: 0, scale: prefersReducedMotion ? 1 : 0.96 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.9,
-        delay: prefersReducedMotion ? 0 : 0.25,
-        ease: luxuryEase,
-      },
-    },
-  };
+
+  // Auto advance every 5 seconds reliably
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide, currentSlide]);
+
+  const slide = SLIDES[currentSlide];
 
   return (
-    <section className="relative overflow-hidden bg-ivory py-10 sm:py-14 lg:py-18 border-b border-cream-200">
-      {/* Subtle organic background aura */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sage-50 rounded-full blur-3xl opacity-50 pointer-events-none -z-0" />
+    <section
+      className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] overflow-hidden bg-forest-950 flex items-center justify-center text-ivory"
+    >
+      {/* Background Image Carousel with Cinematic Overlay */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={slide.id}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src={slide.bgImage}
+            alt={slide.headline}
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          {/* Ostruce-inspired deep atmospheric gradient: dark on the left for contrast, open on the right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1611]/95 via-[#0A1611]/80 to-[#0A1611]/40 sm:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1611]/90 via-transparent to-black/30" />
+        </motion.div>
+      </AnimatePresence>
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-          
-          {/* Left Column: Clean Editorial Headline & Actions */}
-          <div className="lg:col-span-7 space-y-5 sm:space-y-8 text-left">
-            
-            {/* Eyebrow badge */}
-            <motion.div
-              custom={1}
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-cream-200/80 border border-cream-300 max-w-full"
-            >
-              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-forest animate-pulse flex-shrink-0" />
-              <span className="font-sans text-[9px] sm:text-[11px] font-bold uppercase tracking-wider text-forest">
-                100% ORGANIC BOTANICAL HAIR OIL
-              </span>
-            </motion.div>
+      {/* Main Container */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+          {/* Left Column: Social Proof, Headline, Subtext & Pill Buttons (Ostruce Style) */}
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
+
 
             {/* Main Headline */}
-            <motion.h1
-              custom={2}
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="font-serif text-3xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-forest leading-[1.1] break-words"
+            <motion.div
+              key={`head-${slide.id}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="space-y-1"
             >
-              Healthy Hair <br />
-              <span className="italic font-normal font-serif text-sage-600">Starts With Nature.</span>
-            </motion.h1>
+              <span className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gold/90 font-sans">
+                {slide.badge}
+              </span>
+              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ivory leading-[1.1]">
+                {slide.headline} <br />
+                <span className="italic font-normal font-serif text-emerald-300">
+                  {slide.headlineAccent}
+                </span>
+              </h1>
+            </motion.div>
 
-            {/* Supporting Copy */}
+            {/* Subtext */}
             <motion.p
-              custom={3}
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="font-sans text-sm sm:text-lg text-earth-600 max-w-lg leading-relaxed font-normal"
+              key={`sub-${slide.id}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-sans text-sm sm:text-base lg:text-lg text-cream-100/90 max-w-xl leading-relaxed font-normal"
             >
-              Pure single-origin botanical oils crafted to nourish your scalp microbiome, strengthen roots, and restore natural shine. One honest formula for every hair texture.
+              {slide.subtext}
             </motion.p>
 
-            {/* Dual CTAs */}
+            {/* CTAs: Ostruce-Style Dark Pill Button + WhatsApp Order */}
             <motion.div
-              custom={4}
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2"
+              key={`cta-${slide.id}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2"
             >
               <Link
-                href="/shop"
-                className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-forest text-ivory font-sans text-xs sm:text-sm font-bold uppercase tracking-wider sm:tracking-widest hover:bg-forest-700 active:scale-[0.98] transition-all shadow-md group text-center"
+                href={slide.primaryCtaLink}
+                className="inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-full bg-[#18352A] hover:bg-[#204436] active:scale-[0.98] border border-emerald-700/60 text-ivory font-sans text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-xl hover:shadow-2xl group text-center"
               >
-                <span>Shop All Rituals</span>
-                <ArrowRight className="w-4 h-4 text-cream-200 group-hover:translate-x-1 transition-transform" />
+                <span>{slide.primaryCtaText}</span>
+                <ArrowRight className="w-4 h-4 text-gold group-hover:translate-x-1 transition-transform" />
               </Link>
 
-              <Link
-                href="/ingredients"
-                className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-full border border-forest text-forest font-sans text-xs sm:text-sm font-bold uppercase tracking-wider sm:tracking-widest hover:bg-forest hover:text-ivory active:scale-[0.98] transition-all text-center"
+              <a
+                href={slide.secondaryCtaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 sm:py-4 rounded-full bg-emerald-600/90 hover:bg-emerald-500 active:scale-[0.98] text-ivory font-sans text-xs sm:text-sm font-bold tracking-wider transition-all shadow-lg text-center"
               >
-                Explore Botanicals
-              </Link>
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>{slide.secondaryCtaText}</span>
+              </a>
             </motion.div>
 
-            {/* Trust Strip */}
-            <motion.div
-              custom={5}
-              initial="hidden"
-              animate="visible"
-              variants={textVariants}
-              className="pt-6 border-t border-cream-300 flex flex-wrap items-center gap-6 sm:gap-8 text-earth-700"
-            >
-              <div className="flex items-center gap-2">
-                <Rating rating={4.9} count={2800} size="md" />
-              </div>
-
-              <div className="h-4 w-px bg-cream-300 hidden sm:block" />
-
-              <div className="flex items-center gap-4 text-xs font-sans font-semibold tracking-wider uppercase text-forest">
-                <span>✦ Cold-Pressed</span>
-                <span>✦ Zero Silicones</span>
-                <span>✦ Unisex</span>
-              </div>
-            </motion.div>
+            {/* Price & Delivery Mini Note */}
+            <div className="pt-2 flex items-center gap-4 text-xs font-sans text-cream-200">
+              <span className="flex items-center gap-1.5 font-semibold text-ivory">
+                <span className="text-gold text-sm font-bold">{slide.productPrice}</span>
+                <span className="line-through text-cream-400/80 text-[11px]">{slide.productOriginalPrice}</span>
+              </span>
+              <span className="w-1 h-1 rounded-full bg-cream-400" />
+              <span className="text-[11px] text-cream-300">Free Delivery &amp; Cash on Delivery Available</span>
+            </div>
 
           </div>
 
-          {/* Right Column: Clean Amber Bottle Image */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={imageVariants}
-            className="lg:col-span-5 relative"
-          >
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border border-cream-300 bg-cream-100 group">
-              <Image
-                src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85"
-                alt="Aura Botanica Amber Glass Hair Oil Bottle"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
-              />
-            </div>
-          </motion.div>
+          {/* Right Column: Hero Product Showcase with Floating Badge */}
+          <div className="lg:col-span-5 relative flex justify-center items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`img-${slide.id}`}
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                className="relative w-full max-w-[380px] sm:max-w-[420px]"
+              >
+                {/* Glowing Aura Ring */}
+                <div className="absolute -inset-4 bg-gradient-to-tr from-gold/20 via-emerald-500/20 to-transparent rounded-full blur-2xl pointer-events-none" />
+
+                {/* Staged Presentation Showcase */}
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 bg-[#0F2218] p-2 sm:p-2.5 backdrop-blur-md group">
+                  <div className="relative aspect-square rounded-2xl overflow-hidden shadow-inner">
+                    <Image
+                      src={slide.productImage}
+                      alt="WASEER Herbal Hair Oil by WASEER Dawa Khana Bait Hazari"
+                      fill
+                      priority
+                      className="object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
+                    />
+                  </div>
+
+                  {/* Bottom Strip inside Card */}
+                  <div className="mt-2.5 py-2 px-3 rounded-xl bg-[#081810]/90 text-ivory flex items-center justify-between gap-2 shadow-sm border border-gold/30">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-gold animate-ping" />
+                      <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-cream-100">
+                        WASEER Dawa Khana
+                      </span>
+                    </div>
+                    <span className="font-sans text-[10px] text-gold font-bold tracking-widest uppercase">
+                      Bait Hazari
+                    </span>
+                  </div>
+                </div>
+
+                {/* Floating Top-Left Accent Pill */}
+                <div className="absolute -top-3 -left-3 bg-[#0D241A] text-gold border border-gold/60 px-3.5 py-1.5 rounded-full text-[10.5px] font-sans font-bold uppercase tracking-wider shadow-xl flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-gold" />
+                  <span>{slide.accentBadge}</span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
         </div>
+      </div>
+
+
+      {/* Slide Indicator Dots at the Bottom */}
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+        {SLIDES.map((s, idx) => (
+          <button
+            key={s.id}
+            onClick={() => setCurrentSlide(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-2 rounded-full transition-all duration-300 ${idx === currentSlide
+                ? 'w-7 bg-gold shadow-md'
+                : 'w-2 bg-white/40 hover:bg-white/70'
+              }`}
+          />
+        ))}
       </div>
     </section>
   );

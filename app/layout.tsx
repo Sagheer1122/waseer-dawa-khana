@@ -9,6 +9,7 @@ import { MobileMenu } from '@/components/layout/MobileMenu';
 import { SearchModal } from '@/components/layout/SearchModal';
 import { QuickViewModal } from '@/components/layout/QuickViewModal';
 import { ToastContainer } from '@/components/ui/Toast';
+import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -25,20 +26,20 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'AURA BOTANICA — 100% Organic Unisex Botanical Hair & Scalp Oil',
-  description: 'Pure single-origin cold-pressed botanical hair oils crafted to nourish your scalp microbiome, strengthen roots, and restore radiant shine. 100% natural, unisex, cruelty-free.',
-  keywords: ['organic hair oil', 'rosemary scalp oil', 'unisex hair care', 'cold pressed hair serum', 'natural hair growth', 'argan oil hair gloss'],
+  title: 'WASEER Herbal Hair Oil — Nature Cares For Your Hairs | WASEER Dawa Khana Bait Hazari',
+  description: 'By the product of WASEER Dawa Khana, Bait Hazari. Pure authentic cold-pressed herbal hair oil formulated to nourish hair, strengthen roots, promote growth, and restore healthier, shinier hair.',
+  keywords: ['waseer herbal hair oil', 'waseer dawa khana', 'waseer dawa khana bait hazari', 'herbal hair oil pakistan', 'natural hair growth oil', 'unani hair oil'],
   openGraph: {
-    title: 'AURA BOTANICA — Pure Botanical Hair & Scalp Rituals',
-    description: 'One natural formula. Every hair story. Cold-pressed organic botanical elixirs.',
-    url: 'https://aurabotanica.com',
-    siteName: 'AURA BOTANICA',
+    title: 'WASEER Herbal Hair Oil — By the product of WASEER Dawa Khana, Bait Hazari',
+    description: 'Nature Cares for your hairs. Handcrafted herbal hair oil to nourish hair, strengthen roots, and promote growth.',
+    url: 'https://waseerhairoil.com',
+    siteName: 'WASEER HERBAL HAIR OIL',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
+        url: '/images/waseer-product-bottle.jpg',
         width: 1200,
-        height: 630,
-        alt: 'Aura Botanica Organic Hair Oil',
+        height: 1200,
+        alt: 'WASEER Herbal Hair Oil by WASEER Dawa Khana Bait Hazari',
       },
     ],
     locale: 'en_US',
@@ -46,9 +47,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/images/waseer-emblem.png', type: 'image/png' },
     ],
-    apple: '/favicon.svg',
+    apple: '/images/waseer-emblem.png',
   },
 };
 
@@ -62,7 +63,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-ivory text-earth flex flex-col font-sans selection:bg-forest selection:text-ivory font-jakarta w-full max-w-[100vw] overflow-x-hidden relative">
         <AnnouncementBar />
         <Navbar />
-        
+
         <main className="flex-1 w-full max-w-[100vw] overflow-x-hidden">
           {children}
         </main>
@@ -75,6 +76,7 @@ export default function RootLayout({
         <SearchModal />
         <QuickViewModal />
         <ToastContainer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

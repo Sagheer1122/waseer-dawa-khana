@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Search, ShoppingBag, Heart, User, Menu, Leaf } from 'lucide-react';
+import { Search, ShoppingBag, Heart, User, Menu } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import { useWishlistStore } from '@/store/wishlistStore';
 import { useUIStore } from '@/store/uiStore';
@@ -35,22 +36,20 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Shop All', href: '/shop' },
-    { name: 'Our Story', href: '/about' },
+    { name: 'Our Formula', href: '/about' },
     { name: 'Ingredients', href: '/ingredients' },
     { name: 'Hair Guide', href: '/hair-guide' },
     { name: 'Journal', href: '/journal' },
     { name: 'Contact', href: '/contact' },
   ];
 
-  const isHomePage = pathname === '/';
-
   return (
     <header
       className={cn(
         'sticky top-0 z-40 w-full transition-all duration-300',
         isScrolled
-          ? 'bg-ivory/95 backdrop-blur-md shadow-sm border-b border-cream-200 py-3 sm:py-3.5'
-          : 'bg-ivory/90 backdrop-blur-sm border-b border-cream-200 py-5 sm:py-6'
+          ? 'bg-ivory/95 backdrop-blur-md shadow-sm border-b border-cream-200 py-1.5 sm:py-2'
+          : 'bg-ivory/90 backdrop-blur-sm border-b border-cream-200 py-2 sm:py-2.5'
       )}
     >
       <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 flex items-center justify-between gap-1 min-w-0">
@@ -65,16 +64,26 @@ export const Navbar: React.FC = () => {
             <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
-          <Link href="/" className="inline-flex items-center gap-1.5 sm:gap-2 group">
-            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-forest flex items-center justify-center text-ivory group-hover:bg-sage transition-colors shadow-sm flex-shrink-0">
-              <Leaf className="w-3 h-3 sm:w-4 sm:h-4 text-cream-100" />
+          <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3.5 group py-0.5">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex-shrink-0">
+              <Image
+                src="/images/waseer-emblem.png"
+                alt="WASEER Emblem"
+                fill
+                sizes="(max-width: 640px) 40px, (max-width: 768px) 48px, 56px"
+                className="object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
+                priority
+              />
             </div>
             <div className="flex flex-col text-left">
-              <span className="font-serif text-base sm:text-2xl font-bold tracking-wider sm:tracking-widest text-forest group-hover:text-sage transition-colors leading-none whitespace-nowrap">
-                AURA BOTANICA
-              </span>
-              <span className="font-sans text-[8px] sm:text-[9px] tracking-[0.2em] sm:tracking-[0.25em] uppercase text-earth-500 font-semibold mt-0.5 hidden xs:block">
-                Pure Organic Hair Rituals
+              <div className="flex items-center gap-1 leading-none">
+                <span className="font-serif text-xl sm:text-2xl md:text-3xl font-bold tracking-wider sm:tracking-widest text-forest group-hover:text-forest-700 transition-colors">
+                  WASEER
+                </span>
+                <span className="text-[10px] sm:text-xs font-sans font-bold text-forest -mt-1 sm:-mt-2">®</span>
+              </div>
+              <span className="font-sans text-[8.5px] sm:text-[10px] md:text-[10.5px] tracking-[0.25em] sm:tracking-[0.3em] uppercase text-earth-600 font-bold mt-0.5 whitespace-nowrap">
+                HERBAL HAIR OIL
               </span>
             </div>
           </Link>
