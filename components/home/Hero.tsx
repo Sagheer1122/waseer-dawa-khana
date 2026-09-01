@@ -52,7 +52,7 @@ const SLIDES: SlideData[] = [
     secondaryCtaLink: 'https://wa.me/923001234567?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20a%20free%20consultation%20about%20my%20hair%20problem',
     productPrice: 'Rs. 2,450',
     productOriginalPrice: 'Rs. 2,950',
-    bgImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=85',
+    bgImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80',
     productImage: '/images/waseer-haircare-collection.jpg',
     accentBadge: 'No Mineral Oil • Zero Chemicals',
   },
@@ -81,27 +81,33 @@ export const Hero: React.FC = () => {
       className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] overflow-hidden bg-forest-950 flex items-center justify-center text-ivory"
     >
       {/* Background Image Carousel with Cinematic Overlay */}
-      <AnimatePresence mode="wait">
+      {SLIDES.map((s, idx) => (
         <motion.div
-          key={slide.id}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.9, ease: 'easeOut' }}
-          className="absolute inset-0 z-0"
+          key={s.id}
+          initial={false}
+          animate={{
+            opacity: idx === currentSlide ? 1 : 0,
+            scale: idx === currentSlide ? 1 : 1.04,
+          }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className={`absolute inset-0 z-0 ${
+            idx === currentSlide ? 'pointer-events-auto' : 'pointer-events-none'
+          }`}
         >
           <Image
-            src={slide.bgImage}
-            alt={slide.headline}
+            src={s.bgImage}
+            alt={s.headline}
             fill
             priority
+            sizes="100vw"
+            quality={80}
             className="object-cover object-center"
           />
           {/* Ostruce-inspired deep atmospheric gradient: dark on the left for contrast, open on the right */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A1611]/95 via-[#0A1611]/80 to-[#0A1611]/40 sm:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A1611]/90 via-transparent to-black/30" />
         </motion.div>
-      </AnimatePresence>
+      ))}
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 relative z-10 w-full">
@@ -182,51 +188,68 @@ export const Hero: React.FC = () => {
 
           {/* Right Column: Hero Product Showcase with Floating Badge */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`img-${slide.id}`}
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="relative w-full max-w-[380px] sm:max-w-[420px]"
-              >
-                {/* Glowing Aura Ring */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-gold/20 via-emerald-500/20 to-transparent rounded-full blur-2xl pointer-events-none" />
+            <div className="relative w-full max-w-[380px] sm:max-w-[420px]">
+              {/* Glowing Aura Ring */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-gold/20 via-emerald-500/20 to-transparent rounded-full blur-2xl pointer-events-none" />
 
-                {/* Staged Presentation Showcase */}
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 bg-[#0F2218] p-2 sm:p-2.5 backdrop-blur-md group">
-                  <div className="relative aspect-square rounded-2xl overflow-hidden shadow-inner">
-                    <Image
-                      src={slide.productImage}
-                      alt="WASEER Herbal Hair Oil by WASEER Dawa Khana Bait Hazari"
-                      fill
-                      priority
-                      className="object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
-                    />
-                  </div>
+              {/* Staged Presentation Showcase */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-gold/40 bg-[#0F2218] p-2 sm:p-2.5 backdrop-blur-md group">
+                <div className="relative aspect-square rounded-2xl overflow-hidden shadow-inner">
+                  {SLIDES.map((s, idx) => (
+                    <motion.div
+                      key={`img-${s.id}`}
+                      initial={false}
+                      animate={{
+                        opacity: idx === currentSlide ? 1 : 0,
+                        scale: idx === currentSlide ? 1 : 0.96,
+                      }}
+                      transition={{ duration: 0.7, ease: 'easeOut' }}
+                      className={`absolute inset-0 ${
+                        idx === currentSlide ? 'pointer-events-auto' : 'pointer-events-none'
+                      }`}
+                    >
+                      <Image
+                        src={s.productImage}
+                        alt="WASEER Herbal Hair Oil by WASEER Dawa Khana Bait Hazari"
+                        fill
+                        priority
+                        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 380px, 420px"
+                        quality={85}
+                        className="object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
 
-                  {/* Bottom Strip inside Card */}
-                  <div className="mt-2.5 py-2 px-3 rounded-xl bg-[#081810]/90 text-ivory flex items-center justify-between gap-2 shadow-sm border border-gold/30">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-gold animate-ping" />
-                      <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-cream-100">
-                        WASEER Dawa Khana
-                      </span>
-                    </div>
-                    <span className="font-sans text-[10px] text-gold font-bold tracking-widest uppercase">
-                      Bait Hazari
+                {/* Bottom Strip inside Card */}
+                <div className="mt-2.5 py-2 px-3 rounded-xl bg-[#081810]/90 text-ivory flex items-center justify-between gap-2 shadow-sm border border-gold/30">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-gold animate-ping" />
+                    <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-cream-100">
+                      WASEER Dawa Khana
                     </span>
                   </div>
+                  <span className="font-sans text-[10px] text-gold font-bold tracking-widest uppercase">
+                    Bait Hazari
+                  </span>
                 </div>
+              </div>
 
-                {/* Floating Top-Left Accent Pill */}
-                <div className="absolute -top-3 -left-3 bg-[#0D241A] text-gold border border-gold/60 px-3.5 py-1.5 rounded-full text-[10.5px] font-sans font-bold uppercase tracking-wider shadow-xl flex items-center gap-1.5">
+              {/* Floating Top-Left Accent Pill */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`pill-${slide.id}`}
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 6 }}
+                  transition={{ duration: 0.35 }}
+                  className="absolute -top-3 -left-3 bg-[#0D241A] text-gold border border-gold/60 px-3.5 py-1.5 rounded-full text-[10.5px] font-sans font-bold uppercase tracking-wider shadow-xl flex items-center gap-1.5"
+                >
                   <Sparkles className="w-3.5 h-3.5 text-gold" />
                   <span>{slide.accentBadge}</span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
 
         </div>

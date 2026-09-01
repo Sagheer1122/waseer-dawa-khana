@@ -82,7 +82,8 @@ export const BeforeAfterSlider: React.FC = () => {
                 src="/images/hair_after_healthy.jpg"
                 alt="Week 6 After: Deeply nourished, silky hair with radiant botanical shine"
                 fill
-                priority
+                sizes="(max-width: 768px) 100vw, 896px"
+                quality={80}
                 className="object-cover"
               />
               <div className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 bg-forest/90 text-ivory backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full font-sans text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest uppercase shadow-md">
@@ -100,7 +101,8 @@ export const BeforeAfterSlider: React.FC = () => {
                 src="/images/hair_before_damaged.jpg"
                 alt="Week 0 Before: Dry, rough, frizzy and damaged hair with split ends"
                 fill
-                priority
+                sizes="(max-width: 768px) 100vw, 896px"
+                quality={80}
                 className="object-cover"
               />
               <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 bg-earth/90 text-ivory backdrop-blur-md px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full font-sans text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest uppercase shadow-md">
