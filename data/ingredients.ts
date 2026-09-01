@@ -7,7 +7,7 @@ export const INGREDIENTS: BotanicalIngredient[] = [
     botanicalName: 'Rosmarinus Officinalis',
     origin: 'Provence, France',
     extraction: 'Steam Distillation of Flowering Tops',
-    image: 'https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=800&q=85',
+    image: '/images/ingredients/rosemary.jpg',
     colorTone: '#445E44',
     description: 'One of the world’s most celebrated botanicals for hair vitality. High in 1,8-cineole and rosmarinic acid, rosemary oil stimulates micro-capillary flow along the scalp, encouraging follicular nourishment and reducing excessive daily shedding.',
     benefits: [
@@ -25,7 +25,7 @@ export const INGREDIENTS: BotanicalIngredient[] = [
     botanicalName: 'Argania Spinosa',
     origin: 'Souss Valley, Morocco',
     extraction: 'First Cold-Pressed from Hand-Cracked Kernels',
-    image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=85',
+    image: '/images/ingredients/argan.jpg',
     colorTone: '#B08D57',
     description: 'Known for centuries as "Liquid Gold," our unrefined organic argan oil is harvested by Berber women cooperatives. Packed with natural squalene, vitamin E, and oleic/linoleic fatty acids, it penetrates the hair cortex to restore elasticity without heavy coating.',
     benefits: [
@@ -43,7 +43,7 @@ export const INGREDIENTS: BotanicalIngredient[] = [
     botanicalName: 'Ricinus Communis',
     origin: 'St. Thomas, Jamaica',
     extraction: 'Traditional Roasted Seed Cold-Press',
-    image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=800&q=85',
+    image: '/images/ingredients/castor.jpg',
     colorTone: '#3A3027',
     description: 'Revered in traditional Caribbean hair care, our Jamaican Black Castor Oil is extracted from slow-roasted castor beans. It features an unprecedented 90% ricinoleic acid concentration, creating an unmatched protective shield over moisture-starved roots and edges.',
     benefits: [
@@ -61,7 +61,7 @@ export const INGREDIENTS: BotanicalIngredient[] = [
     botanicalName: 'Simmondsia Chinensis',
     origin: 'Sonoran Desert, Arizona',
     extraction: 'Single-Pass Cold Press of Desert Seeds',
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=85',
+    image: '/images/ingredients/jojoba.jpg',
     colorTone: '#D4A359',
     description: 'Technically a liquid wax ester rather than a triglyceride oil, golden jojoba shares an identical molecular geometry to the natural sebum produced by human skin. It absorbs instantaneously without clogging pores or leaving greasy residue.',
     benefits: [
@@ -79,7 +79,7 @@ export const INGREDIENTS: BotanicalIngredient[] = [
     botanicalName: 'Phyllanthus Emblica',
     origin: 'Western Ghats, India',
     extraction: 'Whole-Fruit Lipid Infusion',
-    image: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=85',
+    image: '/images/ingredients/amla.jpg',
     colorTone: '#87977A',
     description: 'Known as the "Nectar of Life" in ancient Ayurvedic traditions, Amla contains one of the highest concentrations of bio-available Vitamin C and polyphenol tannins found in any botanical on Earth.',
     benefits: [
@@ -97,7 +97,7 @@ export const INGREDIENTS: BotanicalIngredient[] = [
     botanicalName: 'Melaleuca Alternifolia',
     origin: 'New South Wales, Australia',
     extraction: 'Pure Steam Distillation of Fresh Leaves',
-    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=85',
+    image: '/images/ingredients/tea-tree.jpg',
     colorTone: '#2B6852',
     description: 'Renowned for its clarifying properties, our wild-harvested Australian tea tree oil helps gently eliminate dead skin flakes, balance oiliness, and maintain a fresh, healthy scalp environment.',
     benefits: [

@@ -21,8 +21,10 @@ import {
   ShoppingBag,
   Banknote,
   Smartphone,
-  Building2
+  Building2,
+  MessageCircle,
 } from 'lucide-react';
+import { submitOrder } from '@/lib/api';
 
 const PAKISTANI_CITIES = [
   'Karachi',
@@ -50,7 +52,7 @@ const PAKISTANI_CITIES = [
 const checkoutSchema = z.object({
   // Contact
   fullName: z.string().min(2, 'Full name is required (min 2 characters).'),
-  email: z.string().email('Please enter a valid email address.'),
+  email: z.string().email('Please enter a valid email address.').optional().or(z.literal('')),
   phone: z.string().min(10, 'Please enter a valid Pakistani mobile number (e.g., 0300 1234567).'),
 
   // Shipping
@@ -99,10 +101,10 @@ export default function CheckoutPage() {
       country: 'Pakistan',
       province: 'Punjab',
       city: 'Lahore',
-      address: 'House # 42, Block B, Gulberg III',
-      fullName: 'Sagheer Ahmad',
-      email: 'sagheer@example.com',
-      phone: '0300 1234567',
+      address: '',
+      fullName: '',
+      email: '',
+      phone: '',
       paymentMethod: 'cod',
       cardNumber: '',
       cardExpiry: '',
@@ -123,7 +125,37 @@ export default function CheckoutPage() {
   };
 
   const onSubmit = async (data: CheckoutFormData) => {
-    const newOrderNumber = `PK-${Math.floor(100000 + Math.random() * 900000)}`;
+    let newOrderNumber = `PK-${Math.floor(100000 + Math.random() * 900000)}`;
+    let whatsappRedirectUrl = '';
+
+    try {
+      const res = await submitOrder({
+        customerName: data.fullName,
+        customerPhone: data.phone,
+        customerEmail: data.email,
+        shippingAddress: `${data.address}, ${data.city}, ${data.province}, Pakistan`,
+        items: items.map((it) => ({
+          productId: it.productId || it.id,
+          productName: it.name,
+          quantity: it.quantity,
+          price: it.price,
+          size: it.size,
+          image: it.image,
+        })),
+        totalAmount: grandTotal,
+        paymentMethod: selectedPayment,
+      });
+
+      if (res.orderNumber) {
+        newOrderNumber = res.orderNumber;
+      }
+      if (res.whatsappUrl) {
+        whatsappRedirectUrl = res.whatsappUrl;
+      }
+    } catch (err) {
+      console.warn('[Checkout] Saved offline order fallback:', err);
+    }
+
     setOrderNumber(newOrderNumber);
     setPlacedOrderSummary({
       items: [...items],
@@ -132,9 +164,14 @@ export default function CheckoutPage() {
       email: data.email,
       phone: data.phone,
       paymentMethod: selectedPayment,
+      whatsappUrl: whatsappRedirectUrl,
     });
     setIsOrderPlaced(true);
     clearCart();
+
+    if (whatsappRedirectUrl) {
+      window.open(whatsappRedirectUrl, '_blank');
+    }
   };
 
   if (isOrderPlaced && placedOrderSummary) {
@@ -203,7 +240,7 @@ export default function CheckoutPage() {
             {placedOrderSummary.paymentMethod === 'jazzcash' && (
               <div className="p-3.5 bg-gold/10 rounded-xl border border-gold/30 text-xs font-sans space-y-1">
                 <p className="font-bold text-forest">JazzCash Payment Details:</p>
-                <p className="text-earth-700">Please transfer {formatPrice(placedOrderSummary.total)} to <strong>0300-1234567 (WASEER Dawa Khana)</strong> and send screenshot on WhatsApp.</p>
+                <p className="text-earth-700">Please transfer {formatPrice(placedOrderSummary.total)} to <strong>0339-0010550 (WASEER Dawa Khana)</strong> and send screenshot on WhatsApp.</p>
               </div>
             )}
 
@@ -222,10 +259,21 @@ export default function CheckoutPage() {
             )}
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            {placedOrderSummary.whatsappUrl && (
+              <a
+                href={placedOrderSummary.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-ivory font-sans text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-98"
+              >
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>Open WhatsApp Order</span>
+              </a>
+            )}
             <Link
               href="/shop"
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-forest text-ivory font-sans text-xs font-bold uppercase tracking-widest hover:bg-forest-700 transition-colors shadow-sm"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-forest text-ivory font-sans text-xs font-bold uppercase tracking-widest hover:bg-forest-700 transition-colors shadow-sm text-center"
             >
               Continue Exploring Rituals
             </Link>
@@ -289,7 +337,7 @@ export default function CheckoutPage() {
                       <input
                         type="text"
                         {...register('fullName')}
-                        placeholder="e.g. Sagheer Ahmad"
+                        placeholder="e.g. Muhammad Ali"
                         className="w-full px-4 py-2.5 text-xs font-sans rounded-xl border border-cream-300 bg-ivory focus:outline-none focus:border-forest"
                       />
                       {errors.fullName && <p className="text-[11px] text-red-600 mt-1">{errors.fullName.message}</p>}
@@ -310,12 +358,12 @@ export default function CheckoutPage() {
                       </div>
                       <div>
                         <label className="block text-xs font-sans font-semibold text-earth-700 uppercase tracking-wider mb-1">
-                          Email Address *
+                          Email Address
                         </label>
                         <input
                           type="email"
                           {...register('email')}
-                          placeholder="sagheer@example.com"
+                          placeholder="customer@example.com (optional)"
                           className="w-full px-4 py-2.5 text-xs font-sans rounded-xl border border-cream-300 bg-ivory focus:outline-none focus:border-forest"
                         />
                         {errors.email && <p className="text-[11px] text-red-600 mt-1">{errors.email.message}</p>}
@@ -329,7 +377,7 @@ export default function CheckoutPage() {
                       <input
                         type="text"
                         {...register('address')}
-                        placeholder="House / Apartment #, Street Name, Area / Sector"
+                        placeholder="House #, Street Name, Area / Sector"
                         className="w-full px-4 py-2.5 text-xs font-sans rounded-xl border border-cream-300 bg-ivory focus:outline-none focus:border-forest"
                       />
                       {errors.address && <p className="text-[11px] text-red-600 mt-1">{errors.address.message}</p>}

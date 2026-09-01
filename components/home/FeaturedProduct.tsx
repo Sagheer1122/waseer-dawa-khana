@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PRODUCTS } from '@/data/products';
+import { PRODUCTS as INITIAL_PRODUCTS } from '@/data/products';
+import { getStoreProducts } from '@/lib/api';
+import { Product } from '@/types';
 import { useCartStore } from '@/store/cartStore';
 import { useWishlistStore } from '@/store/wishlistStore';
 import { useUIStore } from '@/store/uiStore';
@@ -13,17 +15,52 @@ import { Badge } from '@/components/ui/Badge';
 import { ShoppingBag, Eye, Heart, Check, Sparkles, Droplet, ArrowRight } from 'lucide-react';
 
 export const FeaturedProduct: React.FC = () => {
-  const featuredProduct = PRODUCTS[0]; // Growth Serum
-  const [selectedSize, setSelectedSize] = useState(featuredProduct.sizes[1]?.size || '100ml');
+  const initial = (INITIAL_PRODUCTS as Product[])[0];
+  const [featuredProduct, setFeaturedProduct] = useState<Product | null>(initial || null);
+  const [selectedSize, setSelectedSize] = useState<string>(initial?.sizes?.[0]?.size || '100ml');
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
+
+  React.useEffect(() => {
+    getStoreProducts().then((prods) => {
+      if (prods && prods.length > 0) {
+        const feat = prods.find((p) => p.slug === 'organic-botanical-hair-growth-oil') || prods.find((p) => p.isFeatured) || prods[0];
+        if (feat) {
+          setFeaturedProduct(feat);
+          if (feat.sizes && feat.sizes.length > 0) {
+            const popSize = feat.sizes.find((s) => s.isPopular) || feat.sizes[0];
+            setSelectedSize(popSize?.size || feat.sizes[0]?.size || '100ml');
+          }
+        }
+      }
+    });
+  }, []);
 
   const addItem = useCartStore((s) => s.addItem);
   const { toggleWishlist, isInWishlist } = useWishlistStore();
   const { openQuickView, addToast } = useUIStore();
 
+  if (!featuredProduct) {
+    return (
+      <section className="py-16 md:py-24 bg-cream-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-ivory rounded-3xl p-8 border border-cream-200 animate-pulse flex flex-col md:flex-row gap-8">
+            <div className="aspect-square w-full md:w-1/2 bg-cream-200 rounded-2xl" />
+            <div className="flex-1 space-y-4 py-6">
+              <div className="h-6 bg-cream-200 rounded w-1/3" />
+              <div className="h-10 bg-cream-200 rounded w-3/4" />
+              <div className="h-4 bg-cream-200 rounded w-full" />
+              <div className="h-4 bg-cream-200 rounded w-2/3" />
+              <div className="h-12 bg-cream-200 rounded-full w-1/2 mt-8" />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const isFavorited = isInWishlist(featuredProduct.id);
-  const currentSizeObj = featuredProduct.sizes.find((s) => s.size === selectedSize) || featuredProduct.sizes[1];
+  const currentSizeObj = featuredProduct.sizes.find((s) => s.size === selectedSize) || featuredProduct.sizes[1] || featuredProduct.sizes[0];
   const currentPrice = currentSizeObj ? currentSizeObj.price : featuredProduct.basePrice;
 
   const handleAddToCart = () => {
@@ -57,7 +94,7 @@ export const FeaturedProduct: React.FC = () => {
             WASEER Herbal Hair Oil
           </h2>
           <p className="font-sans text-sm sm:text-base text-earth-600">
-            Handcrafted by WASEER Dawa Khana, Bait Hazari. Formulated with authentic Amla, Sikakai, and cold-pressed botanical oils to stop hair fall and strengthen roots naturally.
+            Handcrafted by WASEER Dawa Khana. Formulated with authentic Amla, Sikakai, and cold-pressed botanical oils to stop hair fall and strengthen roots naturally.
           </p>
         </div>
 
@@ -71,7 +108,9 @@ export const FeaturedProduct: React.FC = () => {
                 src={featuredProduct.images[0]}
                 alt={featuredProduct.name}
                 fill
+                loading="lazy"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={85}
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute top-4 left-4">

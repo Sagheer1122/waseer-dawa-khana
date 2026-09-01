@@ -82,6 +82,7 @@ export const BeforeAfterSlider: React.FC = () => {
                 src="/images/hair_after_healthy.jpg"
                 alt="Week 6 After: Deeply nourished, silky hair with radiant botanical shine"
                 fill
+                loading="lazy"
                 sizes="(max-width: 768px) 100vw, 896px"
                 quality={80}
                 className="object-cover"
@@ -101,6 +102,7 @@ export const BeforeAfterSlider: React.FC = () => {
                 src="/images/hair_before_damaged.jpg"
                 alt="Week 0 Before: Dry, rough, frizzy and damaged hair with split ends"
                 fill
+                loading="lazy"
                 sizes="(max-width: 768px) 100vw, 896px"
                 quality={80}
                 className="object-cover"

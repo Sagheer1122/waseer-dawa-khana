@@ -78,7 +78,7 @@ export const Newsletter: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2, ease: luxuryEase }}
           className="font-sans text-sm sm:text-base text-cream-200 max-w-xl mx-auto leading-relaxed"
         >
-          Subscribe to receive authentic hair care advice from WASEER Dawa Khana, Bait Hazari and special discount coupons.
+          Subscribe to receive authentic hair care advice from WASEER Dawa Khana and special discount coupons.
         </motion.p>
 
         {/* Form Container */}

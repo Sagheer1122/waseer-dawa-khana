@@ -57,7 +57,7 @@ export const REVIEWS: Review[] = [
     verified: true,
     hairType: 'Straight / Oily Scalp & Dry Ends',
     hairConcern: 'Postpartum Hair Fall',
-    headline: 'Best product from WASEER Dawa Khana, Bait Hazari',
+    headline: 'Best product from WASEER Dawa Khana',
     content: 'I had severe hair fall after pregnancy. A relative recommended WASEER Dawa Khana. It took about 3 weeks of consistent use, and my hair fall has almost completely stopped. Worth every rupee.',
     helpfulCount: 38
   },

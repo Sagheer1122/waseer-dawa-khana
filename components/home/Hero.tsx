@@ -26,14 +26,14 @@ interface SlideData {
 const SLIDES: SlideData[] = [
   {
     id: 'slide-1',
-    badge: 'BY THE PRODUCT OF WASEER DAWA KHANA • BAIT HAZARI',
+    badge: 'BY THE PRODUCT OF WASEER DAWA KHANA',
     headline: 'Our Most Trusted',
     headlineAccent: 'Herbal Hair Oil.',
-    subtext: 'Fast-absorbing, 100% steroid and chemical-free formula by WASEER Dawa Khana, Bait Hazari to stop excessive hair fall, awaken weak roots, and promote rapid natural growth.',
+    subtext: 'Fast-absorbing, 100% steroid and chemical-free formula by WASEER Dawa Khana to stop excessive hair fall, awaken weak roots, and promote rapid natural growth.',
     primaryCtaText: 'Shop Our Best-Seller',
     primaryCtaLink: '/shop',
     secondaryCtaText: 'WhatsApp Order',
-    secondaryCtaLink: 'https://wa.me/923001234567?text=Hello%20WASEER%20Dawa%20Khana,%20I%20want%20to%20order%20Waseer%20Herbal%20Hair%20Oil',
+    secondaryCtaLink: 'https://wa.me/923390010550?text=Hello%20WASEER%20Dawa%20Khana,%20I%20want%20to%20order%20Waseer%20Herbal%20Hair%20Oil',
     productPrice: 'Rs. 2,450',
     productOriginalPrice: 'Rs. 2,950',
     bgImage: '/images/waseer-hero-landscape.jpg',
@@ -45,43 +45,67 @@ const SLIDES: SlideData[] = [
     badge: 'ANCIENT UNANI BOTANICAL REMEDY',
     headline: 'Nourish Your Hair,',
     headlineAccent: 'Naturally.',
-    subtext: 'Infused with precious hand-selected botanical roots and cold-pressed seeds. Formulated in Bait Hazari to restore mirror shine, strengthen split ends, and balance your scalp microbiome.',
+    subtext: 'Infused with precious hand-selected botanical roots and cold-pressed seeds. Formulated to restore mirror shine, strengthen split ends, and balance your scalp microbiome.',
     primaryCtaText: 'Shop The Best Haircare',
     primaryCtaLink: '/product/organic-botanical-hair-growth-oil',
     secondaryCtaText: 'Free Hair Consultation',
-    secondaryCtaLink: 'https://wa.me/923001234567?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20a%20free%20consultation%20about%20my%20hair%20problem',
+    secondaryCtaLink: 'https://wa.me/923390010550?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20a%20free%20consultation%20about%20my%20hair%20problem',
     productPrice: 'Rs. 2,450',
     productOriginalPrice: 'Rs. 2,950',
-    bgImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80',
+    bgImage: '/images/waseer-unisex-haircare.jpg',
     productImage: '/images/waseer-haircare-collection.jpg',
     accentBadge: 'No Mineral Oil • Zero Chemicals',
   },
 ];
 
 export const Hero: React.FC = () => {
+  const [slides, setSlides] = useState<SlideData[]>(SLIDES);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+  useEffect(() => {
+    import('@/lib/api').then(({ getStoreProducts }) => {
+      getStoreProducts().then((prods) => {
+        if (prods && prods.length > 0) {
+          const waseerProd = prods.find((p) => p.slug === 'organic-botanical-hair-growth-oil') || prods[0];
+          if (waseerProd) {
+            const finalP = waseerProd.finalPrice || waseerProd.basePrice;
+            const origP = waseerProd.originalPrice || waseerProd.price;
+            setSlides((prev) => [
+              {
+                ...prev[0],
+                productPrice: `Rs. ${finalP.toLocaleString('en-PK')}`,
+                productOriginalPrice: `Rs. ${origP.toLocaleString('en-PK')}`,
+                productImage: waseerProd.imageUrl || waseerProd.images[0] || prev[0].productImage,
+              },
+              prev[1],
+            ]);
+          }
+        }
+      });
+    });
   }, []);
 
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
 
-  // Auto advance every 5 seconds reliably
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
+    const timer = setInterval(() => {
       nextSlide();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [nextSlide, currentSlide]);
+    }, 6500);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
 
-  const slide = SLIDES[currentSlide];
+  const slide = slides[currentSlide];
 
   return (
-    <section
-      className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[680px] overflow-hidden bg-forest-950 flex items-center justify-center text-ivory"
-    >
-      {/* Background Image Carousel with Cinematic Overlay */}
-      {SLIDES.map((s, idx) => (
+    <section className="relative min-h-[90vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#0A1611]">
+      {/* Background Slides with Cross-Fade */}
+      {slides.map((s, idx) => (
         <motion.div
           key={s.id}
           initial={false}
@@ -98,7 +122,8 @@ export const Hero: React.FC = () => {
             src={s.bgImage}
             alt={s.headline}
             fill
-            priority
+            priority={idx === 0}
+            loading={idx === 0 ? 'eager' : 'lazy'}
             sizes="100vw"
             quality={80}
             className="object-cover object-center"
@@ -210,9 +235,10 @@ export const Hero: React.FC = () => {
                     >
                       <Image
                         src={s.productImage}
-                        alt="WASEER Herbal Hair Oil by WASEER Dawa Khana Bait Hazari"
+                        alt="WASEER Herbal Hair Oil by WASEER Dawa Khana"
                         fill
-                        priority
+                        priority={idx === 0}
+                        loading={idx === 0 ? 'eager' : 'lazy'}
                         sizes="(max-width: 640px) 90vw, (max-width: 1024px) 380px, 420px"
                         quality={85}
                         className="object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
@@ -230,7 +256,7 @@ export const Hero: React.FC = () => {
                     </span>
                   </div>
                   <span className="font-sans text-[10px] text-gold font-bold tracking-widest uppercase">
-                    Bait Hazari
+                    Official Store
                   </span>
                 </div>
               </div>

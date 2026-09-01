@@ -24,8 +24,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { openQuickView, addToast } = useUIStore();
 
   const isFavorited = isInWishlist(product.id);
-  const defaultSize = product.sizes[0]?.size || '50ml';
-  const defaultPrice = product.sizes[0]?.price || product.basePrice;
+  const popularSize = product.sizes?.find((s) => s.isPopular) || product.sizes?.[0];
+  const defaultSize = popularSize?.size || '100ml';
+  const defaultPrice = product.finalPrice || popularSize?.price || product.basePrice;
+  const originalPrice = (product as any).price || product.originalPrice || defaultPrice;
+  const hasDiscount = ((product.discount ?? 0) > 0) && originalPrice > defaultPrice;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -81,6 +84,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               src={product.images[1]}
               alt={`${product.name} lifestyle`}
               fill
+              loading="lazy"
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className={`object-cover transition-all duration-700 ease-out group-hover:scale-103 ${
                 isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-98'
@@ -142,9 +146,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Pricing & Add to Bag CTA */}
         <div className="pt-2.5 border-t border-cream-200 flex items-center justify-between gap-1.5">
           <div className="flex flex-col min-w-0">
-            <span className="font-sans text-xs sm:text-base font-bold text-forest leading-none whitespace-nowrap">
-              {formatPrice(defaultPrice)}
-            </span>
+            <div className="flex items-baseline gap-1.5 flex-wrap">
+              <span className="font-sans text-xs sm:text-base font-bold text-forest leading-none whitespace-nowrap">
+                {formatPrice(defaultPrice)}
+              </span>
+              {hasDiscount && (
+                <span className="font-sans text-[10px] sm:text-xs text-earth-500 line-through">
+                  {formatPrice(originalPrice)}
+                </span>
+              )}
+            </div>
             <span className="text-[9px] sm:text-[10px] font-sans text-earth-500 mt-0.5">
               {defaultSize}
             </span>

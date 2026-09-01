@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Search, ShoppingBag, Heart, User, Menu } from 'lucide-react';
+import { Search, ShoppingBag, Heart, Menu } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import { useWishlistStore } from '@/store/wishlistStore';
 import { useUIStore } from '@/store/uiStore';
@@ -125,15 +125,6 @@ export const Navbar: React.FC = () => {
             <Search className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
-          {/* Account */}
-          <Link
-            href="/account"
-            prefetch={true}
-            className="hidden sm:inline-flex p-2 text-earth-700 hover:text-forest hover:bg-cream-100 rounded-full transition-colors"
-            aria-label="Account Dashboard"
-          >
-            <User className="w-5 h-5" />
-          </Link>
 
           {/* Wishlist (Desktop & Tablet) */}
           <Link

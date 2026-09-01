@@ -11,9 +11,9 @@ export const AnnouncementBar: React.FC = () => {
   const announcements = [
     {
       icon: PhoneCall,
-      text: 'CALL / WHATSAPP: 0300-1234567 FOR FREE HAIR CONSULTATION',
+      text: 'CALL / WHATSAPP: 0339-0010550 FOR FREE HAIR CONSULTATION',
       highlight: 'FREE HAIR CONSULTATION',
-      href: 'https://wa.me/923001234567?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20hair%20consultation',
+      href: 'https://wa.me/923390010550?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20hair%20consultation',
     },
     {
       icon: Truck,
@@ -23,9 +23,9 @@ export const AnnouncementBar: React.FC = () => {
     },
     {
       icon: ShieldCheck,
-      text: '100% PURE HERBAL FORMULA • BY THE PRODUCT OF WASEER DAWA KHANA, BAIT HAZARI',
-      highlight: 'WASEER DAWA KHANA, BAIT HAZARI',
-      href: '/about',
+      text: '100% PURE UNANI HERBAL FORMULA • WASEER DAWA KHANA',
+      highlight: '100% PURE UNANI HERBAL',
+      href: '/ingredients',
     },
   ];
 
@@ -43,17 +43,17 @@ export const AnnouncementBar: React.FC = () => {
   const IconComponent = current.icon;
 
   return (
-    <div className="bg-[#10241B] text-ivory text-xs font-sans border-b border-forest-800/80 relative z-50 overflow-hidden w-full max-w-[100vw]">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2 flex items-center justify-between gap-2 w-full min-w-0">
+    <div className="bg-forest-900 border-b border-forest-800 text-cream-100 text-xs py-2 px-3 sm:px-6 relative z-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
-        {/* Left: Consultation hotline on desktop */}
+        {/* Left: Direct Phone/WhatsApp helpline */}
         <div className="hidden lg:flex items-center gap-2 text-gold flex-shrink-0 text-[11px] font-semibold tracking-wider">
           <PhoneCall className="w-3.5 h-3.5 text-gold" />
           <a
-            href="tel:+923001234567"
+            href="tel:+923390010550"
             className="hover:underline text-cream-100"
           >
-            Helpline: <span className="text-gold">0300-1234567</span>
+            Helpline: <span className="text-gold">0339-0010550</span>
           </a>
         </div>
 
@@ -80,7 +80,7 @@ export const AnnouncementBar: React.FC = () => {
         {/* Right: WhatsApp Link & Close button */}
         <div className="flex items-center gap-3 flex-shrink-0">
           <a
-            href="https://wa.me/923001234567?text=Hello%20WASEER%20Dawa%20Khana"
+            href="https://wa.me/923390010550?text=Hello%20WASEER%20Dawa%20Khana"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-1 text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold tracking-wider"

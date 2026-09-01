@@ -34,9 +34,9 @@ export const useCartStore = create<CartState>()(
       toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
 
       addItem: (product: Product, size: string, quantity = 1) => {
-        const sizeObj = product.sizes.find((s) => s.size === size) || product.sizes[0];
-        const price = sizeObj ? sizeObj.price : product.basePrice;
-        const itemId = `${product.id}-${size}`;
+        const sizeObj = product.sizes?.find((s) => s.size === size) || product.sizes?.[0];
+        const price = sizeObj ? sizeObj.price : (product.basePrice ?? (product as any).price ?? 2450);
+        const itemId = `${product.id}-${size || 'default'}`;
 
         set((state) => {
           const existingIndex = state.items.findIndex((item) => item.id === itemId);

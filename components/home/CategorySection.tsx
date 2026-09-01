@@ -18,7 +18,7 @@ export const CategorySection: React.FC = () => {
               Shop By Hair Goal
             </h2>
             <p className="font-sans text-sm sm:text-base text-earth-600">
-              Targeted unani herbal solutions crafted by WASEER Dawa Khana, Bait Hazari to treat hair fall, dandruff, and split ends naturally.
+              Targeted unani herbal solutions crafted by WASEER Dawa Khana to treat hair fall, dandruff, and split ends naturally.
             </p>
           </div>
           <Link
@@ -44,7 +44,9 @@ export const CategorySection: React.FC = () => {
                   src={cat.image}
                   alt={cat.name}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  quality={80}
                   className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-950/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />

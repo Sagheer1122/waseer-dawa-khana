@@ -17,7 +17,7 @@ export default function AboutPage() {
             <span className="italic font-normal font-serif text-sage-600">Made For You.</span>
           </h1>
           <p className="font-sans text-base sm:text-lg text-earth-600 max-w-2xl mx-auto leading-relaxed">
-            WASEER Herbal Hair Oil is crafted by <strong className="text-forest font-semibold">WASEER Dawa Khana, Bait Hazari</strong> to bring authentic herbal remedies back to hair care—harnessing the pure healing power of unadulterated botanical bio-actives.
+            WASEER Herbal Hair Oil is crafted by <strong className="text-forest font-semibold">WASEER Dawa Khana</strong> to bring authentic herbal remedies back to hair care—harnessing the pure healing power of unadulterated botanical bio-actives.
           </p>
         </div>
       </section>
@@ -29,10 +29,10 @@ export default function AboutPage() {
           <div className="lg:col-span-6 space-y-5">
             <Badge variant="sage">HERITAGE &amp; PURITY</Badge>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest">
-              By the Product of WASEER Dawa Khana, Bait Hazari
+              By the Product of WASEER Dawa Khana
             </h2>
             <p className="font-sans text-sm sm:text-base text-earth-700 leading-relaxed">
-              Rooted in the healing traditions of Bait Hazari, WASEER Dawa Khana has formulated this authentic herbal oil to treat hair fall at its source. While commercial hair products flood the market with mineral oils, synthetic silicones, and artificial fragrances, our preparation stays 100% natural.
+              Rooted in authentic unani healing traditions, WASEER Dawa Khana has formulated this authentic herbal oil to treat hair fall at its source. While commercial hair products flood the market with mineral oils, synthetic silicones, and artificial fragrances, our preparation stays 100% natural.
             </p>
             <p className="font-sans text-sm sm:text-base text-earth-700 leading-relaxed">
               Each batch is cold-extracted with traditional unani botanical herbs to nourish follicles, strengthen roots, stimulate natural hair growth, and provide deep conditioning shine.
@@ -42,7 +42,7 @@ export default function AboutPage() {
           <div className="lg:col-span-6 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-cream-300 bg-cream-100 group">
             <Image
               src="/images/waseer-product-bottle.jpg"
-              alt="WASEER Herbal Hair Oil by WASEER Dawa Khana Bait Hazari"
+              alt="WASEER Herbal Hair Oil by WASEER Dawa Khana"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover group-hover:scale-104 transition-transform duration-700 ease-out"
@@ -52,7 +52,7 @@ export default function AboutPage() {
                 WASEER Dawa Khana
               </span>
               <span className="text-cream-200 text-[10px] tracking-wider uppercase">
-                Bait Hazari Formulation
+                Original Formulation
               </span>
             </div>
           </div>

@@ -14,7 +14,7 @@ export const ARTICLES: Article[] = [
       role: 'Head Botanical Formulator',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
     },
-    coverImage: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85',
+    coverImage: '/images/journal/art-hair-oiling-ritual.jpg',
     tags: ['Hair Oiling', 'Scalp Care', 'Pre-Wash Ritual', 'Beginner Guide'],
     content: [
       {
@@ -54,7 +54,7 @@ export const ARTICLES: Article[] = [
       role: 'Trichology Specialist',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'
     },
-    coverImage: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=1200&q=85',
+    coverImage: '/images/journal/art-hair-porosity.jpg',
     tags: ['Hair Porosity', 'Lipid Science', 'Custom Routines', 'Hair Health'],
     content: [
       {
@@ -86,7 +86,7 @@ export const ARTICLES: Article[] = [
       role: 'Head Botanical Formulator',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
     },
-    coverImage: 'https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=1200&q=85',
+    coverImage: '/images/journal/art-rosemary-oil.jpg',
     tags: ['Rosemary Oil', 'Hair Growth', 'Clinical Research', 'Ingredients'],
     content: [
       {
@@ -111,14 +111,14 @@ export const ARTICLES: Article[] = [
       role: 'Brand Creative Director',
       avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80'
     },
-    coverImage: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85',
+    coverImage: '/images/journal/art-unisex-scalp-care.jpg',
     tags: ['Unisex Care', 'Brand Philosophy', 'Scalp Biology', 'Clean Beauty'],
     content: [
       {
         sectionHeading: 'The Myth of "Men’s" and "Women’s" Hair Follicles',
         paragraphs: [
           'From a trichological perspective, the cellular anatomy of a human hair follicle is identical regardless of gender. Every scalp requires balanced sebum production, uninhibited micro-capillary flow, and protection from lipid peroxidation.',
-          'At AURA BOTANICA, we rejected arbitrary cosmetic marketing categories in favor of pure, universal botanical efficacy.'
+          'At WASEER Herbal Hair Oil, we reject arbitrary cosmetic marketing categories in favor of pure, universal botanical efficacy.'
         ]
       }
     ]

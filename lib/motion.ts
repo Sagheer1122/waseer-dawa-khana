@@ -18,51 +18,6 @@ export const transitions = {
   drawer: { type: 'spring', damping: 28, stiffness: 240, mass: 0.8 } satisfies Transition,
 };
 
-// Reusable Motion Variants
-export const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: transitions.medium,
-  },
-};
-
-export const fadeInVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: transitions.normal,
-  },
-};
-
-export const fadeLeftVariants: Variants = {
-  hidden: { opacity: 0, x: -24 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: transitions.medium,
-  },
-};
-
-export const fadeRightVariants: Variants = {
-  hidden: { opacity: 0, x: 24 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: transitions.medium,
-  },
-};
-
-export const scaleInVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.96, y: 10 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: transitions.editorial,
-  },
-};
 
 export const modalVariants: Variants = {
   hidden: { opacity: 0, scale: 0.97, y: 15 },

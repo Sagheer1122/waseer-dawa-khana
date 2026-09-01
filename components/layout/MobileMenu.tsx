@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { X, ChevronRight, Heart, User, ShoppingBag, PhoneCall, Sparkles } from 'lucide-react';
+import { X, ChevronRight, Heart, ShoppingBag, PhoneCall, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '@/store/uiStore';
 import { useWishlistStore } from '@/store/wishlistStore';
@@ -87,7 +87,7 @@ export const MobileMenu: React.FC = () => {
                     Herbal Hair Oil
                   </span>
                   <span className="font-sans text-[7.5px] text-earth-500 font-semibold">
-                    By WASEER Dawa Khana, Bait Hazari
+                    By WASEER Dawa Khana
                   </span>
                 </div>
               </div>
@@ -101,11 +101,7 @@ export const MobileMenu: React.FC = () => {
             </div>
 
             {/* Quick Actions Strip */}
-            <div className="grid grid-cols-3 divide-x divide-cream-200 border-b border-cream-200 bg-ivory text-center py-3 text-xs font-sans">
-              <Link href="/account" prefetch={true} className="flex flex-col items-center gap-1 text-earth-700 hover:text-forest">
-                <User className="w-4 h-4 text-forest" />
-                <span>Account</span>
-              </Link>
+            <div className="grid grid-cols-2 divide-x divide-cream-200 border-b border-cream-200 bg-ivory text-center py-3 text-xs font-sans">
               <Link href="/wishlist" prefetch={true} className="flex flex-col items-center gap-1 text-earth-700 hover:text-forest">
                 <Heart className="w-4 h-4 text-forest" />
                 <span>Saved ({wishlistCount})</span>

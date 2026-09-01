@@ -2,21 +2,38 @@
 
 import React, { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { PRODUCTS } from '@/data/products';
+import { PRODUCTS as INITIAL_PRODUCTS } from '@/data/products';
+import { getStoreProducts, DynamicProduct } from '@/lib/api';
 import { ProductCard } from '@/components/product/ProductCard';
 import { Badge } from '@/components/ui/Badge';
-import { ProductCategory } from '@/types';
-import { SlidersHorizontal, X, RotateCcw, Check } from 'lucide-react';
+import { ProductCategory, Product } from '@/types';
+import { SlidersHorizontal, X, RotateCcw, Check, Loader2 } from 'lucide-react';
 
 function ShopContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const paramCategory = searchParams.get('category') as ProductCategory | null;
 
+  // Instant display using Cloudinary-synced products (0ms wait)
+  const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS as Product[]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<string>(paramCategory || 'all');
   const [maxPrice, setMaxPrice] = useState<number>(10000);
   const [sortBy, setSortBy] = useState<string>('featured');
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
+
+  // Background refresh from MongoDB Atlas API
+  useEffect(() => {
+    getStoreProducts()
+      .then((data) => {
+        if (data && data.length > 0) {
+          setProducts(data);
+        }
+      })
+      .catch((err) => {
+        console.warn('[Shop] API background refresh error:', err);
+      });
+  }, []);
 
   // Sync category with URL
   useEffect(() => {
@@ -28,12 +45,12 @@ function ShopContent() {
   }, [paramCategory]);
 
   const categories = [
-    { label: 'All Oils', value: 'all', count: PRODUCTS.length },
-    { label: 'Hair Growth & Density', value: 'growth', count: PRODUCTS.filter((p) => p.category === 'growth').length },
-    { label: 'Dry & Damaged Repair', value: 'repair', count: PRODUCTS.filter((p) => p.category === 'repair').length },
-    { label: 'Scalp Health & Detox', value: 'scalp', count: PRODUCTS.filter((p) => p.category === 'scalp').length },
-    { label: 'Daily Gloss & Shine', value: 'daily', count: PRODUCTS.filter((p) => p.category === 'daily').length },
-    { label: 'Ritual Bundles (Sets)', value: 'bundles', count: PRODUCTS.filter((p) => p.category === 'bundles').length },
+    { label: 'All Oils', value: 'all', count: products.length },
+    { label: 'Hair Growth & Density', value: 'growth', count: products.filter((p) => p.category === 'growth').length },
+    { label: 'Dry & Damaged Repair', value: 'repair', count: products.filter((p) => p.category === 'repair').length },
+    { label: 'Scalp Health & Detox', value: 'scalp', count: products.filter((p) => p.category === 'scalp').length },
+    { label: 'Daily Gloss & Shine', value: 'daily', count: products.filter((p) => p.category === 'daily').length },
+    { label: 'Ritual Bundles (Sets)', value: 'bundles', count: products.filter((p) => p.category === 'bundles').length },
   ];
 
   const hasActiveFilters = selectedCategory !== 'all' || maxPrice < 10000;
@@ -52,24 +69,27 @@ function ShopContent() {
   };
 
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((product) => {
+    return products.filter((product) => {
       if (selectedCategory !== 'all' && product.category !== selectedCategory) {
         return false;
       }
-      if (product.basePrice > maxPrice) {
+      const itemPrice = product.basePrice ?? (product as any).finalPrice ?? (product as any).price ?? 2450;
+      if (itemPrice > maxPrice) {
         return false;
       }
       return true;
     }).sort((a, b) => {
-      if (sortBy === 'price-asc') return a.basePrice - b.basePrice;
-      if (sortBy === 'price-desc') return b.basePrice - a.basePrice;
-      if (sortBy === 'rating') return b.rating - a.rating;
-      if (sortBy === 'reviews') return b.reviewCount - a.reviewCount;
+      const priceA = a.basePrice ?? (a as any).finalPrice ?? (a as any).price ?? 2450;
+      const priceB = b.basePrice ?? (b as any).finalPrice ?? (b as any).price ?? 2450;
+      if (sortBy === 'price-asc') return priceA - priceB;
+      if (sortBy === 'price-desc') return priceB - priceA;
+      if (sortBy === 'rating') return (b.rating || 5) - (a.rating || 5);
+      if (sortBy === 'reviews') return (b.reviewCount || 0) - (a.reviewCount || 0);
       if (a.isFeatured && !b.isFeatured) return -1;
       if (!a.isFeatured && b.isFeatured) return 1;
       return 0;
     });
-  }, [selectedCategory, maxPrice, sortBy]);
+  }, [products, selectedCategory, maxPrice, sortBy]);
 
   return (
     <div className="bg-ivory min-h-screen pb-24">
@@ -194,7 +214,18 @@ function ShopContent() {
 
           {/* Right Product Grid */}
           <div className="lg:col-span-9">
-            {filteredProducts.length > 0 ? (
+            {loading ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-3.5 sm:gap-6">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <div key={i} className="animate-pulse rounded-2xl bg-cream-50 p-4 space-y-3 border border-cream-200">
+                    <div className="aspect-square bg-cream-200/70 rounded-xl w-full" />
+                    <div className="h-4 bg-cream-200/70 rounded w-3/4" />
+                    <div className="h-3 bg-cream-200/70 rounded w-1/2" />
+                    <div className="h-4 bg-cream-200/70 rounded w-1/3" />
+                  </div>
+                ))}
+              </div>
+            ) : filteredProducts.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-3.5 sm:gap-6">
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />

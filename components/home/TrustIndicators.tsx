@@ -27,7 +27,7 @@ export const TrustIndicators: React.FC = () => {
     {
       icon: MapPin,
       title: 'WASEER Dawa Khana',
-      description: 'A genuine product crafted in Bait Hazari with centuries of herbal mastery.',
+      description: 'A genuine unani formulation crafted with generations of herbal mastery.',
     },
   ];
 

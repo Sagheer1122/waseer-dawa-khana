@@ -17,7 +17,7 @@ export const IngredientSection: React.FC = () => {
             Natural Herbal Ingredients
           </h2>
           <p className="font-sans text-sm sm:text-base text-earth-600">
-            Traditional unani botanicals carefully blended by WASEER Dawa Khana, Bait Hazari to nourish hair roots without chemicals.
+            Traditional unani botanicals carefully blended by WASEER Dawa Khana to nourish hair roots without chemicals.
           </p>
         </div>
 
@@ -35,7 +35,9 @@ export const IngredientSection: React.FC = () => {
                     src={ing.image}
                     alt={ing.name}
                     fill
+                    loading="lazy"
                     sizes="(max-width: 768px) 100vw, 20vw"
+                    quality={80}
                     className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-forest-950/10 group-hover:bg-transparent transition-colors" />

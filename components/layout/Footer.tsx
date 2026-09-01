@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Leaf, Globe, Truck, CreditCard, ShieldCheck, MapPin } from 'lucide-react';
+import { Leaf } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -32,15 +32,15 @@ export const Footer: React.FC = () => {
                   HERBAL HAIR OIL
                 </span>
                 <span className="font-sans text-[9.5px] tracking-wider uppercase text-cream-200 font-semibold mt-1">
-                  By the product of WASEER Dawa Khana, Bait Hazari
+                  By the product of WASEER Dawa Khana
                 </span>
               </div>
             </Link>
             <p className="font-sans text-xs text-cream-300 leading-relaxed max-w-sm font-normal">
-              Pure botanical formulation handcrafted by WASEER Dawa Khana, Bait Hazari. Nature&apos;s care to nourish hair, strengthen roots, promote growth, and restore healthy shine.
+              Pure botanical formulation handcrafted by WASEER Dawa Khana. Nature&apos;s care to nourish hair, strengthen roots, promote growth, and restore healthy shine.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-forest-800/90 border border-gold/40 text-[10px] font-sans text-gold uppercase tracking-wider font-semibold">
-              <span>By the product of WASEER Dawa Khana, Bait Hazari</span>
+              <span>By the product of WASEER Dawa Khana</span>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-1.5 font-sans text-xs text-cream-300">
                 <li><Link href="/contact" className="hover:text-ivory transition-colors">Contact</Link></li>
-                <li><Link href="/account" className="hover:text-ivory transition-colors">My Account</Link></li>
+                <li><Link href="/shop" className="hover:text-ivory transition-colors">Shop Catalog</Link></li>
                 <li><Link href="/wishlist" className="hover:text-ivory transition-colors">Wishlist</Link></li>
                 <li><Link href="/cart" className="hover:text-ivory transition-colors">Ritual Bag</Link></li>
               </ul>
@@ -88,48 +88,15 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Pakistan Trust & Payment Strip */}
-        <div className="mt-8 pt-6 border-t border-forest-700/60 grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-sans">
-          <div className="flex items-center gap-2.5 text-cream-200">
-            <Truck className="w-4 h-4 text-gold flex-shrink-0" />
-            <div>
-              <strong className="block text-ivory text-[11px] font-semibold">TCS / Leopards Courier</strong>
-              <span className="text-[10px] text-cream-300">2–3 Days Nationwide Delivery</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2.5 text-cream-200">
-            <CreditCard className="w-4 h-4 text-gold flex-shrink-0" />
-            <div>
-              <strong className="block text-ivory text-[11px] font-semibold">COD & Mobile Wallets</strong>
-              <span className="text-[10px] text-cream-300">Cash on Delivery • JazzCash • EasyPaisa</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2.5 text-cream-200">
-            <ShieldCheck className="w-4 h-4 text-gold flex-shrink-0" />
-            <div>
-              <strong className="block text-ivory text-[11px] font-semibold">100% Pure & Halal Organic</strong>
-              <span className="text-[10px] text-cream-300">Cold-Pressed Single Origin</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2.5 text-cream-200">
-            <MapPin className="w-4 h-4 text-gold flex-shrink-0" />
-            <div>
-              <strong className="block text-ivory text-[11px] font-semibold">WASEER Dawa Khana, Bait Hazari</strong>
-              <span className="text-[10px] text-cream-300">Punjab, Pakistan • Order Support</span>
-            </div>
-          </div>
-        </div>
-
         {/* Bottom Copyright Strip */}
         <div className="mt-6 pt-4 border-t border-forest-700/40 flex flex-col sm:flex-row items-center justify-between gap-3 font-sans text-xs text-cream-300">
           <div className="flex items-center gap-2 text-center sm:text-left">
             <Leaf className="w-3.5 h-3.5 text-gold flex-shrink-0" />
-            <span>By the product of WASEER Dawa Khana, Bait Hazari • 100% Herbal &amp; Pure</span>
+            <span>By the product of WASEER Dawa Khana • 100% Herbal &amp; Pure</span>
           </div>
-          <p>© {new Date().getFullYear()} WASEER HERBAL HAIR OIL. By the product of WASEER Dawa Khana, Bait Hazari. All Rights Reserved.</p>
+          <div>
+            <p>© {new Date().getFullYear()} WASEER HERBAL HAIR OIL. All Rights Reserved.</p>
+          </div>
         </div>
       </div>
     </footer>

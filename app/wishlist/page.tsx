@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { useWishlistStore } from '@/store/wishlistStore';
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
-import { PRODUCTS } from '@/data/products';
 import { formatPrice } from '@/lib/utils';
 import { Rating } from '@/components/ui/Rating';
 import { Badge } from '@/components/ui/Badge';
@@ -18,12 +17,12 @@ export default function WishlistPage() {
   const addToast = useUIStore((s) => s.addToast);
 
   const handleAddToCart = (item: any) => {
-    const fullProduct = PRODUCTS.find((p) => p.id === item.id) || PRODUCTS[0];
-    addItem(fullProduct, fullProduct.sizes[0].size, 1);
+    const size = item.sizes?.[0]?.size || '100ml';
+    addItem(item, size, 1);
     addToast({
       type: 'success',
       title: 'Moved to Ritual Bag',
-      message: `${item.name} (${fullProduct.sizes[0].size})`,
+      message: `${item.name} (${size})`,
     });
   };
 

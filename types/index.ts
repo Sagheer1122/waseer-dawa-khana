@@ -11,6 +11,7 @@ export interface ProductSize {
 
 export interface Product {
   id: string;
+  _id?: string;
   slug: string;
   name: string;
   subtitle: string;
@@ -47,8 +48,19 @@ export interface Product {
     answer: string;
   }[];
   inStock: boolean;
+  stock?: number;
+  price?: number;
+  discount?: number;
+  finalPrice?: number;
+  imageUrl?: string;
+  cloudinaryPublicId?: string;
+  isActive?: boolean;
   isFeatured?: boolean;
   badge?: string;
+  __v?: number;
+  createdAt?: any;
+  updatedAt?: any;
+  [key: string]: any;
 }
 
 export interface BotanicalIngredient {

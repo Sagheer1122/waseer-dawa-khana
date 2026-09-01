@@ -6,17 +6,22 @@ import Image from 'next/image';
 import { Search, X, ArrowRight, Sparkles, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUIStore } from '@/store/uiStore';
-import { PRODUCTS } from '@/data/products';
+import { getStoreProducts } from '@/lib/api';
+import { Product } from '@/types';
 import { ARTICLES } from '@/data/articles';
 import { formatPrice } from '@/lib/utils';
 
 export const SearchModal: React.FC = () => {
   const { isSearchOpen, closeSearch } = useUIStore();
   const [query, setQuery] = useState('');
+  const [products, setProducts] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isSearchOpen) {
+      if (products.length === 0) {
+        getStoreProducts().then((data) => setProducts(data || []));
+      }
       setTimeout(() => inputRef.current?.focus(), 50);
       document.body.style.overflow = 'hidden';
     } else {
@@ -26,7 +31,7 @@ export const SearchModal: React.FC = () => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isSearchOpen]);
+  }, [isSearchOpen, products.length]);
 
   // Handle ESC key
   useEffect(() => {
@@ -40,12 +45,12 @@ export const SearchModal: React.FC = () => {
   const cleanQuery = query.toLowerCase().trim();
 
   const matchingProducts = cleanQuery
-    ? PRODUCTS.filter(
+    ? products.filter(
         (p) =>
           p.name.toLowerCase().includes(cleanQuery) ||
-          p.description.toLowerCase().includes(cleanQuery) ||
-          p.ingredientsSummary.toLowerCase().includes(cleanQuery) ||
-          p.concerns.some((c) => c.toLowerCase().includes(cleanQuery))
+          p.description?.toLowerCase().includes(cleanQuery) ||
+          p.ingredientsSummary?.toLowerCase().includes(cleanQuery) ||
+          p.concerns?.some((c) => c.toLowerCase().includes(cleanQuery))
       )
     : [];
 
@@ -134,7 +139,7 @@ export const SearchModal: React.FC = () => {
                       Featured Botanical Recommendations
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {PRODUCTS.slice(0, 2).map((prod) => (
+                      {products.slice(0, 2).map((prod: Product) => (
                         <Link
                           key={prod.id}
                           href={`/product/${prod.slug}`}

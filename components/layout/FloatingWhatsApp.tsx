@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export const FloatingWhatsApp: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const whatsappNumber = '923001234567';
+  const whatsappNumber = '923390010550';
   const defaultMessage = 'Hello WASEER Dawa Khana, I want to order WASEER Herbal Hair Oil.';
 
   const handleOpenWhatsApp = (message: string) => {
@@ -36,7 +36,7 @@ export const FloatingWhatsApp: React.FC = () => {
                   <h4 className="font-semibold text-xs leading-tight">WASEER Dawa Khana</h4>
                   <span className="text-[10px] text-emerald-200 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                    Online • Bait Hazari Support
+                    Online • Customer Support
                   </span>
                 </div>
               </div>
@@ -54,7 +54,7 @@ export const FloatingWhatsApp: React.FC = () => {
               <div className="p-3 rounded-xl rounded-tl-none bg-white shadow-xs max-w-[90%] space-y-1">
                 <p className="font-semibold text-forest text-[11px]">Assalam-o-Alaikum! 🌿</p>
                 <p className="text-[11px] leading-relaxed text-earth-700">
-                  Welcome to WASEER Dawa Khana, Bait Hazari. How can we help your hair care journey today?
+                  Welcome to WASEER Dawa Khana. How can we help your hair care journey today?
                 </p>
               </div>
 

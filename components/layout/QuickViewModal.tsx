@@ -35,8 +35,8 @@ export const QuickViewModal: React.FC = () => {
 
   if (!quickViewProduct) return null;
 
-  const currentSizeObj = quickViewProduct.sizes.find((s) => s.size === selectedSize) || quickViewProduct.sizes[0];
-  const currentPrice = currentSizeObj ? currentSizeObj.price : quickViewProduct.basePrice;
+  const currentSizeObj = quickViewProduct.sizes?.find((s) => s.size === selectedSize) || quickViewProduct.sizes?.[0];
+  const currentPrice = currentSizeObj ? currentSizeObj.price : (quickViewProduct.basePrice ?? (quickViewProduct as any).price ?? 2450);
   const isFavorited = isInWishlist(quickViewProduct.id);
 
   const handleAddToCart = () => {

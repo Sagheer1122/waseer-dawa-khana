@@ -40,6 +40,8 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ images, productN
               src={img}
               alt={`${productName} thumbnail ${idx + 1}`}
               fill
+              sizes="80px"
+              quality={75}
               className="object-cover"
             />
           </button>
@@ -62,6 +64,8 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ images, productN
               alt={`${productName} photograph ${activeIndex + 1}`}
               fill
               priority
+              sizes="(max-width: 1024px) 100vw, 650px"
+              quality={85}
               className="object-cover"
             />
           </motion.div>

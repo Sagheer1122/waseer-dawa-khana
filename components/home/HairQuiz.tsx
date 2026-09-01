@@ -5,7 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
-import { PRODUCTS } from '@/data/products';
+import { getStoreProducts } from '@/lib/api';
+import { Product } from '@/types';
 import { Sparkles, ArrowRight, ArrowLeft, RotateCcw, CheckCircle2, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
@@ -22,6 +23,14 @@ export const HairQuiz: React.FC = () => {
     goal: '',
   });
 
+  const [products, setProducts] = useState<Product[]>([]);
+
+  React.useEffect(() => {
+    getStoreProducts().then((data) => {
+      if (data && data.length > 0) setProducts(data);
+    });
+  }, []);
+
   const prefersReducedMotion = useReducedMotion();
   const addItem = useCartStore((s) => s.addItem);
   const addToast = useUIStore((s) => s.addToast);
@@ -33,59 +42,60 @@ export const HairQuiz: React.FC = () => {
       options: [
         { label: 'Straight (Type 1)', value: 'straight', desc: 'Fine or coarse with natural root oils' },
         { label: 'Wavy (Type 2)', value: 'wavy', desc: 'S-shaped bends prone to mid-length dryness' },
-        { label: 'Curly (Type 3)', value: 'curly', desc: 'Spiral loops needing moisture & definition' },
-        { label: 'Coily / Kinky (Type 4)', value: 'coily', desc: 'Dense z-patterns requiring intense lipid sealing' },
-        { label: 'Beard / Facial Hair', value: 'beard', desc: 'Coarse facial bristles & sensitive skin' },
+        { label: 'Curly (Type 3)', value: 'curly', desc: 'Spiral loops requiring continuous hydration' },
+        { label: 'Coily (Type 4)', value: 'coily', desc: 'Tight zig-zag coils craving dense plant lipids' },
       ],
     },
     {
       id: 2,
-      title: "What's your primary hair or scalp concern?",
+      title: 'What is your primary hair or scalp focus?',
       options: [
-        { label: 'Thinning & Hair Fall', value: 'growth', desc: 'Seeking follicular stimulation & root density' },
-        { label: 'Scalp Flakes & Itch', value: 'scalp', desc: 'Seeking clarifying microbiome balance' },
-        { label: 'Dryness & Frizz', value: 'dryness', desc: 'Seeking cuticle hydration & silky glide' },
-        { label: 'Heat & Bleach Damage', value: 'damage', desc: 'Seeking lipid repair for brittle ends' },
+        { label: 'Excessive Hair Fall & Density', value: 'growth', desc: 'Awakening weak follicles to stop thinning' },
+        { label: 'Dry, Split Ends & Breakage', value: 'damage', desc: 'Deep moisture replenishment & shaft repair' },
+        { label: 'Flakes, Itch & Scalp Buildup', value: 'scalp', desc: 'Balancing microflora and clearing roots' },
+        { label: 'Dullness & Frizzy Flyaways', value: 'shine', desc: 'Weightless lipid smoothing for mirror gloss' },
       ],
     },
     {
       id: 3,
-      title: 'How frequently do you wash your hair?',
+      title: 'How often do you currently oil or treat your hair?',
       options: [
-        { label: 'Daily or Post-Workout', value: 'daily', desc: 'Lightweight oils that wash out effortlessly' },
-        { label: '2–3 Times Per Week', value: 'standard', desc: 'Ideal for 30-minute pre-wash scalp rituals' },
-        { label: 'Once a Week (Sunday Ritual)', value: 'weekly', desc: 'Deep overnight lipid nourishment' },
-        { label: 'Every 2 Weeks / Protective Styles', value: 'biweekly', desc: 'Targeted root & edge maintenance' },
+        { label: 'Rarely / Never', value: 'rarely', desc: 'New to botanical oil treatments' },
+        { label: 'Once weekly', value: 'weekly', desc: 'Consistent Sunday ritualist' },
+        { label: '2–3 times a week', value: 'multi', desc: 'Deep therapeutic practitioner' },
+        { label: 'Daily for styling', value: 'daily', desc: 'Smoothing flyaways & cuticle edges' },
       ],
     },
     {
       id: 4,
-      title: 'What desired transformation are you looking for?',
+      title: 'What is your ultimate haircare dream result?',
       options: [
-        { label: 'Denser, Stronger Hair Growth', value: 'growth', desc: 'Root stimulating French rosemary & castor' },
-        { label: 'Glass-Like Mirror Shine & Smoothness', value: 'shine', desc: 'Weightless Moroccan argan cuticle gloss' },
-        { label: 'Fresh, Purified & Calmed Scalp', value: 'scalp', desc: 'Tea tree & peppermint detox therapy' },
-        { label: 'The Complete Master Transformation Trio', value: 'bundle', desc: 'All 3 targeted ritual phases' },
+        { label: 'Thicker, longer regrowth', value: 'growth', desc: 'Dense, visible fullness at crown & hairline' },
+        { label: 'Zero frizz, silky mirror light', value: 'shine', desc: 'Glass-hair glide with no greasy weight' },
+        { label: 'Calm, balanced, flake-free scalp', value: 'scalp', desc: 'Fresh, breathable roots that feel invigorated' },
+        { label: 'Complete 3-step transformative bundle', value: 'bundle', desc: 'Growth + repair + scalp synergy' },
       ],
     },
   ];
 
-  const handleSelectOption = (key: keyof typeof answers, value: string) => {
+  const handleSelectOption = (key: string, value: string) => {
     setAnswers((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleNext = () => {
-    setDirection(1);
     if (step < 4) {
-      setStep((s) => s + 1);
+      setDirection(1);
+      setStep((prev) => prev + 1);
     } else {
-      setStep(5); // Completion result
+      setStep(5); // Show results
     }
   };
 
   const handleBack = () => {
-    setDirection(-1);
-    if (step > 1) setStep((s) => s - 1);
+    if (step > 1) {
+      setDirection(-1);
+      setStep((prev) => prev - 1);
+    }
   };
 
   const handleReset = () => {
@@ -95,20 +105,21 @@ export const HairQuiz: React.FC = () => {
   };
 
   // Determine recommendation based on answers
-  const getRecommendedProduct = () => {
+  const getRecommendedProduct = (): Product | null => {
+    if (products.length === 0) return null;
     if (answers.goal === 'bundle' || (answers.concern === 'growth' && answers.goal === 'bundle')) {
-      return PRODUCTS[5]; // Trio Bundle
+      return products.find((p) => p.category === 'bundles') || products[0];
     }
     if (answers.concern === 'scalp' || answers.goal === 'scalp') {
-      return PRODUCTS[2]; // Scalp Detox
+      return products.find((p) => p.category === 'scalp') || products[0];
     }
     if (answers.concern === 'dryness' || answers.goal === 'shine') {
-      return PRODUCTS[1]; // Argan Gloss
+      return products.find((p) => p.category === 'repair') || products[0];
     }
     if (answers.hairType === 'coily' || answers.concern === 'damage') {
-      return PRODUCTS[3]; // Coconut Amla
+      return products.find((p) => p.category === 'repair' || p.category === 'daily') || products[0];
     }
-    return PRODUCTS[0]; // Growth Elixir default
+    return products.find((p) => p.category === 'growth') || products[0];
   };
 
   const recommendedProduct = getRecommendedProduct();
@@ -279,50 +290,56 @@ export const HairQuiz: React.FC = () => {
                 </div>
 
                 {/* Recommended Product Box */}
-                <div className="bg-cream-50 rounded-2xl border border-cream-300 p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
-                  <div className="sm:col-span-5 relative aspect-square rounded-xl overflow-hidden bg-cream-100">
-                    <Image
-                      src={recommendedProduct.images[0]}
-                      alt={recommendedProduct.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-
-                  <div className="sm:col-span-7 space-y-4">
-                    <div>
-                      <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-sage">
-                        {recommendedProduct.category} Treatment
-                      </span>
-                      <h4 className="font-serif text-xl sm:text-2xl font-bold text-forest">
-                        {recommendedProduct.name}
-                      </h4>
-                      <p className="font-sans text-xs text-earth-600 mt-1 line-clamp-2">
-                        {recommendedProduct.description}
-                      </p>
+                {recommendedProduct ? (
+                  <div className="bg-cream-50 rounded-2xl border border-cream-300 p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+                    <div className="sm:col-span-5 relative aspect-square rounded-xl overflow-hidden bg-cream-100">
+                      <Image
+                        src={recommendedProduct.images[0]}
+                        alt={recommendedProduct.name}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
 
-                    <div className="space-y-1 text-xs font-sans text-earth-700 bg-ivory p-3 rounded-xl border border-cream-200">
-                      <p className="font-semibold text-forest">Suggested Ritual Routine:</p>
-                      <p>Apply 4–6 drops along scalp partings 2–3x weekly. Leave for 30 minutes before shampooing.</p>
-                    </div>
+                    <div className="sm:col-span-7 space-y-4">
+                      <div>
+                        <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-sage">
+                          {recommendedProduct.category} Treatment
+                        </span>
+                        <h4 className="font-serif text-xl sm:text-2xl font-bold text-forest">
+                          {recommendedProduct.name}
+                        </h4>
+                        <p className="font-sans text-xs text-earth-600 mt-1 line-clamp-2">
+                          {recommendedProduct.description}
+                        </p>
+                      </div>
 
-                    <div className="flex items-center justify-between pt-2">
-                      <span className="font-sans text-xl font-bold text-forest">
-                        {formatPrice(recommendedProduct.basePrice)}
-                      </span>
+                      <div className="space-y-1 text-xs font-sans text-earth-700 bg-ivory p-3 rounded-xl border border-cream-200">
+                        <p className="font-semibold text-forest">Suggested Ritual Routine:</p>
+                        <p>Apply 4–6 drops along scalp partings 2–3x weekly. Leave for 30 minutes before shampooing.</p>
+                      </div>
 
-                      <div className="flex items-center gap-3">
-                        <Link
-                          href={`/product/${recommendedProduct.slug}`}
-                          className="px-5 py-2.5 rounded-full bg-forest text-ivory font-sans text-xs font-bold uppercase tracking-wider hover:bg-forest-700 transition-colors shadow-sm"
-                        >
-                          View Product
-                        </Link>
+                      <div className="flex items-center justify-between pt-2">
+                        <span className="font-sans text-xl font-bold text-forest">
+                          {formatPrice(recommendedProduct.basePrice)}
+                        </span>
+
+                        <div className="flex items-center gap-3">
+                          <Link
+                            href={`/product/${recommendedProduct.slug}`}
+                            className="px-5 py-2.5 rounded-full bg-forest text-ivory font-sans text-xs font-bold uppercase tracking-wider hover:bg-forest-700 transition-colors shadow-sm"
+                          >
+                            View Product
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="text-center py-12 text-forest font-serif">
+                    Finding your formulation...
+                  </div>
+                )}
 
                 {/* Retake Button */}
                 <div className="text-center pt-2">

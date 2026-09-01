@@ -11,12 +11,13 @@ interface RatingProps {
 }
 
 export const Rating: React.FC<RatingProps> = ({
-  rating,
+  rating = 5,
   count,
   size = 'sm',
   className,
   showText = true,
 }) => {
+  const safeRating = typeof rating === 'number' && !isNaN(rating) ? rating : 5;
   const starSizes = {
     sm: 'w-3.5 h-3.5',
     md: 'w-4 h-4',
@@ -31,7 +32,7 @@ export const Rating: React.FC<RatingProps> = ({
             key={star}
             className={cn(
               starSizes[size],
-              star <= Math.round(rating)
+              star <= Math.round(safeRating)
                 ? 'fill-gold text-gold'
                 : 'text-earth-300'
             )}
@@ -40,7 +41,7 @@ export const Rating: React.FC<RatingProps> = ({
       </div>
       {showText && (
         <span className="font-sans text-xs font-medium text-earth-700 tracking-wide">
-          {rating.toFixed(1)} {count !== undefined && <span className="text-earth-500 font-normal">({count})</span>}
+          {safeRating.toFixed(1)} {count !== undefined && <span className="text-earth-500 font-normal">({count})</span>}
         </span>
       )}
     </div>

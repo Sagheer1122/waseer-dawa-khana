@@ -15,7 +15,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: 'Hair Growth & Density',
     tagline: 'Root-Stimulating Botanicals',
     description: 'Targeted scalp micro-circulation elixirs with rosemary, amla, and Jamaican black castor to support stronger, thicker-looking strands.',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=85',
+    image: '/images/categories/waseer-growth.jpg',
     itemCount: 3,
   },
   {
@@ -24,7 +24,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: 'Scalp Health & Balance',
     tagline: 'Microbiome Calming Care',
     description: 'Clarifying and purifying treatments that gently remove buildup, soothe dryness, and restore harmonic scalp balance.',
-    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=900&q=85',
+    image: '/images/categories/waseer-scalp.jpg',
     itemCount: 3,
   },
   {
@@ -33,7 +33,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: 'Dry & Damaged Hair',
     tagline: 'Lipid Cuticle Recovery',
     description: 'Deeply restorative cold-pressed argan and golden jojoba oils to seal fractured cuticles, eliminate brittle ends, and soften coarse texture.',
-    image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=85',
+    image: '/images/categories/waseer-repair.jpg',
     itemCount: 3,
   },
   {
@@ -42,7 +42,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: 'Daily Lustre & Styling',
     tagline: 'Weightless Mirror Gloss',
     description: 'Ultra-lightweight botanical nectar that melts effortlessly into hair to tame flyaways, deflect humidity, and bestow natural glass radiance.',
-    image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=900&q=85',
+    image: '/images/categories/waseer-daily.jpg',
     itemCount: 3,
   },
 ];
