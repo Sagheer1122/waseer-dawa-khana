@@ -17,7 +17,7 @@ export interface WhatsAppOrderPayload {
  * Normalizes WhatsApp phone number to pure digits with country code (e.g. 923001234567)
  */
 export function getBusinessWhatsAppNumber(): string {
-  const raw = process.env.WHATSAPP_NUMBER || '923390010550';
+  const raw = process.env.WHATSAPP_NUMBER || '923239009042';
   return raw.replace(/[^0-9]/g, '');
 }
 

@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export const FloatingWhatsApp: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const whatsappNumber = '923390010550';
+  const whatsappNumber = '923239009042';
   const defaultMessage = 'Hello WASEER Dawa Khana, I want to order WASEER Herbal Hair Oil.';
 
   const handleOpenWhatsApp = (message: string) => {

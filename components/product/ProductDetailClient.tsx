@@ -379,7 +379,7 @@ export function ProductDetailClient({
               {/* Direct WhatsApp Order Button */}
               <button
                 onClick={() => {
-                  const num = '923390010550';
+                  const num = '923239009042';
                   const msg = `🌿 *Order via WhatsApp - WASEER Herbal Hair Oil* 🌿\n\nI want to order:\n• ${product.name} (${selectedSize}) x ${quantity}\nTotal: ${formatPrice(currentPrice * quantity)}\n\nPlease dispatch to my address!`;
                   window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`, '_blank');
                 }}

@@ -2,6 +2,8 @@ import { NextRequest } from 'next/server';
 import { verifyAdminToken } from '@/backend/middleware/verifyAdmin';
 import { successResponse, errorResponse } from '@/backend/utils/apiResponse';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest) {
   const admin = verifyAdminToken(req);
   if (!admin) {

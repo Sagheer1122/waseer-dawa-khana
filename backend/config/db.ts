@@ -16,6 +16,7 @@ try {
 interface MongooseCache {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
+  lastFailedTime?: number;
 }
 
 declare global {
@@ -33,7 +34,6 @@ export async function connectDB(): Promise<typeof mongoose | null> {
   const MONGODB_URI = process.env.MONGODB_URI;
 
   if (!MONGODB_URI) {
-    console.warn('[MongoDB] MONGODB_URI environment variable is not defined.');
     return null;
   }
 
@@ -41,17 +41,26 @@ export async function connectDB(): Promise<typeof mongoose | null> {
     return cached.conn;
   }
 
+  // Prevent repeated blocking retries if last connection attempt failed recently (< 10s)
+  if (cached.lastFailedTime && Date.now() - cached.lastFailedTime < 10000) {
+    return null;
+  }
+
   if (!cached.promise) {
     const opts: mongoose.ConnectOptions = {
-      serverSelectionTimeoutMS: 4000,
+      serverSelectionTimeoutMS: 2000,
+      connectTimeoutMS: 2000,
+      socketTimeoutMS: 5000,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((m) => {
       console.log('[MongoDB] Connected successfully to MongoDB Atlas.');
+      cached.lastFailedTime = undefined;
       return m;
     }).catch((err) => {
       console.warn('[MongoDB] Connection notice:', err.message);
       cached.promise = null;
+      cached.lastFailedTime = Date.now();
       return null as any;
     });
   }
@@ -60,6 +69,7 @@ export async function connectDB(): Promise<typeof mongoose | null> {
     cached.conn = await cached.promise;
   } catch (e) {
     cached.promise = null;
+    cached.lastFailedTime = Date.now();
     return null;
   }
 

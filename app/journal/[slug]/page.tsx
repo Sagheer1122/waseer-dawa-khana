@@ -2,13 +2,58 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { ARTICLES } from '@/data/articles';
 import { Badge } from '@/components/ui/Badge';
 import { Clock, ArrowLeft, ArrowRight, Share2, Bookmark } from 'lucide-react';
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/seo';
 
 interface Props {
   params: {
     slug: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const article = ARTICLES.find((a) => a.slug === params.slug);
+
+  if (!article) {
+    return {
+      title: 'Article Not Found | The Hair Journal',
+    };
+  }
+
+  const title = `${article.title} — The Hair Journal | WASEER`;
+  const description = article.excerpt || 'Read botanical hair care secrets and herbal rituals by WASEER Dawa Khana.';
+  const url = `${SITE_URL}/journal/${article.slug}`;
+  const image = article.coverImage?.startsWith('http') ? article.coverImage : `${SITE_URL}${article.coverImage || '/images/waseer-hero-landscape.jpg'}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+    },
   };
 }
 
@@ -21,8 +66,31 @@ export default function ArticlePage({ params }: Props) {
 
   const relatedArticles = ARTICLES.filter((a) => a.id !== article.id).slice(0, 2);
 
+  const articleSchema = generateArticleSchema({
+    title: article.title,
+    slug: article.slug,
+    excerpt: article.excerpt,
+    coverImage: article.coverImage,
+    publishedAt: article.publishDate,
+    readTime: article.readTime,
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'The Hair Journal', url: '/journal' },
+    { name: article.title, url: `/journal/${article.slug}` },
+  ]);
+
   return (
     <div className="bg-ivory min-h-screen pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       
       {/* Back button & Breadcrumb */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

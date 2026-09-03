@@ -9,9 +9,17 @@ import { BeforeAfterSlider } from '@/components/home/BeforeAfterSlider';
 import { HairQuiz } from '@/components/home/HairQuiz';
 import { Newsletter } from '@/components/home/Newsletter';
 
+import { generateWebsiteSchema } from '@/lib/seo';
+
 export default function HomePage() {
+  const websiteSchema = generateWebsiteSchema();
+
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       {/* 1. Hero Section */}
       <Hero />
 

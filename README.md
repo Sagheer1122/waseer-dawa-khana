@@ -139,8 +139,8 @@ CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 
-# Business WhatsApp Order Destination (e.g. 923390010550)
-WHATSAPP_NUMBER=923390010550
+# Business WhatsApp Order Destination (e.g. 923239009042)
+WHATSAPP_NUMBER=923239009042
 
 # Live Website URL
 NEXT_PUBLIC_SITE_URL=https://waseerhairoil.com

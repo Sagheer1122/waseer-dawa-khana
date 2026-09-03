@@ -1,8 +1,24 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { Badge } from '@/components/ui/Badge';
 import { Leaf, ShieldCheck, HeartHandshake, Sparkles, Droplets, ArrowRight } from 'lucide-react';
+import { SITE_URL } from '@/lib/seo';
+
+export const metadata: Metadata = {
+  title: 'Our Heritage & Story | WASEER Dawa Khana',
+  description:
+    'Discover the ancient unani botanical tradition behind WASEER Herbal Hair Oil by WASEER Dawa Khana. 100% natural, chemical-free cold-pressed hair care remedies.',
+  alternates: {
+    canonical: `${SITE_URL}/about`,
+  },
+  openGraph: {
+    title: 'Our Heritage & Story — WASEER Dawa Khana',
+    description: 'Rooted in nature. Crafted by WASEER Dawa Khana to nourish hair follicles and stop hair fall naturally.',
+    url: `${SITE_URL}/about`,
+  },
+};
 
 export default function AboutPage() {
   return (

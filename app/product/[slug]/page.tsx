@@ -77,6 +77,8 @@ function normalizeDoc(raw: any): Product {
   };
 }
 
+import { generateProductSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/seo';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let doc: any = null;
   try {
@@ -95,13 +97,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const title = `${product.name} — 100% Herbal Oil | WASEER Dawa Khana`;
+  const description =
+    product.subtitle ||
+    product.description?.slice(0, 160) ||
+    'Order authentic WASEER herbal hair oil for hair growth, root strengthening and dandruff control across Pakistan.';
+  const productUrl = `${SITE_URL}/product/${product.slug}`;
+  const primaryImage = product.imageUrl || product.images[0] || '/images/waseer-product-bottle.jpg';
+
   return {
-    title: `${product.name} | WASEER Dawa Khana`,
-    description: product.subtitle || product.description?.slice(0, 160),
+    title,
+    description,
+    alternates: {
+      canonical: productUrl,
+    },
     openGraph: {
-      title: `${product.name} | WASEER Dawa Khana`,
-      description: product.subtitle || product.description?.slice(0, 160),
-      images: [{ url: product.imageUrl || product.images[0] }],
+      title,
+      description,
+      url: productUrl,
+      images: [
+        {
+          url: primaryImage.startsWith('http') ? primaryImage : `${SITE_URL}${primaryImage}`,
+          width: 1200,
+          height: 1200,
+          alt: `${product.name} - WASEER Dawa Khana`,
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [primaryImage.startsWith('http') ? primaryImage : `${SITE_URL}${primaryImage}`],
     },
   };
 }
@@ -142,5 +170,36 @@ export default async function ProductDetailPage({ params }: Props) {
       .slice(0, 4);
   }
 
-  return <ProductDetailClient initialProduct={product} relatedProducts={relatedProducts} />;
+  const productSchema = generateProductSchema({
+    name: product.name,
+    slug: product.slug,
+    description: product.description,
+    imageUrl: product.imageUrl,
+    images: product.images,
+    price: product.price,
+    finalPrice: product.finalPrice,
+    rating: product.rating,
+    reviewCount: product.reviewCount,
+    inStock: product.inStock,
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Shop', url: '/shop' },
+    { name: product.name, url: `/product/${product.slug}` },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <ProductDetailClient initialProduct={product} relatedProducts={relatedProducts} />
+    </>
+  );
 }

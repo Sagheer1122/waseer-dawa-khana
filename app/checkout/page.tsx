@@ -240,7 +240,7 @@ export default function CheckoutPage() {
             {placedOrderSummary.paymentMethod === 'jazzcash' && (
               <div className="p-3.5 bg-gold/10 rounded-xl border border-gold/30 text-xs font-sans space-y-1">
                 <p className="font-bold text-forest">JazzCash Payment Details:</p>
-                <p className="text-earth-700">Please transfer {formatPrice(placedOrderSummary.total)} to <strong>0339-0010550 (WASEER Dawa Khana)</strong> and send screenshot on WhatsApp.</p>
+                <p className="text-earth-700">Please transfer {formatPrice(placedOrderSummary.total)} to <strong>0323-9009042 (WASEER Dawa Khana)</strong> and send screenshot on WhatsApp.</p>
               </div>
             )}
 

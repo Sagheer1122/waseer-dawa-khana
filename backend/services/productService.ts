@@ -45,41 +45,70 @@ export async function seedInitialProductsIfEmpty(): Promise<void> {
  * Fetches all products. By default, public storefront only receives active products.
  */
 export async function getAllProducts(includeInactive = false): Promise<IProduct[]> {
-  const db = await connectDB();
+  try {
+    const db = await connectDB();
 
-  if (!db) {
-    console.error('[ProductService] MongoDB connection unavailable.');
-    return [];
+    if (!db) {
+      return (STATIC_PRODUCTS as any[]).map((sp) => ({
+        ...sp,
+        price: sp.originalPrice || sp.basePrice,
+        finalPrice: sp.basePrice,
+        isActive: true,
+      }));
+    }
+
+    await seedInitialProductsIfEmpty();
+
+    const query = includeInactive ? {} : { isActive: true };
+    const products = await Product.find(query).sort({ isFeatured: -1, createdAt: -1 }).lean();
+    if (products && products.length > 0) {
+      return products as IProduct[];
+    }
+    return (STATIC_PRODUCTS as any[]).map((sp) => ({
+      ...sp,
+      price: sp.originalPrice || sp.basePrice,
+      finalPrice: sp.basePrice,
+      isActive: true,
+    }));
+  } catch (err) {
+    return (STATIC_PRODUCTS as any[]).map((sp) => ({
+      ...sp,
+      price: sp.originalPrice || sp.basePrice,
+      finalPrice: sp.basePrice,
+      isActive: true,
+    }));
   }
-
-  await seedInitialProductsIfEmpty();
-
-  const query = includeInactive ? {} : { isActive: true };
-  return Product.find(query).sort({ isFeatured: -1, createdAt: -1 }).lean();
 }
 
 /**
  * Fetches a single product by ID or Slug.
  */
 export async function getProductByIdOrSlug(idOrSlug: string): Promise<IProduct | null> {
-  const db = await connectDB();
+  try {
+    const db = await connectDB();
 
-  if (!db) {
-    console.error('[ProductService] MongoDB connection unavailable.');
-    return null;
+    if (!db) {
+      const fallback = STATIC_PRODUCTS.find((p) => p.slug === idOrSlug || p.id === idOrSlug);
+      return (fallback as any) || null;
+    }
+
+    let product: IProduct | null = null;
+    if (idOrSlug.match(/^[0-9a-fA-F]{24}$/)) {
+      product = await Product.findById(idOrSlug).lean();
+    }
+
+    if (!product) {
+      product = await Product.findOne({ slug: idOrSlug.toLowerCase() }).lean();
+    }
+
+    if (product) return product;
+
+    const fallback = STATIC_PRODUCTS.find((p) => p.slug === idOrSlug || p.id === idOrSlug);
+    return (fallback as any) || null;
+  } catch (err) {
+    const fallback = STATIC_PRODUCTS.find((p) => p.slug === idOrSlug || p.id === idOrSlug);
+    return (fallback as any) || null;
   }
-
-  // Check if valid ObjectId
-  let product: IProduct | null = null;
-  if (idOrSlug.match(/^[0-9a-fA-F]{24}$/)) {
-    product = await Product.findById(idOrSlug).lean();
-  }
-
-  if (!product) {
-    product = await Product.findOne({ slug: idOrSlug.toLowerCase() }).lean();
-  }
-
-  return product;
 }
 
 /**

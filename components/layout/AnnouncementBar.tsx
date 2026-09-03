@@ -11,9 +11,9 @@ export const AnnouncementBar: React.FC = () => {
   const announcements = [
     {
       icon: PhoneCall,
-      text: 'CALL / WHATSAPP: 0339-0010550 FOR FREE HAIR CONSULTATION',
+      text: 'CALL / WHATSAPP: 0323-9009042 FOR FREE HAIR CONSULTATION',
       highlight: 'FREE HAIR CONSULTATION',
-      href: 'https://wa.me/923390010550?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20hair%20consultation',
+      href: 'https://wa.me/923239009042?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20hair%20consultation',
     },
     {
       icon: Truck,
@@ -50,10 +50,10 @@ export const AnnouncementBar: React.FC = () => {
         <div className="hidden lg:flex items-center gap-2 text-gold flex-shrink-0 text-[11px] font-semibold tracking-wider">
           <PhoneCall className="w-3.5 h-3.5 text-gold" />
           <a
-            href="tel:+923390010550"
+            href="tel:+923239009042"
             className="hover:underline text-cream-100"
           >
-            Helpline: <span className="text-gold">0339-0010550</span>
+            Helpline: <span className="text-gold">0323-9009042</span>
           </a>
         </div>
 
@@ -80,7 +80,7 @@ export const AnnouncementBar: React.FC = () => {
         {/* Right: WhatsApp Link & Close button */}
         <div className="flex items-center gap-3 flex-shrink-0">
           <a
-            href="https://wa.me/923390010550?text=Hello%20WASEER%20Dawa%20Khana"
+            href="https://wa.me/923239009042?text=Hello%20WASEER%20Dawa%20Khana"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-1 text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold tracking-wider"

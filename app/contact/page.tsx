@@ -190,7 +190,7 @@ export default function ContactPage() {
                   <Phone className="w-4 h-4 text-forest flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-forest">WhatsApp & Client Concierge</strong>
-                    <span>+92 339 0010550 (Mon–Sat, 10am–8pm PKT)</span>
+                    <span>+92 323 9009042 (Mon–Sat, 10am–8pm PKT)</span>
                   </div>
                 </div>
 
