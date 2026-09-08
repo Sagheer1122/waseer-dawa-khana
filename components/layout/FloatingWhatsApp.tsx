@@ -303,7 +303,7 @@ export const FloatingWhatsApp: React.FC = () => {
 
         {/* Floating Instagram Button */}
         <motion.a
-          href="https://www.instagram.com"
+          href="https://www.instagram.com/waseerdawakhana?stkn=YmNsNjNhMXFybTB6"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.06 }}
