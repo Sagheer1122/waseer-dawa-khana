@@ -114,8 +114,13 @@ const FAQS: FAQItem[] = [
 ];
 
 export const FloatingWhatsApp: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFAQ, setSelectedFAQ] = useState<FAQItem | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const whatsappNumber = '923239009042';
   const defaultMessage = 'Hello WASEER Dawa Khana, I would like to inquire about WASEER Herbal Hair Oil.';
@@ -129,6 +134,10 @@ export const FloatingWhatsApp: React.FC = () => {
     setIsOpen(false);
     setSelectedFAQ(null);
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>

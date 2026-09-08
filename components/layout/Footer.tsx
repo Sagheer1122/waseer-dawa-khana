@@ -95,7 +95,7 @@ export const Footer: React.FC = () => {
             <span>By the product of WASEER Dawa Khana • 100% Herbal &amp; Pure</span>
           </div>
           <div>
-            <p>© {new Date().getFullYear()} WASEER HERBAL HAIR OIL. All Rights Reserved.</p>
+            <p suppressHydrationWarning>© {new Date().getFullYear()} WASEER HERBAL HAIR OIL. All Rights Reserved.</p>
           </div>
         </div>
       </div>

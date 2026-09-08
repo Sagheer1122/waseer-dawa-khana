@@ -17,12 +17,14 @@ export default function HomePage() {
   const faqSchema = generateFAQSchema(HOMEPAGE_FAQS);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full" suppressHydrationWarning>
       <script
+        id="homepage-website-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <script
+        id="homepage-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />

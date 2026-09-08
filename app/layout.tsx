@@ -122,14 +122,15 @@ export default function RootLayout({
   const organizationSchema = generateOrganizationSchema();
 
   return (
-    <html lang="en" className={`scroll-smooth ${cormorant.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`scroll-smooth ${cormorant.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <head>
         <script
+          id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="min-h-screen bg-ivory text-earth flex flex-col font-sans selection:bg-forest selection:text-ivory font-jakarta w-full max-w-[100vw] overflow-x-hidden relative">
+      <body className="min-h-screen bg-ivory text-earth flex flex-col font-sans selection:bg-forest selection:text-ivory font-jakarta w-full max-w-[100vw] overflow-x-hidden relative" suppressHydrationWarning>
         <StoreLayoutShell>
           {children}
         </StoreLayoutShell>
