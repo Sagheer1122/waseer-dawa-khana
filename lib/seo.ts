@@ -9,7 +9,7 @@
  * - WebSite with Sitelinks SearchBox
  */
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://waseerhairoil.com';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.waseerdawakhana.com';
 
 /**
  * Organization, Store, and LocalBusiness schema for WASEER Dawa Khana

@@ -18,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://waseerhairoil.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.waseerdawakhana.com';
 
 export const viewport: Viewport = {
   themeColor: '#1B3B2B',

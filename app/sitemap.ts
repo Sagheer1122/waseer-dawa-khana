@@ -3,7 +3,7 @@ import { PRODUCTS as STATIC_PRODUCTS } from '@/data/products';
 import { ARTICLES } from '@/data/articles';
 import { getAllProducts } from '@/backend/services/productService';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://waseerhairoil.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.waseerdawakhana.com';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date();
