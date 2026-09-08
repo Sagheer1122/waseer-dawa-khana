@@ -77,7 +77,7 @@ function normalizeDoc(raw: any): Product {
   };
 }
 
-import { generateProductSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/seo';
+import { generateProductSchema, generateBreadcrumbSchema, generateFAQSchema, SITE_URL } from '@/lib/seo';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let doc: any = null;
@@ -199,6 +199,12 @@ export default async function ProductDetailPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {product.faqs && product.faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(product.faqs)) }}
+        />
+      )}
       <ProductDetailClient initialProduct={product} relatedProducts={relatedProducts} />
     </>
   );

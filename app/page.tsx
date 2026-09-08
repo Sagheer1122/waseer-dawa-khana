@@ -8,17 +8,23 @@ import { HowItWorks } from '@/components/home/HowItWorks';
 import { BeforeAfterSlider } from '@/components/home/BeforeAfterSlider';
 import { HairQuiz } from '@/components/home/HairQuiz';
 import { Newsletter } from '@/components/home/Newsletter';
+import { FaqSection } from '@/components/home/FaqSection';
 
-import { generateWebsiteSchema } from '@/lib/seo';
+import { generateWebsiteSchema, generateFAQSchema, HOMEPAGE_FAQS } from '@/lib/seo';
 
 export default function HomePage() {
   const websiteSchema = generateWebsiteSchema();
+  const faqSchema = generateFAQSchema(HOMEPAGE_FAQS);
 
   return (
     <div className="flex flex-col w-full">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* 1. Hero Section */}
       <Hero />
@@ -44,7 +50,10 @@ export default function HomePage() {
       {/* 8. 60-Second Consultation Quiz */}
       <HairQuiz />
 
-      {/* 9. Newsletter & Welcome Gift */}
+      {/* 9. Frequently Asked Questions (SEO & Customer Trust) */}
+      <FaqSection />
+
+      {/* 10. Newsletter & Welcome Gift */}
       <Newsletter />
     </div>
   );

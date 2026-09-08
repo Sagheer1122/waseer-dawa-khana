@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { StoreLayoutShell } from '@/components/layout/StoreLayoutShell';
@@ -20,27 +20,43 @@ const jakarta = Plus_Jakarta_Sans({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://waseerhairoil.com';
 
+export const viewport: Viewport = {
+  themeColor: '#1B3B2B',
+  colorScheme: 'light',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: 'WASEER Herbal Hair Oil',
+  category: 'beauty',
   title: {
     default: 'WASEER Herbal Hair Oil — Nature Cares For Your Hairs | WASEER Dawa Khana',
     template: '%s | WASEER Herbal Hair Oil',
   },
   description:
-    'By the product of WASEER Dawa Khana. Pure authentic cold-pressed herbal hair oil formulated to stop hair fall, awaken follicles, strengthen roots, and promote thick natural hair growth across Pakistan.',
+    'By the product of WASEER Dawa Khana. Pure authentic cold-pressed herbal hair oil formulated to stop hair fall, awaken dormant follicles, strengthen roots, and promote thick natural hair growth across Pakistan with Cash on Delivery.',
   keywords: [
     'waseer herbal hair oil',
     'waseer dawa khana',
+    'waseer hair oil price in pakistan',
     'best herbal hair oil in pakistan',
     'natural hair growth oil',
     'anti hair fall oil pakistan',
     'cold pressed unani hair oil',
     'organic hair treatment lahore',
     'herbal oil cash on delivery pakistan',
+    'hair regrowth oil karachi',
+    'dandruff control oil',
+    'amla shikakai bhringraj hair oil',
+    'fast hair growth oil',
   ],
   authors: [{ name: 'WASEER Dawa Khana', url: siteUrl }],
   creator: 'WASEER Dawa Khana',
   publisher: 'WASEER Herbal Hair Oil',
+  manifest: '/manifest.webmanifest',
   alternates: {
     canonical: '/',
   },
@@ -81,6 +97,20 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: '/images/waseer-emblem.png', type: 'image/png' }],
     apple: '/images/waseer-emblem.png',
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    yahoo: process.env.NEXT_PUBLIC_YAHOO_VERIFICATION,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION || '',
+    },
+  },
+  other: {
+    'geo.region': 'PK-PB',
+    'geo.placename': 'Lahore, Pakistan',
+    'geo.position': '31.5204;74.3587',
+    'ICBM': '31.5204, 74.3587',
   },
 };
 
