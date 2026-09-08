@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     apple: '/images/waseer-emblem.png',
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'YUVX2KG0ZhV90U0Qb4uhCbtigv29B6TDwmSi9tomTWU',
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
     yahoo: process.env.NEXT_PUBLIC_YAHOO_VERIFICATION,
     other: {
