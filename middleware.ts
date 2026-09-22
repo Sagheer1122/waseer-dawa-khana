@@ -5,23 +5,28 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const adminToken = request.cookies.get('admin_token')?.value;
 
-  // Protect /admin routes (except /admin/login)
-  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
-    if (!adminToken) {
-      const loginUrl = new URL('/admin/login', request.url);
-      loginUrl.searchParams.set('redirect', pathname);
-      return NextResponse.redirect(loginUrl);
-    }
+  // 1. Direct /admin/login is permanently 404 (disabled from URL access)
+  if (pathname === '/admin/login') {
+    return NextResponse.rewrite(new URL('/not-found', request.url), {
+      status: 404,
+    });
   }
 
-  // If already logged in, redirect /admin/login to /admin
-  if (pathname === '/admin/login' && adminToken) {
-    return NextResponse.redirect(new URL('/admin', request.url));
+  // 2. Protect all /admin dashboard routes
+  if (pathname.startsWith('/admin')) {
+    // If not authenticated, return 404 (hides the dashboard's existence completely)
+    if (!adminToken) {
+      return NextResponse.rewrite(new URL('/not-found', request.url), {
+        status: 404,
+      });
+    }
+
+    return NextResponse.next();
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin', '/admin/:path*'],
 };

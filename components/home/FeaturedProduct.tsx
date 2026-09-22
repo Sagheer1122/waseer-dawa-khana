@@ -91,10 +91,10 @@ export const FeaturedProduct: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2.5">
           <Badge variant="sage">BEST-SELLER IN PAKISTAN</Badge>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-forest">
-            WASEER Herbal Hair Oil
+            ZULVEEN Herbal Hair Oil
           </h2>
           <p className="font-sans text-sm sm:text-base text-earth-600">
-            Handcrafted by WASEER Dawa Khana. Formulated with authentic Amla, Sikakai, and cold-pressed botanical oils to stop hair fall and strengthen roots naturally.
+            A Product of WASEER Dawa Khana. Formulated with authentic Rosemary, Argan, and cold-pressed botanical oils to stop hair fall and strengthen roots naturally.
           </p>
         </div>
 

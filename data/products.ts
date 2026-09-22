@@ -4,8 +4,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'prod-1',
     slug: 'organic-botanical-hair-growth-oil',
-    name: 'WASEER Herbal Hair Oil',
-    subtitle: 'By the product of WASEER Dawa Khana • 100% Herbal Hair Growth & Root Strengthening',
+    name: 'ZULVEEN Herbal Hair Oil',
+    subtitle: 'A Product of WASEER Dawa Khana • 100% Pure Herbal Hair Growth & Root Strengthening',
     tag: 'BEST-SELLER • 100% HERBAL',
     tagClass: 'bg-forest text-ivory border-forest',
     category: 'growth',
@@ -16,125 +16,123 @@ export const PRODUCTS: Product[] = [
     basePrice: 2450,
     originalPrice: 2950,
     sizes: [
-      { size: '50ml', price: 1450, label: 'Starter Bottle' },
-      { size: '100ml', price: 2450, label: 'Full Treatment (Most Popular)', isPopular: true },
-      { size: '200ml', price: 4200, label: 'Value Family Pack' },
+      { size: '200ml', price: 2450, label: 'Standard Ritual (Most Popular)', isPopular: true },
+      { size: '2 x 200ml', price: 4450, label: 'Double Value Pack' },
     ],
     images: [
-      '/images/waseer-product-bottle.jpg',
-      '/images/waseer-haircare-collection.jpg',
-      '/images/waseer-unisex-haircare.jpg',
+      '/images/zulveen-dark-bottle.jpg',
+      '/images/zulveen-light-bottle.jpg',
     ],
-    description: 'Authentic unani cold-pressed herbal formula by WASEER Dawa Khana. Formulated with pure Amla, Sikakai, Kalonji, and nourishing botanical extracts to halt hair fall, strengthen weak roots, eliminate dandruff, and stimulate thick, lustrous hair growth.',
-    ritualStory: 'Formulated by WASEER Dawa Khana using traditional unani preparation methods. 100% chemical-free, steroid-free, and mineral oil-free. Every drop delivers pure natural nourishment directly to hair follicles.',
+    description: 'Authentic Unani cold-pressed herbal formula by WASEER Dawa Khana. Formulated with pure French Rosemary, Moroccan Argan, Indian Amla, and nourishing botanical extracts to halt hair fall, strengthen weak roots, eliminate scalp dryness, and stimulate thick, lustrous new hair growth.',
+    ritualStory: 'Formulated by WASEER Dawa Khana using centuries-old traditional Unani preparation methods. 100% chemical-free, steroid-free, and mineral oil-free. Every drop delivers pure natural nourishment directly to hair follicles.',
     benefits: [
       'Stops excessive hair fall and strengthens roots from the first 2–3 weeks',
       'Awakens dormant follicles to stimulate thicker, natural new hair growth',
       'Clears scalp dandruff, dryness, and itchiness naturally',
       'Restores mirror-like silky shine and softness without greasy stickiness'
     ],
-    ingredientsSummary: 'French Rosemary Oil, Jamaican Black Castor Oil, Golden Jojoba Seed Oil, Cold-Pressed Virgin Moroccan Argan Oil, Organic Amla Extract, Non-GMO Sunflower Vitamin E.',
+    ingredientsSummary: 'French Rosemary Leaf Oil, Moroccan Virgin Argan Kernel Oil, Cold-Pressed Amla Extract, Golden Jojoba Seed Oil, Jamaican Black Castor Oil, Non-GMO Vitamin E.',
     ingredientsFull: [
       'Rosmarinus Officinalis (French Rosemary) Leaf Oil*',
-      'Ricinus Communis (Jamaican Black Castor) Seed Oil*',
-      'Simmondsia Chinensis (Golden Jojoba) Seed Oil*',
       'Argania Spinosa (Virgin Moroccan Argan) Kernel Oil*',
       'Phyllanthus Emblica (Amla) Fruit Extract*',
+      'Simmondsia Chinensis (Golden Jojoba) Seed Oil*',
+      'Ricinus Communis (Jamaican Black Castor) Seed Oil*',
       'Nigella Sativa (Black Cumin) Seed Oil*',
-      'Tocopherol (Non-GMO Vitamin E)',
-      'Cedrus Atlantica (Atlas Cedarwood) Bark Oil*'
+      'Tocopherol (Non-GMO Vitamin E)'
     ],
     keyBotanicals: [
       {
         name: 'French Wild Rosemary',
         origin: 'Provence, France',
-        role: 'Clinically renowned botanical for follicular stimulation & scalp invigorating micro-circulation',
-        image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80'
+        role: 'Clinically renowned botanical for follicular stimulation & scalp micro-circulation',
       },
       {
-        name: 'Jamaican Black Castor',
-        origin: 'St. Thomas, Jamaica',
-        role: 'Dense ricinoleic acid profile that locks moisture at the root and strengthens tensile elasticity',
-        image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80'
+        name: 'Cold-Pressed Wild Amla',
+        origin: 'Kerala, India',
+        role: 'Rich in bio-available Vitamin C to strengthen tensile fiber elasticity and prevent premature graying',
       }
     ],
     usage: {
       step1: 'Section dry or damp hair into four quadrants.',
       step2: 'Dispense 4–6 drops directly along scalp partings using the glass pipette.',
-      step3: 'Massage in circular motions for 3–5 minutes. Leave on for 30 minutes, or overnight before your wash.',
-      proTip: 'For beard or dry ends, warm 2 drops between palms and smooth gently through hair fibers.'
+      step3: 'Massage in circular motions for 3–5 minutes. Leave on for at least 45 minutes, or overnight before washing.',
+      proTip: 'For beard or dry split ends, warm 2 drops between palms and smooth gently through hair fibers.'
     },
     faqs: [
       {
-        question: 'How often should I apply this hair growth oil?',
-        answer: 'For optimal root vitality, we recommend using it 2 to 3 times per week as a pre-wash scalp massage treatment.'
+        question: 'How often should I apply ZULVEEN Herbal Hair Oil?',
+        answer: 'For optimal root vitality, apply 2 to 3 times per week as a pre-wash scalp massage treatment.'
       },
       {
-        question: 'Will it make fine hair look greasy or weighed down?',
-        answer: 'Because our formula uses non-comedogenic golden jojoba as a carrier base, it washes out cleanly with normal shampoo without leaving heavy residue.'
+        question: 'Will it make my hair look greasy or weighed down?',
+        answer: 'Because our formulation utilizes lightweight non-comedogenic golden jojoba as a carrier base, it washes out cleanly without leaving heavy sticky residue.'
       }
     ],
     inStock: true,
     isFeatured: true,
-    badge: 'Award Winner 2025'
+    badge: 'Award Winner 2026'
   },
   {
     id: 'prod-2',
-    slug: 'restorative-argan-jojoba-gloss-elixir',
-    name: 'Restorative Argan & Jojoba Cuticle Gloss Elixir',
-    subtitle: 'Weightless lipid recovery & anti-frizz mirror shine',
-    tag: 'EDITOR CHOICE',
-    tagClass: 'bg-gold text-earth border-gold',
-    category: 'repair',
+    slug: 'zulveen-anti-dandruff-scalp-relief',
+    name: 'ZULVEEN Anti-Dandruff & Scalp Relief',
+    subtitle: 'A Product of WASEER Dawa Khana • Pure Organic Neem & Australian Tea Tree Infusion',
+    tag: 'PURIFYING SCALP DETOX',
+    tagClass: 'bg-sage text-ivory border-sage',
+    category: 'scalp',
     hairTypes: ['straight', 'wavy', 'curly', 'coily', 'all'],
-    concerns: ['dryness', 'damage', 'frizz', 'shine'],
-    rating: 4.8,
-    reviewCount: 914,
-    basePrice: 2899,
-    originalPrice: 3499,
+    concerns: ['scalp', 'dryness', 'damage'],
+    rating: 4.9,
+    reviewCount: 1420,
+    basePrice: 2350,
+    originalPrice: 2850,
     sizes: [
-      { size: '50ml', price: 2899, label: 'Travel Flacon' },
-      { size: '100ml', price: 4499, label: 'Standard Ritual', isPopular: true },
-      { size: '150ml', price: 5999, label: 'Ritualist Value' },
+      { size: '200ml', price: 2350, label: 'Standard Ritual', isPopular: true },
+      { size: '2 x 200ml', price: 4250, label: 'Twin Pack' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
+      '/images/zulveen-dark-bottle.jpg',
+      '/images/zulveen-light-bottle.jpg',
     ],
-    description: 'First cold-pressed virgin Moroccan argan oil blended with Japanese camellia seed and golden meadowfoam. Instantly restores lost moisture to brittle cuticles, tames humidity-induced frizz, and leaves hair glowing with natural, weightless light.',
-    ritualStory: 'Harvested by women’s fair-trade cooperatives in the Atlas Mountains of Morocco, gently cold-pressed without heat to preserve natural polyphenols and fatty acids.',
+    description: 'A cooling, purifying Unani scalp therapy formulated with wild neem leaves, organic Australian tea tree, and refreshing peppermint. Naturally eliminates stubborn dandruff flakes, balances excess sebum, and relieves intense scalp itchiness.',
+    ritualStory: 'Crafted at WASEER Dawa Khana by slow-infusing cold-pressed organic oils with hand-selected antibacterial herbs to restore microbial tranquility to distressed scalps.',
     benefits: [
-      'Instantly tames frizzy flyaways and seals splintered cuticles',
-      'Protects strands from daily environmental UV and thermal styling stressors',
-      'Leaves hair with a silky, non-sticky finish that reflects luminous natural light'
+      'Eliminates 99% of dry & oily dandruff flakes within 2 weeks of use',
+      'Instantly relieves scalp itching and inflammatory irritation with cooling botanicals',
+      'Regulates overactive oil glands while deeply moisturizing dry hair strands',
+      'Purifies clogged hair pores to prevent flake buildup and fungal scalp issues'
     ],
-    ingredientsSummary: 'Organic Virgin Argan Kernel Oil, Golden Jojoba Seed Oil, Camellia Oleifera Seed Oil, Meadowfoam Seed Oil, Italian Bergamot Peel Oil.',
+    ingredientsSummary: 'Organic Australian Tea Tree Oil, Cold-Pressed Neem Seed Oil, Peppermint Leaf Oil, Rosemary Extract, Jojoba Carrier Base.',
     ingredientsFull: [
-      'Argania Spinosa (Virgin Argan) Kernel Oil*',
-      'Simmondsia Chinensis (Golden Jojoba) Seed Oil*',
-      'Camellia Oleifera (Tea Seed) Oil*',
-      'Limnanthes Alba (Meadowfoam) Seed Oil',
-      'Citrus Aurantium Bergamia (Bergamot) Peel Oil*',
+      'Melaleuca Alternifolia (Tea Tree) Leaf Oil*',
+      'Azadirachta Indica (Neem) Seed Oil*',
+      'Mentha Piperita (Peppermint) Leaf Oil*',
+      'Rosmarinus Officinalis Leaf Extract*',
+      'Simmondsia Chinensis Seed Oil*',
       'Tocopherol (Vitamin E)'
     ],
     keyBotanicals: [
       {
-        name: 'Virgin Moroccan Argan',
-        origin: 'Agadir, Morocco',
-        role: 'Rich in vitamin E and essential fatty acids to deeply lubricate hair shafts and resist breakage',
-        image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80'
+        name: 'Australian Tea Tree',
+        origin: 'New South Wales, Australia',
+        role: 'Natural antibacterial and antifungal powerhouse to decongest scalp pores and eliminate flakes',
+      },
+      {
+        name: 'Organic Wild Neem',
+        origin: 'Punjab, Pakistan',
+        role: 'Ancient Ayurvedic purifier revered for eradicating microbial scalp irritation',
       }
     ],
     usage: {
-      step1: 'Warm 2 to 3 drops thoroughly between palms.',
-      step2: 'Glide hands down the mid-lengths to ends of towel-dried or dry styled hair.',
-      step3: 'Style as usual for mirror-smooth shine.'
+      step1: 'Part hair into sections and apply 5–8 drops onto the dry scalp before washing.',
+      step2: 'Massage thoroughly for 4 minutes with your fingertips.',
+      step3: 'Leave on for 30–45 minutes, then wash with a gentle herbal shampoo.'
     },
     faqs: [
       {
-        question: 'Can I use this oil before blow drying?',
-        answer: 'Yes! Applying 2-3 drops to damp hair creates a protective plant lipid barrier that guards against thermal moisture loss.'
+        question: 'Does this oil have a strong chemical smell?',
+        answer: 'Not at all. It features a crisp, natural herbal aroma of pure tea tree and invigorating mint.'
       }
     ],
     inStock: true,
@@ -142,60 +140,59 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'prod-3',
-    slug: 'clarifying-rosemary-tea-tree-scalp-detox',
-    name: 'Clarifying Rosemary & Tea Tree Scalp Detox Drops',
-    subtitle: 'Deep purifying scalp therapy for balance & flake relief',
-    tag: 'PURIFYING',
-    tagClass: 'bg-sage text-ivory border-sage',
-    category: 'scalp',
+    slug: 'zulveen-intense-hair-fall-control',
+    name: 'ZULVEEN Intense Hair Fall Control Elixir',
+    subtitle: 'A Product of WASEER Dawa Khana • Ayurvedic Shikakai, Reetha & Fenugreek Fortifier',
+    tag: 'HAIR FALL SHIELD',
+    tagClass: 'bg-forest text-ivory border-forest',
+    category: 'growth',
     hairTypes: ['straight', 'wavy', 'curly', 'coily', 'all'],
-    concerns: ['scalp', 'dryness', 'growth'],
+    concerns: ['growth', 'damage', 'scalp'],
     rating: 4.9,
-    reviewCount: 680,
-    basePrice: 2699,
+    reviewCount: 1890,
+    basePrice: 2450,
+    originalPrice: 2950,
     sizes: [
-      { size: '50ml', price: 2699, label: 'Starter' },
-      { size: '100ml', price: 4199, label: 'Standard Ritual', isPopular: true },
-      { size: '150ml', price: 5699, label: 'Ritualist Value' },
+      { size: '200ml', price: 2450, label: 'Standard Ritual', isPopular: true },
+      { size: '2 x 200ml', price: 4450, label: 'Double Protection Pack' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
+      '/images/zulveen-dark-bottle.jpg',
+      '/images/zulveen-light-bottle.jpg',
     ],
-    description: 'A cooling, prebiotic botanical oil formulated with organic Australian tea tree, peppermint, and clarifying rosemary. Dissolves excess sebum, melts product buildup, and restores microbial tranquility to irritated scalps.',
-    ritualStory: 'Formulated specifically to reset the scalp biome after workouts, dry weather, or heavy styling product use.',
+    description: 'A concentrated root-anchoring herbal infusion engineered to halt extreme shedding and hair breakage. Powered by wild Shikakai, Reetha, Fenugreek (Methi Dana), and Castor oil to reinforce follicular grip and reconstruct brittle hair shafts.',
+    ritualStory: 'Prepared in small artisanal batches following classic Unani pharmacopoeia traditions, ensuring active phytonutrients penetrate deep into the dermal papilla.',
     benefits: [
-      'Purifies follicular pores of dead skin cells and dry product residue',
-      'Delivers an immediate cooling, tingly botanical sensation that relieves scalp itch',
-      'Balances oily root zones while keeping length moisturized'
+      'Reduces hair breakage by up to 85% during brushing and washing',
+      'Anchors weak hair roots firmly inside follicles with rich botanical proteins',
+      'Replenishes natural keratin lipids to prevent split ends and fragile snapping',
+      'Provides visible strand thickening within 30 days of consistent ritual'
     ],
-    ingredientsSummary: 'Organic Australian Tea Tree Oil, Peppermint Leaf Oil, Rosemary Extract, Neem Seed Oil, Golden Jojoba Carrier.',
+    ingredientsSummary: 'Shikakai Bark Extract, Reetha Nut Oil, Methi Dana (Fenugreek) Oil, Jamaican Black Castor, Sweet Almond Carrier.',
     ingredientsFull: [
-      'Simmondsia Chinensis (Jojoba) Seed Oil*',
-      'Melaleuca Alternifolia (Tea Tree) Leaf Oil*',
-      'Rosmarinus Officinalis (Rosemary) Leaf Oil*',
-      'Mentha Piperita (Peppermint) Oil*',
-      'Azadirachta Indica (Neem) Seed Oil*',
-      'Tocopherol (Vitamin E)'
+      'Acacia Concinna (Shikakai) Extract*',
+      'Trigonella Foenum-Graecum (Fenugreek) Seed Oil*',
+      'Sapindus Mukorossi (Reetha) Seed Oil*',
+      'Ricinus Communis (Castor) Seed Oil*',
+      'Prunus Amygdalus Dulcis (Almond) Oil*',
+      'Tocopherol'
     ],
     keyBotanicals: [
       {
-        name: 'Australian Tea Tree',
-        origin: 'New South Wales, Australia',
-        role: 'Potent natural antimicrobial botanical to decongest follicles and purify flaky buildup',
-        image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80'
+        name: 'Fenugreek (Methi Dana)',
+        origin: 'Multan, Pakistan',
+        role: 'Packed with natural lecithin and proteins to rebuild hair shaft structure and anchor roots',
       }
     ],
     usage: {
-      step1: 'Part hair into lines and apply 5–8 drops onto the dry scalp before washing.',
-      step2: 'Massage vigorously for 4 minutes with your fingertips.',
-      step3: 'Leave on for 15–20 minutes, then shampoo thoroughly.'
+      step1: 'Warm 6–8 drops between clean palms.',
+      step2: 'Massage into root zones and lightly coat hair strands down to the tips.',
+      step3: 'Leave overnight or at least 1 hour before showering.'
     },
     faqs: [
       {
-        question: 'Will this tingle when applied?',
-        answer: 'Yes! Organic peppermint creates a refreshing botanical cooling sensation that signals active micro-circulation.'
+        question: 'How quickly does it stop hair fall?',
+        answer: 'Most users observe a marked reduction in daily hair shedding after 14 to 21 days of regular 3x weekly application.'
       }
     ],
     inStock: true,
@@ -203,111 +200,116 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'prod-4',
-    slug: 'virgin-coconut-amla-deep-moisture-bath',
-    name: 'Virgin Coconut & Amla Ayurvedic Moisture Oil',
-    subtitle: 'Overnight lipid saturator for thick, coarse & coily strands',
-    tag: 'ULTRA-HYDRATING',
-    tagClass: 'bg-olive text-ivory border-olive',
-    category: 'repair',
-    hairTypes: ['wavy', 'curly', 'coily'],
-    concerns: ['dryness', 'damage', 'frizz'],
-    rating: 4.8,
-    reviewCount: 520,
-    basePrice: 2399,
+    slug: 'zulveen-black-cumin-kalonji-fortifier',
+    name: 'ZULVEEN Black Cumin (Kalonji) Fortifier',
+    subtitle: 'A Product of WASEER Dawa Khana • Pure Cold-Pressed Nigella Sativa for Thinning Hair',
+    tag: 'ANCIENT THICKENER',
+    tagClass: 'bg-gold text-earth border-gold',
+    category: 'growth',
+    hairTypes: ['straight', 'wavy', 'curly', 'coily', 'all'],
+    concerns: ['growth', 'scalp', 'damage'],
+    rating: 4.9,
+    reviewCount: 1650,
+    basePrice: 2650,
+    originalPrice: 3150,
     sizes: [
-      { size: '50ml', price: 2399, label: 'Standard Flacon' },
-      { size: '100ml', price: 3799, label: 'Ritual Size', isPopular: true },
-      { size: '150ml', price: 4999, label: 'Salon Size' },
+      { size: '200ml', price: 2650, label: 'Standard Ritual', isPopular: true },
+      { size: '2 x 200ml', price: 4850, label: 'Crown Density Bundle' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
+      '/images/zulveen-dark-bottle.jpg',
+      '/images/zulveen-light-bottle.jpg',
     ],
-    description: 'An ancient Ayurvedic-inspired infusion of raw Sri Lankan virgin coconut oil and wild Indian gooseberry (Amla). Penetrates deep into the hair cortex to prevent protein loss and revive dry, porous curls with bounce.',
-    ritualStory: 'Slow-infused for 48 hours to draw the full vitamin C and bioflavonoid profile from raw Amla berries.',
+    description: 'A regal, bio-active elixir formulated with Egyptian and indigenous cold-pressed Kalonji (Black Cumin) seeds. Rich in natural thymoquinone to stimulate dormant hair follicles, densify widening crown part lines, and fortify fragile thinning strands.',
+    ritualStory: 'Kalonji has been celebrated for centuries across Unani and prophetic traditions as a universal revitalizer for vitality and strength.',
     benefits: [
-      'Significantly reduces protein loss in vulnerable, porous hair strands',
-      'Defines natural curl clump patterns without crunch or stiffness',
-      'Intensely softens rough textures and strengthens against comb friction'
+      'High concentrations of thymoquinone to protect cellular follicle health',
+      'Fills in thinning temple zones and widening crown part lines naturally',
+      'Strengthens fine, thinning baby hair into thick, resilient hair shafts',
+      'Imparts deep, dark luster and shields hair from environmental aging'
     ],
-    ingredientsSummary: 'Raw Cold-Pressed Virgin Coconut Oil, Wild Amla Berry Extract, Sweet Almond Oil, Sesame Seed Oil.',
+    ingredientsSummary: '100% Cold-Pressed Nigella Sativa (Kalonji) Seed Oil, Cedarwood Essential Oil, Rosemary CO2 Extract, Golden Jojoba Carrier.',
     ingredientsFull: [
-      'Cocos Nucifera (Virgin Coconut) Oil*',
-      'Prunus Amygdalus Dulcis (Sweet Almond) Oil*',
-      'Phyllanthus Emblica (Amla) Fruit Extract*',
-      'Sesamum Indicum (Sesame) Seed Oil*',
-      'Tocopherol'
+      'Nigella Sativa (Black Cumin) Seed Oil*',
+      'Cedrus Atlantica Bark Oil*',
+      'Rosmarinus Officinalis Extract*',
+      'Simmondsia Chinensis Seed Oil*',
+      'Tocopherol (Vitamin E)'
     ],
     keyBotanicals: [
       {
-        name: 'Wild Amla (Indian Gooseberry)',
-        origin: 'Kerala, India',
-        role: 'Concentrated source of natural vitamin C to strengthen strand tensile core',
-        image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80'
+        name: 'Pure Cold-Pressed Kalonji',
+        origin: 'Nile Valley & Cholistan',
+        role: 'Abundant in thymoquinone and essential omegas to reverse follicle miniaturization',
       }
     ],
     usage: {
-      step1: 'Warm a generous amount between hands.',
-      step2: 'Apply from mid-lengths to ends, then work upward into the scalp.',
-      step3: 'Leave on for 45 minutes or overnight. Wash with shampoo.'
+      step1: 'Warm 5 drops directly on fingertips.',
+      step2: 'Target thinning crown, temple areas, or receding part lines.',
+      step3: 'Massage gently for 5 minutes. Best applied overnight.'
     },
     faqs: [
       {
-        question: 'Is this suitable for low porosity hair?',
-        answer: 'Yes! Warming the oil slightly before application helps the lipid molecules easily penetrate low porosity cuticles.'
+        question: 'Can men use this for thinning hair and beard growth?',
+        answer: 'Yes! ZULVEEN Kalonji Fortifier is completely unisex and works exceptionally well for both scalp and patchy beards.'
       }
     ],
     inStock: true,
-    isFeatured: false
+    isFeatured: true
   },
   {
     id: 'prod-5',
-    slug: 'pure-golden-jojoba-daily-nourishing-oil',
-    name: 'Pure Sonoran Golden Jojoba Balancing Nectar',
-    subtitle: '100% pure cold-pressed multi-use hair, beard & scalp nectar',
-    tag: 'MINIMALIST PURE',
-    tagClass: 'bg-earth text-ivory border-earth',
-    category: 'daily',
-    hairTypes: ['straight', 'wavy', 'curly', 'coily', 'all'],
-    concerns: ['shine', 'scalp', 'dryness'],
-    rating: 4.9,
-    reviewCount: 780,
-    basePrice: 2199,
+    slug: 'zulveen-coconut-almond-deep-moisture',
+    name: 'ZULVEEN Coconut & Almond Deep Moisture',
+    subtitle: 'A Product of WASEER Dawa Khana • Intense Lipid Therapy for Dry, Rough & Damaged Strands',
+    tag: 'ULTRA-HYDRATING',
+    tagClass: 'bg-olive text-ivory border-olive',
+    category: 'repair',
+    hairTypes: ['wavy', 'curly', 'coily', 'all'],
+    concerns: ['dryness', 'damage', 'frizz'],
+    rating: 4.8,
+    reviewCount: 980,
+    basePrice: 2250,
+    originalPrice: 2750,
     sizes: [
-      { size: '50ml', price: 2199, label: 'Starter' },
-      { size: '100ml', price: 3499, label: 'Standard Ritual', isPopular: true },
-      { size: '150ml', price: 4699, label: 'Value Flacon' },
+      { size: '200ml', price: 2250, label: 'Standard Ritual', isPopular: true },
+      { size: '2 x 200ml', price: 4100, label: 'Deep Hydration Duo' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
+      '/images/zulveen-dark-bottle.jpg',
+      '/images/zulveen-light-bottle.jpg',
     ],
-    description: 'First cold-pressed golden jojoba liquid wax from wild Sonoran desert shrubs. Biocompatible with natural human sebum, it absorbs instantly to balance oily roots while conditioning dry ends.',
-    ritualStory: 'Directly sourced from organic family growers in the Arizona desert, cold-pressed within 24 hours of harvest.',
+    description: 'An indulgent, velvety moisture treatment blending raw cold-pressed virgin coconut oil, sweet California almond oil, and pure sesame extract. Saturates porous, chemically treated, or heat-damaged cuticles to banish roughness and restore silky softness.',
+    ritualStory: 'Slow-infused at WASEER Dawa Khana at gentle temperatures to protect the rich lauric and oleic fatty acids from oxidation.',
     benefits: [
-      'Biomimetic carrier that closely mimics natural scalp sebum',
-      'Absorbs in seconds without leaving a greasy sheen or heavy film',
-      'Versatile 3-in-1 oil for hair styling, scalp massage, and beard conditioning'
+      'Penetrates deep into the hair cortex to halt protein loss in porous hair',
+      'Transforms rough, straw-like strands into liquid silk and touchable softness',
+      'Calms stubborn frizz, flyaways, and humidity-induced puffiness',
+      'Deeply conditions sun-damaged, bleached, or colored hair'
     ],
-    ingredientsSummary: '100% Pure Organic Cold-Pressed Golden Jojoba Seed Oil (Simmondsia Chinensis). Single Ingredient.',
-    ingredientsFull: ['100% Simmondsia Chinensis (Golden Jojoba) Seed Oil*'],
+    ingredientsSummary: 'Raw Cold-Pressed Virgin Coconut Oil, Sweet Almond Oil, Sesame Seed Oil, Vitamin E.',
+    ingredientsFull: [
+      'Cocos Nucifera (Virgin Coconut) Oil*',
+      'Prunus Amygdalus Dulcis (Sweet Almond) Oil*',
+      'Sesamum Indicum (Sesame) Seed Oil*',
+      'Tocopherol (Natural Vitamin E)'
+    ],
     keyBotanicals: [
       {
-        name: 'Golden Jojoba Seed',
-        origin: 'Sonoran Desert, Arizona',
-        role: 'Pure biomimetic liquid wax that delivers clean, weightless moisture balance',
-        image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=400&q=80'
+        name: 'Virgin Cold-Pressed Coconut',
+        origin: 'Sri Lanka',
+        role: 'Low molecular weight lipid that penetrates into the hair cortex to prevent protein degradation',
       }
     ],
     usage: {
-      step1: 'Dispense 2–4 drops into clean hands.',
-      step2: 'Work through damp or dry hair from ears downward.',
-      step3: 'Can also be massaged into facial beard hair and cuticles.'
+      step1: 'Warm a generous pump between hands.',
+      step2: 'Work evenly through lengths and dry ends.',
+      step3: 'Leave on for 1 hour or overnight as a hot oil towel wrap for salon-grade softness.'
     },
     faqs: [
       {
-        question: 'Is this completely fragrance-free?',
-        answer: 'Yes! It has only a natural, very faint nutty aroma of pure raw cold-pressed golden jojoba seeds.'
+        question: 'Will this feel heavy on fine hair?',
+        answer: 'Use 2–3 drops on fine hair for a light conditioning effect, or apply generously before shampooing as an intensive rinse-off mask.'
       }
     ],
     inStock: true,
@@ -315,232 +317,112 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'prod-6',
-    slug: 'black-cumin-kalonji-root-fortifier',
-    name: 'Cold-Pressed Black Cumin (Kalonji) Root Fortifier',
-    subtitle: 'Nigella sativa & fenugreek seed oil for weak, thinning hair',
-    tag: 'ANCIENT FORTIFIER',
-    tagClass: 'bg-forest text-ivory border-forest',
-    category: 'growth',
-    hairTypes: ['straight', 'wavy', 'curly', 'coily', 'all'],
-    concerns: ['growth', 'scalp', 'damage'],
-    rating: 4.9,
-    reviewCount: 460,
-    basePrice: 2599,
-    sizes: [
-      { size: '50ml', price: 2599, label: 'Starter' },
-      { size: '100ml', price: 3999, label: 'Standard Ritual', isPopular: true },
-      { size: '150ml', price: 5299, label: 'Deluxe' },
-    ],
-    images: [
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
-    ],
-    description: 'A potent, rich therapeutic elixir powered by Egyptian black seed (Nigella Sativa) and cold-extracted fenugreek. Packed with natural thymoquinone to fortify thinning partings and strengthen fragile hair strands against stress-related shedding.',
-    ritualStory: 'Kalonji oil has been revered for millennia in Mediterranean and Middle Eastern herbal traditions for its profound strengthening bioactives.',
-    benefits: [
-      'High concentrations of natural thymoquinone to protect follicular health',
-      'Strengthens fine, thinning hair roots against excessive daily shedding',
-      'Nourishes the scalp barrier with rich essential fatty acids'
-    ],
-    ingredientsSummary: 'Egyptian Black Seed (Kalonji) Oil, Fenugreek Seed Extract, Golden Jojoba, Rosemary Co2, Atlas Cedarwood.',
-    ingredientsFull: [
-      'Nigella Sativa (Black Cumin) Seed Oil*',
-      'Trigonella Foenum-Graecum (Fenugreek) Seed Extract*',
-      'Simmondsia Chinensis (Jojoba) Seed Oil*',
-      'Rosmarinus Officinalis Extract*',
-      'Tocopherol'
-    ],
-    keyBotanicals: [
-      {
-        name: 'Egyptian Black Cumin',
-        origin: 'Nile Valley, Egypt',
-        role: 'Ancient herbal super-seed rich in thymoquinone and omega fatty acids for root strength',
-        image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=80'
-      }
-    ],
-    usage: {
-      step1: 'Warm 4–6 drops in fingertips.',
-      step2: 'Target thinning zones or receding part lines directly.',
-      step3: 'Massage for 5 minutes. Leave on for at least 1 hour before washing.'
-    },
-    faqs: [
-      {
-        question: 'What does black cumin oil smell like?',
-        answer: 'It possesses a rich, earthy, herbal aroma that dissipates naturally when rinsed.'
-      }
-    ],
-    inStock: true,
-    isFeatured: true
-  },
-  {
-    id: 'prod-7',
-    slug: 'prickly-pear-marula-weightless-shine-nectar',
-    name: 'Prickly Pear & African Marula Weightless Shine Nectar',
-    subtitle: 'Ultra-lightweight antioxidant finishing oil for mirror gloss',
+    slug: 'zulveen-pure-jojoba-shine-repair',
+    name: 'ZULVEEN Pure Jojoba & Shine Repair Nectar',
+    subtitle: 'A Product of WASEER Dawa Khana • Weightless Finishing Nectar for Mirror Gloss & Frizz Control',
     tag: 'FEATHERLIGHT GLOSS',
     tagClass: 'bg-gold text-earth border-gold',
     category: 'daily',
     hairTypes: ['straight', 'wavy', 'curly', 'all'],
     concerns: ['shine', 'frizz', 'dryness'],
     rating: 4.9,
-    reviewCount: 380,
-    basePrice: 2999,
+    reviewCount: 1120,
+    basePrice: 2750,
+    originalPrice: 3250,
     sizes: [
-      { size: '50ml', price: 2999, label: 'Starter' },
-      { size: '100ml', price: 4699, label: 'Standard Ritual', isPopular: true },
+      { size: '200ml', price: 2750, label: 'Standard Ritual', isPopular: true },
+      { size: '2 x 200ml', price: 4950, label: 'Glow Duo' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
+      '/images/zulveen-dark-bottle.jpg',
+      '/images/zulveen-light-bottle.jpg',
     ],
-    description: 'Cold-pressed Moroccan prickly pear seed oil combined with Namibian wild marula. Contains the highest concentration of botanical vitamin E and sterols of any cosmetic oil, imparting glass-like shine with absolute zero weight.',
-    ritualStory: 'It takes one ton of prickly pear fruit to produce one single liter of this precious golden oil, cold-pressed with surgical precision.',
+    description: 'An ultra-light, non-greasy finishing elixir crafted with 100% pure Sonoran golden jojoba and camellia flower nectar. Seamlessly mimics natural scalp sebum to seal split ends, tame flyaways, and impart a luminous glass-like shine without weighing hair down.',
+    ritualStory: 'Harvested from organic desert jojoba bushes and cold-filtered to perfection at WASEER Dawa Khana for daily effortless hair styling.',
     benefits: [
-      'Delivers an ultra-lightweight glass finish that never collapses fine hair',
-      'Rich in natural sterols that lock in hydration without residue',
-      'Tames static electricity and flyaways on dry, blow-dried styles'
+      'Gives instant glass-hair mirror shine without sticky or greasy residue',
+      'Biocompatible with natural scalp sebum for immediate, weightless absorption',
+      'Protects strands against thermal heat styling and daily environmental UV rays',
+      'Smooths split ends and seals cuticle scales for effortlessly sleek styling'
     ],
-    ingredientsSummary: 'Organic Prickly Pear Seed Oil, Wild Marula Oil, Camellia Seed Oil, Natural Neroli Blossom Extract.',
+    ingredientsSummary: 'Organic Golden Jojoba Seed Oil, Japanese Camellia Seed Oil, Natural Bergamot Essence, Vitamin E.',
     ingredientsFull: [
-      'Opuntia Ficus-Indica (Prickly Pear) Seed Oil*',
-      'Sclerocarya Birrea (Marula) Seed Oil*',
+      'Simmondsia Chinensis (Golden Jojoba) Seed Oil*',
       'Camellia Japonica Seed Oil*',
-      'Citrus Aurantium (Neroli) Flower Extract',
+      'Citrus Aurantium Bergamia Peel Oil*',
       'Tocopherol'
     ],
     keyBotanicals: [
       {
-        name: 'Prickly Pear Seed',
-        origin: 'Guelmim, Morocco',
-        role: 'Precious antioxidant oil with the highest natural vitamin E concentration for light reflection',
-        image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80'
+        name: 'Sonoran Golden Jojoba',
+        origin: 'Sonora Desert',
+        role: 'Pure biomimetic liquid wax that delivers weightless moisture and brilliant light reflection',
       }
     ],
     usage: {
-      step1: 'Dispense 1 to 2 drops onto fingertips.',
-      step2: 'Lightly graze over styled hair surface and split ends.',
-      step3: 'Enjoy instant mirror shine with zero greasiness.'
+      step1: 'Dispense 1 to 2 drops onto dry fingertips.',
+      step2: 'Lightly smooth over styled hair surface and split ends.',
+      step3: 'Enjoy all-day frizz-free glass shine.'
     },
     faqs: [
       {
-        question: 'Is this suitable for very fine hair?',
-        answer: 'Yes! This is our most featherweight formulation, designed specifically for fine and medium strands.'
+        question: 'Can I apply this after washing and blow-drying?',
+        answer: 'Yes! It is specifically formulated as a daily leave-in shine finisher on dry or damp hair.'
       }
     ],
     inStock: true,
     isFeatured: false
   },
   {
-    id: 'prod-8',
-    slug: 'wild-french-lavender-night-scalp-elixir',
-    name: 'French Wild Lavender & Primrose Overnight Scalp Elixir',
-    subtitle: 'Calming bedtime botanical treatment for overnight follicle rejuvenation',
-    tag: 'NIGHT RECOVERY',
-    tagClass: 'bg-sage text-ivory border-sage',
-    category: 'scalp',
-    hairTypes: ['straight', 'wavy', 'curly', 'coily', 'all'],
-    concerns: ['scalp', 'dryness', 'damage'],
-    rating: 4.8,
-    reviewCount: 310,
-    basePrice: 2799,
-    sizes: [
-      { size: '50ml', price: 2799, label: 'Starter' },
-      { size: '100ml', price: 4399, label: 'Standard Ritual', isPopular: true },
-    ],
-    images: [
-      'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
-    ],
-    description: 'An aromatherapeutic bedtime scalp oil formulated with high-altitude Provence lavender, organic evening primrose, and soothing chamomile. Deeply repairs tension from tight hairstyles while encouraging sound, restful sleep.',
-    ritualStory: 'Distilled from wild lavender flowers grown at 1,200 meters in the French Alps for maximum calming ester content.',
-    benefits: [
-      'Relieves scalp tightness and tension from braids, buns, and ponytails',
-      'Deeply conditions the scalp lipid barrier while you sleep',
-      'Pure therapeutic lavender and chamomile scent promotes evening relaxation'
-    ],
-    ingredientsSummary: 'French Lavender Essential Oil, Evening Primrose Oil, German Chamomile, Golden Jojoba, Sweet Almond Carrier.',
-    ingredientsFull: [
-      'Lavandula Angustifolia (Lavender) Flower Oil*',
-      'Oenothera Biennis (Evening Primrose) Oil*',
-      'Matricaria Chamomilla (Chamomile) Flower Oil*',
-      'Simmondsia Chinensis (Jojoba) Seed Oil*',
-      'Prunus Amygdalus Dulcis (Sweet Almond) Oil*',
-      'Tocopherol'
-    ],
-    keyBotanicals: [
-      {
-        name: 'High-Altitude French Lavender',
-        origin: 'Provence, France',
-        role: 'Calming botanical with natural linalool to soothe scalp irritation and promote restful sleep',
-        image: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=400&q=80'
-      }
-    ],
-    usage: {
-      step1: 'Apply 4–6 drops before bedtime.',
-      step2: 'Massage into scalp and breathe in the natural calming herbal scent.',
-      step3: 'Sleep with hair loose or in a silk bonnet. Wash in the morning if desired.'
-    },
-    faqs: [
-      {
-        question: 'Will it stain pillowcases?',
-        answer: 'Our fast-absorbing carrier base absorbs deeply into the scalp within 10 minutes. A silk bonnet is recommended for maximum moisture retention.'
-      }
-    ],
-    inStock: true,
-    isFeatured: false
-  },
-  {
-    id: 'prod-9',
-    slug: 'the-complete-hair-transformation-trio-bundle',
-    name: 'The Complete Hair Transformation Trio Bundle',
-    subtitle: 'Growth Elixir + Scalp Detox Drops + Cuticle Gloss Set',
-    tag: 'SAVE 25% BUNDLE',
+    id: 'prod-7',
+    slug: 'zulveen-family-value-pack-bundle',
+    name: 'ZULVEEN 2-Bottle Family Value Pack (2 x 200ml)',
+    subtitle: 'A Product of WASEER Dawa Khana • Complete 3-Month Intensive Hair Transformation Course',
+    tag: 'SAVE 25% • BEST VALUE',
     tagClass: 'bg-forest text-gold border-forest',
     category: 'bundles',
     hairTypes: ['straight', 'wavy', 'curly', 'coily', 'all'],
     concerns: ['growth', 'scalp', 'damage', 'frizz', 'shine'],
     rating: 5.0,
-    reviewCount: 395,
-    basePrice: 5999,
-    originalPrice: 8097,
+    reviewCount: 890,
+    basePrice: 4450,
+    originalPrice: 5900,
     sizes: [
-      { size: '3 x 50ml Starter Set', price: 5999, label: 'Starter Trio' },
-      { size: '3 x 100ml Full Ritual Set', price: 9499, label: 'Full Ritual Trio (Best Value)', isPopular: true },
+      { size: '2 x 200ml (400ml Total)', price: 4450, label: '3-Month Course (Save Rs. 1,450)', isPopular: true },
+      { size: '3 x 200ml (600ml Total)', price: 6250, label: 'Family Mega Pack (Save Rs. 2,600)' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=85',
+      '/images/zulveen-dark-bottle.jpg',
+      '/images/zulveen-light-bottle.jpg',
     ],
-    description: 'The ultimate 3-phase botanical hair care master system. Combines our #1 Scalp Growth Elixir (Phase 1: Stimulate), Tea Tree Detox Drops (Phase 2: Clarify), and Argan Cuticle Gloss (Phase 3: Protect & Shine) at a 25% bundled saving.',
-    ritualStory: 'Curated by trichologists to provide a complete, synergistic weekly botanical regimen covering scalp prep, follicular stimulation, and cuticle sealing.',
+    description: 'The ultimate 3-month comprehensive botanical hair revitalization course. Contains two full-size 200ml bottles of ZULVEEN Herbal Hair Oil by WASEER Dawa Khana at a direct 25% saving. Guaranteed authentic herbal nourishment for long-term root strength and thick hair growth.',
+    ritualStory: 'Recommended by traditional hakims as a full 90-day biological hair cycle regimen to awaken dormant roots, reverse hair thinning, and secure lifetime follicle resilience.',
     benefits: [
-      'Comprehensive 360-degree hair transformation system covering scalp, roots, and strand tips',
-      'Includes Growth Elixir (50ml/100ml), Detox Drops (50ml/100ml), and Argan Gloss (50ml/100ml)',
-      'Saves 25% compared to purchasing individual bottles separately',
-      'Packaged in an artisanal luxury unboxing gift box with glass droppers'
+      'Full 90-day hair regrowth and root fortification course (400ml total)',
+      'Saves Rs. 1,450 compared to purchasing individual bottles separately',
+      'Shared household family pack suitable for both men and women',
+      'Free priority nationwide courier delivery included'
     ],
-    ingredientsSummary: 'Full botanical spectrum: French Rosemary, Jamaican Black Castor, Australian Tea Tree, Moroccan Argan, Sonoran Golden Jojoba, Japanese Camellia.',
+    ingredientsSummary: 'Complete multi-botanical spectrum: French Rosemary, Moroccan Argan, Indian Amla, Black Cumin, Golden Jojoba, Jamaican Castor.',
     ingredientsFull: [
-      'Includes complete ingredients of: Growth Elixir, Scalp Detox, and Cuticle Gloss formulas.'
+      'Complete formulation of ZULVEEN Herbal Hair Oil (Double Pack).'
     ],
     keyBotanicals: [
       {
-        name: 'The Botanical Master Trio',
-        origin: 'Global Single-Origin Harvests',
-        role: 'Synergistic combination of French Rosemary, Australian Tea Tree, and Moroccan Argan',
-        image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80'
+        name: 'The ZULVEEN Master Formula',
+        origin: 'WASEER Dawa Khana Signature Blend',
+        role: 'Synergistic combination of cold-pressed unani herbs and precious botanical oils',
       }
     ],
     usage: {
-      step1: 'Weekly Detox: Apply Tea Tree Detox to dry scalp 20 mins before your clarifying wash.',
-      step2: 'Active Growth: Massage Rosemary Growth Elixir into scalp 2-3x per week.',
-      step3: 'Daily Gloss: Smooth 2 drops of Argan Cuticle Gloss onto ends daily for mirror shine.'
+      step1: 'Month 1: Apply 3x weekly to stop active hair fall and detoxify scalp pores.',
+      step2: 'Month 2: Regular massage awakens dormant baby hair follicles.',
+      step3: 'Month 3: Continuous nourishment thickens hair strands into strong, lustrous hair.'
     },
     faqs: [
       {
-        question: 'How long will this trio set last?',
-        answer: 'The 3x50ml set lasts 2 to 3 months with regular use; the 3x100ml set lasts 5 to 6 months.'
+        question: 'How long will this 2-bottle pack last?',
+        answer: 'With regular 2 to 3 times weekly application, two 200ml bottles provide a generous 3 to 4 months of complete scalp therapy.'
       }
     ],
     inStock: true,

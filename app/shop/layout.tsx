@@ -14,10 +14,10 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/shop`,
     images: [
       {
-        url: `${SITE_URL}/images/waseer-haircare-collection.jpg`,
+        url: `${SITE_URL}/images/zulveen-dark-bottle.jpg`,
         width: 1200,
         height: 630,
-        alt: 'WASEER Herbal Hair Care Collection',
+        alt: 'ZULVEEN Herbal Hair Oil Range - Waseer Dawa Khana',
       },
     ],
   },

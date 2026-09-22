@@ -23,23 +23,33 @@ export async function ensureDefaultAdmin(): Promise<IAdmin | null> {
   }
 
   try {
-    const count = await Admin.countDocuments();
-    if (count === 0) {
-      const email = (process.env.ADMIN_DEFAULT_EMAIL || 'admin@waseerhairoil.com').toLowerCase();
-      const plainPassword = process.env.ADMIN_DEFAULT_PASSWORD || 'AdminPass123!';
-      const name = process.env.ADMIN_DEFAULT_NAME || 'WASEER Dawa Khana Admin';
+    const email = (process.env.ADMIN_DEFAULT_EMAIL || 'waseerdawakhana@gmail.com').toLowerCase();
+    const plainPassword = process.env.ADMIN_DEFAULT_PASSWORD || 'Mohsin@2358';
+    const name = process.env.ADMIN_DEFAULT_NAME || 'WASEER Dawa Khana Admin';
 
+    let admin = await Admin.findOne({ email });
+    if (!admin) {
+      // Check if old admin exists, update it, or create new
+      const oldAdmin = await Admin.findOne({});
       const hashedPassword = await hashPassword(plainPassword);
 
-      const newAdmin = await Admin.create({
-        email,
-        password: hashedPassword,
-        name,
-        role: 'admin',
-      });
-
-      console.log(`[Admin] Initialized default admin account: ${email}`);
-      return newAdmin;
+      if (oldAdmin) {
+        oldAdmin.email = email;
+        oldAdmin.password = hashedPassword;
+        oldAdmin.name = name;
+        await oldAdmin.save();
+        console.log(`[Admin] Updated admin account to: ${email}`);
+        return oldAdmin;
+      } else {
+        const newAdmin = await Admin.create({
+          email,
+          password: hashedPassword,
+          name,
+          role: 'admin',
+        });
+        console.log(`[Admin] Initialized default admin account: ${email}`);
+        return newAdmin;
+      }
     }
   } catch (err: any) {
     console.warn('[Admin] Note: Database not ready for seeding admin:', err.message);

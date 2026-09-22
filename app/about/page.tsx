@@ -91,8 +91,8 @@ export default function AboutPage() {
 
           <div className="lg:col-span-6 lg:order-1 relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-cream-200 border border-cream-300 group">
             <Image
-              src="/images/waseer-unisex-haircare.jpg"
-              alt="Unisex natural botanical hair oil ritual"
+              src="/images/zulveen-light-bottle.jpg"
+              alt="ZULVEEN natural botanical hair oil ritual"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover group-hover:scale-104 transition-transform duration-700 ease-out"
