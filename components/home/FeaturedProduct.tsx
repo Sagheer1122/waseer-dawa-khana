@@ -105,8 +105,12 @@ export const FeaturedProduct: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-cream-100 shadow-md border border-cream-200 group">
               <Image
-                src={featuredProduct.images[0]}
-                alt={featuredProduct.name}
+                src={
+                  selectedSize.toLowerCase().includes('light')
+                    ? (featuredProduct.images.find((img) => img.includes('light')) || '/images/zulveen-light-bottle.jpg')
+                    : (featuredProduct.images.find((img) => img.includes('dark')) || '/images/zulveen-dark-bottle.jpg')
+                }
+                alt={`${featuredProduct.name} - ${selectedSize}`}
                 fill
                 loading="lazy"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -159,19 +163,22 @@ export const FeaturedProduct: React.FC = () => {
                 </span>
                 <span className="font-bold text-forest">{selectedSize}</span>
               </div>
-              <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                 {featuredProduct.sizes.map((s) => (
                   <button
                     key={s.size}
+                    type="button"
                     onClick={() => setSelectedSize(s.size)}
                     className={`p-2.5 sm:p-3 rounded-xl border text-center font-sans transition-all ${
                       selectedSize === s.size
-                        ? 'border-forest bg-forest text-ivory shadow-sm'
+                        ? 'border-forest bg-forest text-ivory shadow-sm ring-2 ring-forest/20'
                         : 'border-cream-300 bg-ivory text-earth-800 hover:border-forest/50'
                     }`}
                   >
-                    <span className="block text-xs font-bold">{s.size}</span>
-                    <span className="block text-[10px] sm:text-[11px] opacity-85 mt-0.5 whitespace-nowrap">{formatPrice(s.price)}</span>
+                    <span className="block text-xs font-bold leading-tight">{s.size}</span>
+                    <span className={`block text-xs font-bold mt-1 whitespace-nowrap ${selectedSize === s.size ? 'text-gold' : 'text-forest'}`}>
+                      {formatPrice(s.price)}
+                    </span>
                   </button>
                 ))}
               </div>

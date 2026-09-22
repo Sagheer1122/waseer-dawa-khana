@@ -46,6 +46,10 @@ export const useCartStore = create<CartState>()(
             updatedItems[existingIndex].quantity += quantity;
             return { items: updatedItems, isCartOpen: true };
           } else {
+            const itemImage = (size && size.toLowerCase().includes('light') && product.images[1])
+              ? product.images[1]
+              : (product.images[0] || '/images/zulveen-dark-bottle.jpg');
+
             const newItem: CartItem = {
               id: itemId,
               productId: product.id,
@@ -54,7 +58,7 @@ export const useCartStore = create<CartState>()(
               subtitle: product.subtitle,
               size: size,
               price: price,
-              image: product.images[0],
+              image: itemImage,
               quantity: quantity,
             };
             return { items: [...state.items, newItem], isCartOpen: true };

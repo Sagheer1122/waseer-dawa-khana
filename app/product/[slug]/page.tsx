@@ -5,8 +5,13 @@ import { PRODUCTS as STATIC_PRODUCTS } from '@/data/products';
 import { Product } from '@/types';
 import { ProductDetailClient } from '@/components/product/ProductDetailClient';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return STATIC_PRODUCTS.map((product) => ({
+    slug: product.slug,
+  }));
+}
 
 interface Props {
   params: { slug: string };
@@ -97,11 +102,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${product.name} — 100% Herbal Oil | WASEER Dawa Khana`;
+  const title = `${product.name} — ZULVEEN Herbal Hair Oil | WASEER Dawa Khana`;
   const description =
     product.subtitle ||
     product.description?.slice(0, 160) ||
-    'Order authentic WASEER herbal hair oil for hair growth, root strengthening and dandruff control across Pakistan.';
+    'Order authentic ZULVEEN herbal hair oil by WASEER Dawa Khana. Matte Black (Rs. 1,799) & Crystal Clear (Rs. 1,999). Free Delivery in Lahore & Cash on Delivery across Pakistan.';
   const productUrl = `${SITE_URL}/product/${product.slug}`;
   const primaryImage = product.imageUrl || product.images[0] || '/images/waseer-product-bottle.jpg';
 

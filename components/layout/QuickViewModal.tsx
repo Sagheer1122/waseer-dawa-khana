@@ -89,7 +89,11 @@ export const QuickViewModal: React.FC = () => {
           {/* Left Column: Image Presentation */}
           <div className="relative aspect-square md:aspect-auto md:h-full min-h-[300px] bg-cream-100">
             <Image
-              src={quickViewProduct.images[0]}
+              src={
+                selectedSize.toLowerCase().includes('light')
+                  ? (quickViewProduct.images.find((img) => img.includes('light')) || '/images/zulveen-light-bottle.jpg')
+                  : (quickViewProduct.images.find((img) => img.includes('dark')) || '/images/zulveen-dark-bottle.jpg')
+              }
               alt={quickViewProduct.name}
               fill
               className="object-cover"
@@ -130,26 +134,35 @@ export const QuickViewModal: React.FC = () => {
                   </span>
                 )}
               </div>
+
+              {/* Delivery Tag */}
+              <div>
+                <span className="inline-block py-1 px-2.5 rounded-full bg-forest/5 text-forest text-[11px] font-sans font-medium border border-forest/15">
+                  🚚 Free Delivery in Lahore • Rs. 250 Nationwide
+                </span>
+              </div>
             </div>
 
             {/* Size Selector */}
             <div className="space-y-2">
               <label className="block font-sans text-xs font-semibold uppercase tracking-wider text-earth-700">
-                Select Size: <span className="text-forest font-bold">{selectedSize}</span>
+                Select Edition: <span className="text-forest font-bold">{selectedSize}</span>
               </label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 {quickViewProduct.sizes.map((s) => (
                   <button
                     key={s.size}
                     onClick={() => setSelectedSize(s.size)}
-                    className={`py-2.5 px-3 rounded-xl border text-xs font-sans font-medium transition-all text-center ${
+                    className={`py-2 px-2.5 rounded-xl border text-xs font-sans font-medium transition-all text-center ${
                       selectedSize === s.size
                         ? 'border-forest bg-forest text-ivory shadow-sm'
                         : 'border-cream-300 bg-ivory text-earth-800 hover:border-forest/50'
                     }`}
                   >
-                    <span className="block font-bold">{s.size}</span>
-                    <span className="block text-[11px] opacity-80">{formatPrice(s.price)}</span>
+                    <span className="block font-bold truncate">{s.size}</span>
+                    <span className={`block text-[11px] font-semibold ${selectedSize === s.size ? 'text-gold' : 'text-forest'}`}>
+                      {formatPrice(s.price)}
+                    </span>
                   </button>
                 ))}
               </div>

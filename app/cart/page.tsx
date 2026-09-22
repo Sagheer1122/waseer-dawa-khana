@@ -80,29 +80,18 @@ export default function CartPage() {
           </h1>
         </div>
 
-        {/* Free shipping banner */}
-        <div className="mb-8 p-4 rounded-2xl bg-cream-100 border border-cream-200 space-y-2">
-          <div className="flex items-center justify-between text-xs font-sans">
-            <span className="font-medium text-earth-800 flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-gold" />
-              {unlocked ? (
-                <strong className="text-forest">You&apos;ve unlocked FREE Carbon-Neutral Shipping!</strong>
-              ) : (
-                <span>
-                  Add <strong className="text-forest">{formatPrice(remaining)}</strong> more to unlock FREE shipping
-                </span>
-              )}
-            </span>
-            <span className="font-bold text-forest">{progress}%</span>
+        {/* Shipping announcement banner */}
+        <div className="mb-8 p-4 rounded-2xl bg-cream-100 border border-cream-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 text-xs font-sans text-earth-800">
+            <span className="text-lg">🚚</span>
+            <div>
+              <strong className="text-forest">FREE Delivery Across Lahore!</strong>
+              <p className="text-earth-600 text-[11px] mt-0.5">Nationwide courier delivery across all other cities in Pakistan: Flat Rs. 250</p>
+            </div>
           </div>
-          <div className="w-full h-2.5 bg-cream-300 rounded-full overflow-hidden">
-            <div
-              style={{ width: `${progress}%` }}
-              className={`h-full rounded-full transition-all duration-500 ${
-                unlocked ? 'bg-forest' : 'bg-sage'
-              }`}
-            />
-          </div>
+          <span className="text-[11px] font-semibold text-forest bg-sage/20 border border-sage/30 px-3 py-1 rounded-full whitespace-nowrap">
+            Lahore = FREE • Other Cities = Rs. 250
+          </span>
         </div>
 
         {/* 2-Column Cart Layout */}
@@ -256,9 +245,9 @@ export default function CartPage() {
                 </div>
               )}
 
-              <div className="flex justify-between">
-                <span>Shipping</span>
-                <span>{unlocked ? <strong className="text-forest">FREE</strong> : formatPrice(4.95)}</span>
+              <div className="flex justify-between text-xs text-earth-600">
+                <span>Estimated Shipping</span>
+                <span className="font-semibold text-forest">FREE in Lahore / Rs. 250 Other</span>
               </div>
 
               <div className="flex justify-between text-base font-bold text-forest pt-3 border-t border-cream-200">

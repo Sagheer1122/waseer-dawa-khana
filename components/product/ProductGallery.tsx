@@ -8,17 +8,34 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface ProductGalleryProps {
   images: string[];
   productName: string;
+  activeIndex?: number;
+  onActiveIndexChange?: (index: number) => void;
 }
 
-export const ProductGallery: React.FC<ProductGalleryProps> = ({ images, productName }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+export const ProductGallery: React.FC<ProductGalleryProps> = ({
+  images,
+  productName,
+  activeIndex: controlledIndex,
+  onActiveIndexChange,
+}) => {
+  const [internalActiveIndex, setInternalActiveIndex] = useState(0);
+  const activeIndex = controlledIndex !== undefined ? controlledIndex : internalActiveIndex;
+
+  const setIndex = (idx: number) => {
+    if (onActiveIndexChange) {
+      onActiveIndexChange(idx);
+    }
+    setInternalActiveIndex(idx);
+  };
 
   const prevImage = () => {
-    setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    const nextIdx = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
+    setIndex(nextIdx);
   };
 
   const nextImage = () => {
-    setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    const nextIdx = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
+    setIndex(nextIdx);
   };
 
   return (
@@ -28,7 +45,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ images, productN
         {images.map((img, idx) => (
           <button
             key={idx}
-            onClick={() => setActiveIndex(idx)}
+            onClick={() => setIndex(idx)}
             className={`relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden border-2 transition-all ${
               activeIndex === idx
                 ? 'border-forest ring-2 ring-forest/20 shadow-md'

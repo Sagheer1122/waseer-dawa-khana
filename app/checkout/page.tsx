@@ -83,11 +83,6 @@ export default function CheckoutPage() {
   const [orderNumber, setOrderNumber] = useState('');
   const [placedOrderSummary, setPlacedOrderSummary] = useState<any>(null);
 
-  const subtotal = getSubtotal();
-  const total = getTotal();
-  const shippingFee = subtotal >= 3000 ? 0 : 250;
-  const grandTotal = total + (subtotal >= 3000 ? 0 : 250);
-
   const {
     register,
     handleSubmit,
@@ -114,6 +109,13 @@ export default function CheckoutPage() {
     },
   });
 
+  const subtotal = getSubtotal();
+  const total = getTotal();
+  const watchedCity = (watch('city') || '').trim().toLowerCase();
+  const isLahore = watchedCity.includes('lahore');
+  const shippingFee = isLahore ? 0 : 250;
+  const grandTotal = total + shippingFee;
+
   const handleNextStep = async () => {
     if (step === 1) {
       const validContact = await trigger(['fullName', 'email', 'phone', 'address', 'city', 'province', 'country']);
@@ -127,6 +129,9 @@ export default function CheckoutPage() {
   const onSubmit = async (data: CheckoutFormData) => {
     let newOrderNumber = `PK-${Math.floor(100000 + Math.random() * 900000)}`;
     let whatsappRedirectUrl = '';
+    const isOrderLahore = (data.city || '').trim().toLowerCase().includes('lahore');
+    const orderDeliveryFee = isOrderLahore ? 0 : 250;
+    const finalGrandTotal = total + orderDeliveryFee;
 
     try {
       const res = await submitOrder({
@@ -142,7 +147,7 @@ export default function CheckoutPage() {
           size: it.size,
           image: it.image,
         })),
-        totalAmount: grandTotal,
+        totalAmount: finalGrandTotal,
         paymentMethod: selectedPayment,
       });
 
@@ -159,7 +164,7 @@ export default function CheckoutPage() {
     setOrderNumber(newOrderNumber);
     setPlacedOrderSummary({
       items: [...items],
-      total: grandTotal,
+      total: finalGrandTotal,
       shippingAddress: `${data.address}, ${data.city}, ${data.province}, Pakistan`,
       email: data.email,
       phone: data.phone,
@@ -396,6 +401,17 @@ export default function CheckoutPage() {
                             <option key={c} value={c}>{c}</option>
                           ))}
                         </select>
+                        <div className="mt-1">
+                          {isLahore ? (
+                            <span className="inline-block text-[11px] font-semibold text-forest bg-sage/20 border border-sage/30 px-2 py-0.5 rounded-md">
+                              🎉 Free Delivery (Lahore)
+                            </span>
+                          ) : (
+                            <span className="inline-block text-[11px] font-semibold text-earth-600 bg-cream-200 border border-cream-300 px-2 py-0.5 rounded-md">
+                              🚚 Delivery Charges: Rs. 250
+                            </span>
+                          )}
+                        </div>
                         {errors.city && <p className="text-[11px] text-red-600 mt-1">{errors.city.message}</p>}
                       </div>
 
@@ -638,9 +654,9 @@ export default function CheckoutPage() {
                       <span className="font-semibold text-forest">2 to 3 Business Days via TCS / Leopards</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-earth-600 font-semibold">Standard Delivery:</span>
-                      <span className="font-bold text-forest">
-                        {subtotal >= 3000 ? 'FREE (Orders above Rs. 3,000)' : 'Rs. 250'}
+                      <span className="text-earth-600 font-semibold">Delivery Charges:</span>
+                      <span className={`font-bold ${isLahore ? 'text-forest' : 'text-earth-800'}`}>
+                        {isLahore ? 'FREE (Lahore Order 🎉)' : 'Rs. 250 (Outside Lahore)'}
                       </span>
                     </div>
                   </div>
@@ -712,10 +728,19 @@ export default function CheckoutPage() {
                     <span>-{formatPrice(discountAmount)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-earth-600">
-                  <span>Nationwide Courier Delivery</span>
-                  <span>{subtotal >= 3000 ? 'FREE' : 'Rs. 250'}</span>
-                </div>
+                {isLahore ? (
+                  <div className="flex justify-between text-forest text-xs font-semibold">
+                    <span>Delivery (Within Lahore)</span>
+                    <span className="bg-sage/20 border border-sage/30 px-2 py-0.5 rounded text-[11px] font-bold">
+                      FREE (Rs. 0)
+                    </span>
+                  </div>
+                ) : (
+                  <div className="flex justify-between text-earth-700 text-xs font-medium">
+                    <span>Delivery Charges (Outside Lahore)</span>
+                    <span className="font-bold text-forest">+ Rs. 250</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-base font-serif font-bold text-forest pt-3 border-t border-cream-200">
                   <span>Total Amount</span>
                   <span>{formatPrice(grandTotal)}</span>

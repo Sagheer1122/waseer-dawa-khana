@@ -38,6 +38,31 @@ export async function seedInitialProductsIfEmpty(): Promise<void> {
 
     await Product.insertMany(seedData);
     console.log(`[ProductService] Seeded ${seedData.length} products successfully.`);
+  } else if (STATIC_PRODUCTS && STATIC_PRODUCTS.length > 0) {
+    // Keep database in sync with updated catalog prices, sizes and images
+    try {
+      for (const sp of STATIC_PRODUCTS) {
+        const discount = sp.originalPrice && sp.originalPrice > sp.basePrice
+          ? Math.round(((sp.originalPrice - sp.basePrice) / sp.originalPrice) * 100)
+          : 0;
+
+        await Product.updateOne(
+          { slug: sp.slug },
+          {
+            $set: {
+              price: sp.originalPrice || sp.basePrice,
+              discount: discount,
+              finalPrice: sp.basePrice,
+              sizes: sp.sizes || [],
+              images: sp.images,
+              imageUrl: sp.images[0],
+            },
+          }
+        );
+      }
+    } catch (err: any) {
+      console.warn('[ProductService] Note: Could not sync products to DB:', err.message);
+    }
   }
 }
 

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Product } from '@/types';
+import { Product, ProductSize } from '@/types';
 import { REVIEWS } from '@/data/reviews';
 import { ProductGallery } from '@/components/product/ProductGallery';
 import { ProductCard } from '@/components/product/ProductCard';
@@ -44,6 +44,9 @@ export function ProductDetailClient({
     '100ml';
 
   const [selectedSize, setSelectedSize] = useState<string>(initialPopularSize);
+  const [galleryIndex, setGalleryIndex] = useState(
+    initialPopularSize.toLowerCase().includes('light') ? 1 : 0
+  );
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
 
@@ -51,13 +54,36 @@ export function ProductDetailClient({
   const { toggleWishlist, isInWishlist } = useWishlistStore();
   const addToast = useUIStore((s) => s.addToast);
 
-  const productSizes =
+  const handleSelectSize = (size: string) => {
+    setSelectedSize(size);
+    if (size.toLowerCase().includes('light')) {
+      const lightIdx = product.images.findIndex((img) => img.includes('light'));
+      setGalleryIndex(lightIdx >= 0 ? lightIdx : 1);
+    } else if (size.toLowerCase().includes('dark')) {
+      const darkIdx = product.images.findIndex((img) => img.includes('dark'));
+      setGalleryIndex(darkIdx >= 0 ? darkIdx : 0);
+    }
+  };
+
+  const handleGalleryChange = (idx: number) => {
+    setGalleryIndex(idx);
+    const selectedImg = product.images[idx] || '';
+    if (selectedImg.includes('light')) {
+      const lightOpt = productSizes.find((s) => s.size.toLowerCase().includes('light'));
+      if (lightOpt) setSelectedSize(lightOpt.size);
+    } else if (selectedImg.includes('dark')) {
+      const darkOpt = productSizes.find((s) => s.size.toLowerCase().includes('dark'));
+      if (darkOpt) setSelectedSize(darkOpt.size);
+    }
+  };
+
+  const productSizes: ProductSize[] =
     product.sizes && product.sizes.length > 0
       ? product.sizes
       : [
-          { size: '100ml', price: product.basePrice || (product as any).price || 2450, isPopular: true },
-          { size: '200ml', price: Math.round((product.basePrice || (product as any).price || 2450) * 1.8), isPopular: false },
-          { size: '300ml', price: Math.round((product.basePrice || (product as any).price || 2450) * 2.5), isPopular: false },
+          { size: 'Dark Bottle (200ml)', price: product.basePrice || 1799, label: 'Matte Black Luxury Edition', isPopular: true },
+          { size: 'Light Bottle (200ml)', price: 1999, label: 'Crystal Clear Royal Edition', isPopular: false },
+          { size: 'Duo Pack (Dark + Light)', price: 3499, label: '2-Bottle Family Pack', isPopular: false },
         ];
 
   const currentSizeObj = productSizes.find((s) => s.size === selectedSize) || productSizes[0];
@@ -251,7 +277,12 @@ export function ProductDetailClient({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left: Dynamic Image Gallery */}
           <div className="lg:col-span-7">
-            <ProductGallery images={product.images} productName={product.name} />
+            <ProductGallery
+              images={product.images}
+              productName={product.name}
+              activeIndex={galleryIndex}
+              onActiveIndexChange={handleGalleryChange}
+            />
           </div>
 
           {/* Right: Product Purchase Configuration */}
@@ -286,31 +317,44 @@ export function ProductDetailClient({
                   </span>
                 )}
               </div>
+
+              {/* Delivery info */}
+              <div className="pt-1">
+                <div className="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full bg-forest/5 text-forest text-xs font-sans font-medium border border-forest/15">
+                  <span>🚚 <strong>Free Delivery in Lahore</strong> • Rs. 250 Nationwide</span>
+                </div>
+              </div>
             </div>
 
-            {/* Size Selector */}
+            {/* Size / Bottle Edition Selector */}
             <div className="space-y-2 pt-2 border-t border-cream-200">
               <div className="flex justify-between items-center text-xs font-sans">
                 <span className="font-bold uppercase tracking-wider text-earth-700">
-                  Select Ritual Volume:
+                  Select Edition / Volume:
                 </span>
                 <span className="font-bold text-forest">{selectedSize}</span>
               </div>
-              <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                 {productSizes.map((s) => (
                   <button
                     key={s.size}
-                    onClick={() => setSelectedSize(s.size)}
-                    className={`p-2 sm:p-3 rounded-2xl border text-center font-sans transition-all ${
+                    type="button"
+                    onClick={() => handleSelectSize(s.size)}
+                    className={`p-2.5 sm:p-3 rounded-2xl border text-center font-sans transition-all ${
                       selectedSize === s.size
-                        ? 'border-forest bg-forest text-ivory shadow-sm'
+                        ? 'border-forest bg-forest text-ivory shadow-sm ring-2 ring-forest/20'
                         : 'border-cream-300 bg-ivory text-earth-800 hover:border-forest/50'
                     }`}
                   >
-                    <span className="block text-xs font-bold">{s.size}</span>
-                    <span className="block text-[10px] sm:text-[11px] opacity-80 mt-0.5 whitespace-nowrap">
+                    <span className="block text-xs font-bold leading-tight">{s.size}</span>
+                    <span className={`block text-xs font-bold mt-1 ${selectedSize === s.size ? 'text-gold' : 'text-forest'}`}>
                       {formatPrice(s.price)}
                     </span>
+                    {s.label && (
+                      <span className={`block text-[10px] mt-0.5 opacity-80 truncate ${selectedSize === s.size ? 'text-ivory/80' : 'text-earth-500'}`}>
+                        {s.label}
+                      </span>
+                    )}
                   </button>
                 ))}
               </div>

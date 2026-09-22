@@ -13,11 +13,12 @@ export const PRODUCTS: Product[] = [
     concerns: ['growth', 'scalp', 'damage'],
     rating: 4.9,
     reviewCount: 2840,
-    basePrice: 2450,
-    originalPrice: 2950,
+    basePrice: 1799,
+    originalPrice: 2250,
     sizes: [
-      { size: '200ml', price: 2450, label: 'Standard Ritual (Most Popular)', isPopular: true },
-      { size: '2 x 200ml', price: 4450, label: 'Double Value Pack' },
+      { size: 'Dark Bottle (200ml)', price: 1799, label: 'Matte Black Luxury Edition', isPopular: true },
+      { size: 'Light Bottle (200ml)', price: 1999, label: 'Crystal Clear Royal Edition' },
+      { size: 'Duo Pack (Dark + Light)', price: 3499, label: '2-Bottle Family Pack (Save Rs. 299)' },
     ],
     images: [
       '/images/zulveen-dark-bottle.jpg',
@@ -85,15 +86,16 @@ export const PRODUCTS: Product[] = [
     concerns: ['scalp', 'dryness', 'damage'],
     rating: 4.9,
     reviewCount: 1420,
-    basePrice: 2350,
-    originalPrice: 2850,
+    basePrice: 1999,
+    originalPrice: 2450,
     sizes: [
-      { size: '200ml', price: 2350, label: 'Standard Ritual', isPopular: true },
-      { size: '2 x 200ml', price: 4250, label: 'Twin Pack' }
+      { size: 'Light Bottle (200ml)', price: 1999, label: 'Crystal Clear Royal Edition', isPopular: true },
+      { size: 'Dark Bottle (200ml)', price: 1799, label: 'Matte Black Luxury Edition' },
+      { size: 'Duo Pack (Dark + Light)', price: 3499, label: '2-Bottle Family Pack (Save Rs. 299)' },
     ],
     images: [
-      '/images/zulveen-dark-bottle.jpg',
       '/images/zulveen-light-bottle.jpg',
+      '/images/zulveen-dark-bottle.jpg',
     ],
     description: 'A cooling, purifying Unani scalp therapy formulated with wild neem leaves, organic Australian tea tree, and refreshing peppermint. Naturally eliminates stubborn dandruff flakes, balances excess sebum, and relieves intense scalp itchiness.',
     ritualStory: 'Crafted at WASEER Dawa Khana by slow-infusing cold-pressed organic oils with hand-selected antibacterial herbs to restore microbial tranquility to distressed scalps.',
@@ -150,11 +152,12 @@ export const PRODUCTS: Product[] = [
     concerns: ['growth', 'damage', 'scalp'],
     rating: 4.9,
     reviewCount: 1890,
-    basePrice: 2450,
-    originalPrice: 2950,
+    basePrice: 1799,
+    originalPrice: 2250,
     sizes: [
-      { size: '200ml', price: 2450, label: 'Standard Ritual', isPopular: true },
-      { size: '2 x 200ml', price: 4450, label: 'Double Protection Pack' }
+      { size: 'Dark Bottle (200ml)', price: 1799, label: 'Matte Black Luxury Edition', isPopular: true },
+      { size: 'Light Bottle (200ml)', price: 1999, label: 'Crystal Clear Royal Edition' },
+      { size: 'Duo Pack (Dark + Light)', price: 3499, label: '2-Bottle Family Pack (Save Rs. 299)' },
     ],
     images: [
       '/images/zulveen-dark-bottle.jpg',
@@ -210,15 +213,16 @@ export const PRODUCTS: Product[] = [
     concerns: ['growth', 'scalp', 'damage'],
     rating: 4.9,
     reviewCount: 1650,
-    basePrice: 2650,
-    originalPrice: 3150,
+    basePrice: 1999,
+    originalPrice: 2450,
     sizes: [
-      { size: '200ml', price: 2650, label: 'Standard Ritual', isPopular: true },
-      { size: '2 x 200ml', price: 4850, label: 'Crown Density Bundle' }
+      { size: 'Light Bottle (200ml)', price: 1999, label: 'Crystal Clear Royal Edition', isPopular: true },
+      { size: 'Dark Bottle (200ml)', price: 1799, label: 'Matte Black Luxury Edition' },
+      { size: 'Duo Pack (Dark + Light)', price: 3499, label: '2-Bottle Family Pack (Save Rs. 299)' },
     ],
     images: [
-      '/images/zulveen-dark-bottle.jpg',
       '/images/zulveen-light-bottle.jpg',
+      '/images/zulveen-dark-bottle.jpg',
     ],
     description: 'A regal, bio-active elixir formulated with Egyptian and indigenous cold-pressed Kalonji (Black Cumin) seeds. Rich in natural thymoquinone to stimulate dormant hair follicles, densify widening crown part lines, and fortify fragile thinning strands.',
     ritualStory: 'Kalonji has been celebrated for centuries across Unani and prophetic traditions as a universal revitalizer for vitality and strength.',
@@ -269,11 +273,12 @@ export const PRODUCTS: Product[] = [
     concerns: ['dryness', 'damage', 'frizz'],
     rating: 4.8,
     reviewCount: 980,
-    basePrice: 2250,
-    originalPrice: 2750,
+    basePrice: 1799,
+    originalPrice: 2250,
     sizes: [
-      { size: '200ml', price: 2250, label: 'Standard Ritual', isPopular: true },
-      { size: '2 x 200ml', price: 4100, label: 'Deep Hydration Duo' }
+      { size: 'Dark Bottle (200ml)', price: 1799, label: 'Matte Black Luxury Edition', isPopular: true },
+      { size: 'Light Bottle (200ml)', price: 1999, label: 'Crystal Clear Royal Edition' },
+      { size: 'Duo Pack (Dark + Light)', price: 3499, label: '2-Bottle Family Pack (Save Rs. 299)' },
     ],
     images: [
       '/images/zulveen-dark-bottle.jpg',
@@ -327,15 +332,16 @@ export const PRODUCTS: Product[] = [
     concerns: ['shine', 'frizz', 'dryness'],
     rating: 4.9,
     reviewCount: 1120,
-    basePrice: 2750,
-    originalPrice: 3250,
+    basePrice: 1999,
+    originalPrice: 2450,
     sizes: [
-      { size: '200ml', price: 2750, label: 'Standard Ritual', isPopular: true },
-      { size: '2 x 200ml', price: 4950, label: 'Glow Duo' }
+      { size: 'Light Bottle (200ml)', price: 1999, label: 'Crystal Clear Royal Edition', isPopular: true },
+      { size: 'Dark Bottle (200ml)', price: 1799, label: 'Matte Black Luxury Edition' },
+      { size: 'Duo Pack (Dark + Light)', price: 3499, label: '2-Bottle Family Pack (Save Rs. 299)' },
     ],
     images: [
-      '/images/zulveen-dark-bottle.jpg',
       '/images/zulveen-light-bottle.jpg',
+      '/images/zulveen-dark-bottle.jpg',
     ],
     description: 'An ultra-light, non-greasy finishing elixir crafted with 100% pure Sonoran golden jojoba and camellia flower nectar. Seamlessly mimics natural scalp sebum to seal split ends, tame flyaways, and impart a luminous glass-like shine without weighing hair down.',
     ritualStory: 'Harvested from organic desert jojoba bushes and cold-filtered to perfection at WASEER Dawa Khana for daily effortless hair styling.',
@@ -385,15 +391,16 @@ export const PRODUCTS: Product[] = [
     concerns: ['growth', 'scalp', 'damage', 'frizz', 'shine'],
     rating: 5.0,
     reviewCount: 890,
-    basePrice: 4450,
-    originalPrice: 5900,
+    basePrice: 3499,
+    originalPrice: 4200,
     sizes: [
-      { size: '2 x 200ml (400ml Total)', price: 4450, label: '3-Month Course (Save Rs. 1,450)', isPopular: true },
-      { size: '3 x 200ml (600ml Total)', price: 6250, label: 'Family Mega Pack (Save Rs. 2,600)' }
+      { size: 'Duo Pack (Dark + Light)', price: 3499, label: 'Complete 2-Bottle Set (Dark + Light)', isPopular: true },
+      { size: '2x Dark Bottles (400ml)', price: 3399, label: 'Twin Matte Black Pack' },
+      { size: '2x Light Bottles (400ml)', price: 3699, label: 'Twin Crystal Clear Pack' }
     ],
     images: [
-      '/images/zulveen-dark-bottle.jpg',
       '/images/zulveen-light-bottle.jpg',
+      '/images/zulveen-dark-bottle.jpg',
     ],
     description: 'The ultimate 3-month comprehensive botanical hair revitalization course. Contains two full-size 200ml bottles of ZULVEEN Herbal Hair Oil by WASEER Dawa Khana at a direct 25% saving. Guaranteed authentic herbal nourishment for long-term root strength and thick hair growth.',
     ritualStory: 'Recommended by traditional hakims as a full 90-day biological hair cycle regimen to awaken dormant roots, reverse hair thinning, and secure lifetime follicle resilience.',

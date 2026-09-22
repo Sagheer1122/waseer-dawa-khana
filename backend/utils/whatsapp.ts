@@ -36,6 +36,9 @@ export function generateWhatsAppOrderUrl(order: WhatsAppOrderPayload): string {
     )
     .join('\n');
 
+  const isLahore = (order.shippingAddress || '').toLowerCase().includes('lahore');
+  const deliveryStatus = isLahore ? 'FREE Delivery (Lahore)' : 'Rs. 250 (Nationwide Dispatch)';
+
   const message = `🌿 *NEW ORDER - WASEER HERBAL HAIR OIL* 🌿
 Order #: ${order.orderNumber}
 ----------------------------------------
@@ -48,7 +51,7 @@ ${itemsList}
 
 💰 *Total Payable:* Rs. ${order.totalAmount.toLocaleString('en-PK')}
 💳 *Payment:* ${order.paymentMethod ? order.paymentMethod.toUpperCase() : 'CASH ON DELIVERY'}
-🚚 *Delivery:* Nationwide Dispatch (TCS / Leopards)
+🚚 *Delivery Charges:* ${deliveryStatus}
 ----------------------------------------
 Assalam-o-Alaikum WASEER Dawa Khana, please confirm and dispatch my order!`;
 

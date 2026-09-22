@@ -197,15 +197,15 @@ function ShopContent() {
               </div>
               <input
                 type="range"
-                min="2000"
+                min="1500"
                 max="10000"
-                step="500"
+                step="100"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="w-full accent-forest cursor-pointer"
               />
               <div className="flex justify-between text-[10px] text-earth-400 font-sans">
-                <span>Rs. 2,000</span>
+                <span>Rs. 1,500</span>
                 <span>Rs. 10,000</span>
               </div>
             </div>
@@ -302,9 +302,9 @@ function ShopContent() {
                 </div>
                 <input
                   type="range"
-                  min="2000"
+                  min="1500"
                   max="10000"
-                  step="500"
+                  step="100"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
                   className="w-full accent-forest cursor-pointer"

@@ -26,35 +26,35 @@ interface SlideData {
 const SLIDES: SlideData[] = [
   {
     id: 'slide-1',
-    badge: 'BY THE PRODUCT OF WASEER DAWA KHANA',
+    badge: 'BY THE PRODUCT OF WASEER DAWA KHANA • ZULVEEN',
     headline: 'Our Most Trusted',
     headlineAccent: 'Herbal Hair Oil.',
     subtext: 'Fast-absorbing, 100% steroid and chemical-free formula by WASEER Dawa Khana to stop excessive hair fall, awaken weak roots, and promote rapid natural growth.',
-    primaryCtaText: 'Shop Our Best-Seller',
-    primaryCtaLink: '/shop',
+    primaryCtaText: 'Shop Matte Black Edition',
+    primaryCtaLink: '/product/organic-botanical-hair-growth-oil',
     secondaryCtaText: 'WhatsApp Order',
-    secondaryCtaLink: 'https://wa.me/923239009042?text=Hello%20WASEER%20Dawa%20Khana,%20I%20want%20to%20order%20ZULVEEN%20Herbal%20Hair%20Oil',
-    productPrice: 'Rs. 2,450',
-    productOriginalPrice: 'Rs. 2,950',
+    secondaryCtaLink: 'https://wa.me/923239009042?text=Hello%20WASEER%20Dawa%20Khana,%20I%20want%20to%20order%20ZULVEEN%20Herbal%20Hair%20Oil%20Matte%20Black%20(Rs.%201,799)',
+    productPrice: 'Rs. 1,799',
+    productOriginalPrice: 'Rs. 2,499',
     bgImage: '/images/waseer-hero-landscape.jpg',
     productImage: '/images/zulveen-dark-bottle.jpg',
-    accentBadge: '100% Herbal • Cold Pressed',
+    accentBadge: 'Matte Black Edition • Rs. 1,799',
   },
   {
     id: 'slide-2',
-    badge: 'ANCIENT UNANI BOTANICAL REMEDY',
+    badge: 'ANCIENT UNANI BOTANICAL REMEDY • ZULVEEN',
     headline: 'Nourish Your Hair,',
     headlineAccent: 'Naturally.',
     subtext: 'Infused with precious hand-selected botanical roots and cold-pressed seeds. Formulated to restore mirror shine, strengthen split ends, and balance your scalp microbiome.',
-    primaryCtaText: 'Shop The Best Haircare',
+    primaryCtaText: 'Shop Crystal Clear Edition',
     primaryCtaLink: '/product/organic-botanical-hair-growth-oil',
     secondaryCtaText: 'Free Hair Consultation',
     secondaryCtaLink: 'https://wa.me/923239009042?text=Hello%20WASEER%20Dawa%20Khana,%20I%20need%20a%20free%20consultation%20about%20my%20hair%20problem',
-    productPrice: 'Rs. 2,450',
-    productOriginalPrice: 'Rs. 2,950',
+    productPrice: 'Rs. 1,999',
+    productOriginalPrice: 'Rs. 2,699',
     bgImage: '/images/waseer-hero-landscape.jpg',
     productImage: '/images/zulveen-light-bottle.jpg',
-    accentBadge: 'No Mineral Oil • Zero Chemicals',
+    accentBadge: 'Crystal Clear Edition • Rs. 1,999',
   },
 ];
 
@@ -200,13 +200,13 @@ export const Hero: React.FC = () => {
             </motion.div>
 
             {/* Price & Delivery Mini Note */}
-            <div className="pt-2 flex items-center gap-4 text-xs font-sans text-cream-200">
+            <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-sans text-cream-200">
               <span className="flex items-center gap-1.5 font-semibold text-ivory">
                 <span className="text-gold text-sm font-bold">{slide.productPrice}</span>
                 <span className="line-through text-cream-400/80 text-[11px]">{slide.productOriginalPrice}</span>
               </span>
-              <span className="w-1 h-1 rounded-full bg-cream-400" />
-              <span className="text-[11px] text-cream-300">Free Delivery &amp; Cash on Delivery Available</span>
+              <span className="w-1 h-1 rounded-full bg-cream-400 hidden sm:inline-block" />
+              <span className="text-[11px] text-emerald-300 font-medium">FREE Delivery in Lahore • Rs. 250 Outside Lahore • Cash on Delivery</span>
             </div>
 
           </div>

@@ -19,7 +19,10 @@ export async function createOrder(data: Partial<IOrder>): Promise<{ order: IOrde
 
   const orderNumber = `PK-${Math.floor(100000 + Math.random() * 900000)}`;
 
-  const totalAmount = data.totalAmount || data.items.reduce((sum, it) => sum + it.price * it.quantity, 0);
+  const isLahore = (data.shippingAddress || '').toLowerCase().includes('lahore');
+  const itemsSum = data.items.reduce((sum, it) => sum + it.price * it.quantity, 0);
+  const deliveryFee = isLahore ? 0 : 250;
+  const totalAmount = data.totalAmount || (itemsSum + deliveryFee);
 
   const newOrder = new Order({
     orderNumber,

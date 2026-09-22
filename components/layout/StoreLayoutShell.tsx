@@ -2,15 +2,17 @@
 
 import React, { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { CartDrawer } from '@/components/layout/CartDrawer';
 import { MobileMenu } from '@/components/layout/MobileMenu';
 import { SearchModal } from '@/components/layout/SearchModal';
-import { QuickViewModal } from '@/components/layout/QuickViewModal';
 import { ToastContainer } from '@/components/ui/Toast';
-import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp';
+
+const QuickViewModal = dynamic(() => import('@/components/layout/QuickViewModal').then(mod => mod.QuickViewModal), { ssr: false });
+const FloatingWhatsApp = dynamic(() => import('@/components/layout/FloatingWhatsApp').then(mod => mod.FloatingWhatsApp), { ssr: false });
 
 export const StoreLayoutShell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname();

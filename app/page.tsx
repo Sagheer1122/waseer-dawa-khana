@@ -1,16 +1,40 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { Hero } from '@/components/home/Hero';
 import { TrustIndicators } from '@/components/home/TrustIndicators';
 import { FeaturedProduct } from '@/components/home/FeaturedProduct';
 import { CategorySection } from '@/components/home/CategorySection';
 import { IngredientSection } from '@/components/home/IngredientSection';
 import { HowItWorks } from '@/components/home/HowItWorks';
-import { BeforeAfterSlider } from '@/components/home/BeforeAfterSlider';
-import { HairQuiz } from '@/components/home/HairQuiz';
-import { Newsletter } from '@/components/home/Newsletter';
-import { FaqSection } from '@/components/home/FaqSection';
-
 import { generateWebsiteSchema, generateFAQSchema, HOMEPAGE_FAQS } from '@/lib/seo';
+
+const BeforeAfterSlider = dynamic(
+  () => import('@/components/home/BeforeAfterSlider').then((mod) => mod.BeforeAfterSlider),
+  {
+    loading: () => <div className="py-20 text-center text-forest/40 min-h-[420px] flex items-center justify-center font-serif text-lg">Loading visual transformations...</div>,
+  }
+);
+
+const HairQuiz = dynamic(
+  () => import('@/components/home/HairQuiz').then((mod) => mod.HairQuiz),
+  {
+    loading: () => <div className="py-16 min-h-[300px]" />,
+  }
+);
+
+const FaqSection = dynamic(
+  () => import('@/components/home/FaqSection').then((mod) => mod.FaqSection),
+  {
+    loading: () => <div className="py-16 min-h-[300px]" />,
+  }
+);
+
+const Newsletter = dynamic(
+  () => import('@/components/home/Newsletter').then((mod) => mod.Newsletter),
+  {
+    loading: () => <div className="py-12 min-h-[200px]" />,
+  }
+);
 
 export default function HomePage() {
   const websiteSchema = generateWebsiteSchema();
