@@ -107,10 +107,10 @@ export const Footer: React.FC = () => {
                     <span className="text-[10px] font-sans font-bold text-gold -mt-1">®</span>
                   </div>
                   <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold font-bold mt-0.5">
-                    HERBAL HAIR OIL
+                    DAWA KHANA
                   </span>
                   <span className="font-sans text-[9.5px] tracking-wider uppercase text-cream-200 font-semibold mt-1">
-                    A Product of WASEER Dawa Khana
+                    Authentic Unani &amp; Botanical Remedies
                   </span>
                 </div>
               </Link>
@@ -164,7 +164,7 @@ export const Footer: React.FC = () => {
                 >
                   ©
                 </button>
-                <span>{new Date().getFullYear()} WASEER HERBAL HAIR OIL. All Rights Reserved.</span>
+                <span>{new Date().getFullYear()} WASEER DAWA KHANA. All Rights Reserved.</span>
               </p>
             </div>
           </div>

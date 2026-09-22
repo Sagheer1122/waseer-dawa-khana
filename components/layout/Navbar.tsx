@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
                 <span className="text-[10px] sm:text-xs font-sans font-bold text-forest -mt-1 sm:-mt-2">®</span>
               </div>
               <span className="font-sans text-[8.5px] sm:text-[10px] md:text-[10.5px] tracking-[0.25em] sm:tracking-[0.3em] uppercase text-earth-600 font-bold mt-0.5 whitespace-nowrap">
-                HERBAL HAIR OIL
+                DAWA KHANA
               </span>
             </div>
           </Link>

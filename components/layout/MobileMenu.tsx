@@ -84,10 +84,7 @@ export const MobileMenu: React.FC = () => {
                     <span className="text-[9px] font-sans font-bold text-forest -mt-1">®</span>
                   </div>
                   <span className="font-sans text-[8.5px] uppercase tracking-wider text-forest font-bold mt-0.5">
-                    Herbal Hair Oil
-                  </span>
-                  <span className="font-sans text-[7.5px] text-earth-500 font-semibold">
-                    By WASEER Dawa Khana
+                    DAWA KHANA
                   </span>
                 </div>
               </div>
