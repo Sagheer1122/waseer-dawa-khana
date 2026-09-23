@@ -3,8 +3,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, MessageCircle, ShieldCheck, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 
 interface SlideData {
   id: string;
@@ -143,12 +144,9 @@ export const Hero: React.FC = () => {
 
 
             {/* Main Headline */}
-            <motion.div
+            <div
               key={`head-${slide.id}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-1"
+              className="space-y-1 transition-all duration-300"
             >
               <span className="inline-block text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gold/90 font-sans">
                 {slide.badge}
@@ -159,25 +157,19 @@ export const Hero: React.FC = () => {
                   {slide.headlineAccent}
                 </span>
               </h1>
-            </motion.div>
+            </div>
 
             {/* Subtext */}
-            <motion.p
+            <p
               key={`sub-${slide.id}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-sans text-sm sm:text-base lg:text-lg text-cream-100/90 max-w-xl leading-relaxed font-normal"
+              className="font-sans text-sm sm:text-base lg:text-lg text-cream-100/90 max-w-xl leading-relaxed font-normal transition-opacity duration-300"
             >
               {slide.subtext}
-            </motion.p>
+            </p>
 
             {/* CTAs: Ostruce-Style Dark Pill Button + WhatsApp Order */}
-            <motion.div
+            <div
               key={`cta-${slide.id}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2"
             >
               <Link
@@ -194,10 +186,10 @@ export const Hero: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 sm:py-4 rounded-full bg-emerald-600/90 hover:bg-emerald-500 active:scale-[0.98] text-ivory font-sans text-xs sm:text-sm font-bold tracking-wider transition-all shadow-lg text-center"
               >
-                <MessageCircle className="w-4 h-4 fill-white" />
+                <WhatsAppIcon className="w-4 h-4 fill-white" />
                 <span>{slide.secondaryCtaText}</span>
               </a>
-            </motion.div>
+            </div>
 
             {/* Price & Delivery Mini Note */}
             <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-sans text-cream-200">
@@ -262,19 +254,12 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Floating Top-Left Accent Pill */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`pill-${slide.id}`}
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 6 }}
-                  transition={{ duration: 0.35 }}
-                  className="absolute -top-3 -left-3 bg-[#0D241A] text-gold border border-gold/60 px-3.5 py-1.5 rounded-full text-[10.5px] font-sans font-bold uppercase tracking-wider shadow-xl flex items-center gap-1.5"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-gold" />
-                  <span>{slide.accentBadge}</span>
-                </motion.div>
-              </AnimatePresence>
+              <div
+                className="absolute -top-3 -left-3 bg-[#0D241A] text-gold border border-gold/60 px-3.5 py-1.5 rounded-full text-[10.5px] font-sans font-bold uppercase tracking-wider shadow-xl flex items-center gap-1.5 transition-all duration-300 z-10"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-gold flex-shrink-0" />
+                <span>{slide.accentBadge}</span>
+              </div>
             </div>
           </div>
 

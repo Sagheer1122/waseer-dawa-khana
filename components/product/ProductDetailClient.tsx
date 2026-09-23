@@ -23,8 +23,8 @@ import {
   Check,
   ArrowRight,
   Droplet,
-  MessageCircle,
 } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 
 interface ProductDetailClientProps {
   initialProduct: Product;
@@ -429,7 +429,7 @@ export function ProductDetailClient({
                 }}
                 className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-emerald-700 hover:bg-emerald-600 text-ivory font-sans text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md active:scale-98"
               >
-                <MessageCircle className="w-4 h-4 fill-white" />
+                <WhatsAppIcon className="w-4 h-4 fill-white" />
                 <span>Order via WhatsApp • {formatPrice(currentPrice * quantity)}</span>
               </button>
             </div>

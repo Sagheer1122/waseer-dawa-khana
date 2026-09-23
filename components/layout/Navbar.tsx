@@ -65,24 +65,24 @@ export const Navbar: React.FC = () => {
           </button>
 
           <Link href="/" className="inline-flex items-center gap-2.5 sm:gap-3.5 group py-0.5">
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex-shrink-0">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex-shrink-0">
               <Image
                 src="/images/waseer-emblem.png"
                 alt="WASEER Emblem"
                 fill
-                sizes="(max-width: 640px) 40px, (max-width: 768px) 48px, 56px"
+                sizes="(max-width: 640px) 48px, (max-width: 768px) 56px, 64px"
                 className="object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
                 priority
               />
             </div>
-            <div className="flex flex-col text-left">
+            <div className="flex flex-col text-left justify-center">
               <div className="flex items-center gap-1 leading-none">
-                <span className="font-serif text-xl sm:text-2xl md:text-3xl font-bold tracking-wider sm:tracking-widest text-forest group-hover:text-forest-700 transition-colors">
+                <span className="font-serif text-2xl sm:text-3xl md:text-[32px] font-bold tracking-widest text-forest group-hover:text-forest-700 transition-colors">
                   WASEER
                 </span>
                 <span className="text-[10px] sm:text-xs font-sans font-bold text-forest -mt-1 sm:-mt-2">®</span>
               </div>
-              <span className="font-sans text-[8.5px] sm:text-[10px] md:text-[10.5px] tracking-[0.25em] sm:tracking-[0.3em] uppercase text-earth-600 font-bold mt-0.5 whitespace-nowrap">
+              <span className="font-sans text-[10px] sm:text-[11.5px] md:text-[12.5px] tracking-[0.38em] sm:tracking-[0.41em] md:tracking-[0.43em] uppercase text-earth-700 font-bold mt-1 whitespace-nowrap block">
                 DAWA KHANA
               </span>
             </div>

@@ -38,7 +38,7 @@ export function generateOrganizationSchema() {
     },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Plot 24-C, Main Boulevard, Gulberg III',
+      streetAddress: 'Gulshan-e-Mustafa Society, Johar Town',
       addressLocality: 'Lahore',
       addressRegion: 'Punjab',
       postalCode: '54000',

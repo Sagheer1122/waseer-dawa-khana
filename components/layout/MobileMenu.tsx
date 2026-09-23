@@ -66,24 +66,24 @@ export const MobileMenu: React.FC = () => {
           >
             {/* Header */}
             <div className="p-4 sm:p-5 border-b border-cream-200 flex items-center justify-between bg-cream-50">
-              <div className="flex items-center gap-2.5">
-                <div className="relative w-9 h-9 flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="relative w-12 h-12 flex-shrink-0">
                   <Image
                     src="/images/waseer-emblem.png"
                     alt="WASEER Logo"
                     fill
-                    sizes="36px"
+                    sizes="48px"
                     className="object-contain"
                   />
                 </div>
-                <div className="flex flex-col text-left">
+                <div className="flex flex-col text-left justify-center">
                   <div className="flex items-center gap-1 leading-none">
-                    <span className="font-serif text-lg font-bold tracking-widest text-forest">
+                    <span className="font-serif text-2xl font-bold tracking-widest text-forest">
                       WASEER
                     </span>
-                    <span className="text-[9px] font-sans font-bold text-forest -mt-1">®</span>
+                    <span className="text-[10px] font-sans font-bold text-forest -mt-1">®</span>
                   </div>
-                  <span className="font-sans text-[8.5px] uppercase tracking-wider text-forest font-bold mt-0.5">
+                  <span className="font-sans text-[11px] uppercase tracking-[0.38em] text-earth-700 font-bold mt-0.5 block">
                     DAWA KHANA
                   </span>
                 </div>

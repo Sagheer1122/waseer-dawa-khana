@@ -174,7 +174,7 @@ export default function ContactPage() {
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-cream-50 rounded-3xl p-6 sm:p-8 border border-cream-300 space-y-4">
               <h3 className="font-serif text-xl font-bold text-forest">
-                Botanical Concierge Details
+                WASEER Dawa Khana Contact Details
               </h3>
 
               <div className="space-y-3 font-sans text-xs text-earth-700">
@@ -182,14 +182,19 @@ export default function ContactPage() {
                   <Mail className="w-4 h-4 text-forest flex-shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-forest">Direct Email</strong>
-                    <span>concierge@aurabotanica.pk</span>
+                    <a
+                      href="mailto:waseerdawakhana@gmail.com"
+                      className="hover:text-forest transition-colors"
+                    >
+                      waseerdawakhana@gmail.com
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <Phone className="w-4 h-4 text-forest flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-forest">WhatsApp & Client Concierge</strong>
+                    <strong className="block text-forest">WhatsApp &amp; Helpline</strong>
                     <span>+92 323 9009042 (Mon–Sat, 10am–8pm PKT)</span>
                   </div>
                 </div>
@@ -197,8 +202,8 @@ export default function ContactPage() {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-forest flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-forest">Formulation Studio & Apothecary</strong>
-                    <span>Plot 24-C, Main Boulevard, Gulberg III, Lahore, Pakistan</span>
+                    <strong className="block text-forest">Dawa Khana &amp; Formulation Studio</strong>
+                    <span>Gulshan-e-Mustafa Society, Johar Town, Lahore, Pakistan</span>
                   </div>
                 </div>
               </div>

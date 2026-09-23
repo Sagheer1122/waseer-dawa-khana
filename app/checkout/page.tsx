@@ -22,8 +22,8 @@ import {
   Banknote,
   Smartphone,
   Building2,
-  MessageCircle,
 } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { submitOrder } from '@/lib/api';
 
 const PAKISTANI_CITIES = [
@@ -272,7 +272,7 @@ export default function CheckoutPage() {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-ivory font-sans text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-98"
               >
-                <MessageCircle className="w-4 h-4 fill-white" />
+                <WhatsAppIcon className="w-4 h-4 fill-white" />
                 <span>Open WhatsApp Order</span>
               </a>
             )}

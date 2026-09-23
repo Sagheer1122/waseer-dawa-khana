@@ -7,12 +7,12 @@ import {
   CheckCircle,
   Truck,
   XCircle,
-  MessageCircle,
   Phone,
   RefreshCw,
   Loader2,
   Search,
 } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { formatPrice } from '@/lib/utils';
 
 interface OrderItem {
@@ -172,7 +172,7 @@ export default function AdminOrdersPage() {
                             className="inline-flex items-center gap-1 text-[11px] text-emerald-400 hover:text-emerald-300 transition-colors"
                             title="Chat with customer on WhatsApp"
                           >
-                            <MessageCircle className="w-3.5 h-3.5" />
+                            <WhatsAppIcon className="w-3.5 h-3.5 fill-current" />
                             <span>{ord.customerPhone}</span>
                           </a>
                         </div>

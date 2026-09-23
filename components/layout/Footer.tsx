@@ -3,21 +3,49 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Leaf, Lock, X, ArrowRight, ShieldCheck, AlertCircle, KeyRound, Mail } from 'lucide-react';
+import { Leaf, Lock, X, ArrowRight, ShieldCheck, AlertCircle, KeyRound, Mail, Loader2, CheckCircle2 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [isGatewayOpen, setIsGatewayOpen] = useState(false);
-  const [step, setStep] = useState<'pin' | 'login'>('pin');
+  const [step, setStep] = useState<'pin' | 'login' | 'forgot' | 'reset'>('pin');
   
   // Step 1: PIN
   const [pin, setPin] = useState('');
   const [pinError, setPinError] = useState('');
+  const [isVerifyingPin, setIsVerifyingPin] = useState(false);
   
   // Step 2: Login Credentials
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  // Step 3: Forgot Password / PIN
+  const [forgotType, setForgotType] = useState<'pin' | 'password'>('pin');
+  const [forgotEmail, setForgotEmail] = useState('waseerdawakhana@gmail.com');
+  const [isSendingForgot, setIsSendingForgot] = useState(false);
+  const [forgotError, setForgotError] = useState('');
+  const [forgotSuccess, setForgotSuccess] = useState('');
+
+  // Step 4: Reset Credentials
+  const [resetPin, setResetPin] = useState('');
+  const [resetNewPassword, setResetNewPassword] = useState('');
+  const [resetNewPin, setResetNewPin] = useState('');
+  const [isResetting, setIsResetting] = useState(false);
+  const [resetError, setResetError] = useState('');
+  const [resetSuccess, setResetSuccess] = useState('');
+
+  const handleOpenForgot = (type: 'pin' | 'password') => {
+    setForgotType(type);
+    setForgotError('');
+    setForgotSuccess('');
+    setResetError('');
+    setResetSuccess('');
+    setResetPin('');
+    setResetNewPassword('');
+    setResetNewPin('');
+    setStep('forgot');
+  };
 
   const handleOpenGateway = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -27,6 +55,10 @@ export const Footer: React.FC = () => {
     setEmail('');
     setPassword('');
     setLoginError('');
+    setForgotError('');
+    setForgotSuccess('');
+    setResetError('');
+    setResetSuccess('');
     setIsGatewayOpen(true);
   };
 
@@ -39,14 +71,44 @@ export const Footer: React.FC = () => {
     setLoginError('');
   };
 
-  const handleVerifyPin = (e: React.FormEvent) => {
+  const handleVerifyPin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (pin.trim() === '6358') {
+    const cleanPin = pin.trim();
+    if (!cleanPin) return;
+
+    // Instant local check for default PIN
+    if (cleanPin === '6358') {
       setPinError('');
       setStep('login');
-    } else {
-      setPinError('Incorrect Passcode');
-      setPin('');
+      return;
+    }
+
+    setIsVerifyingPin(true);
+    setPinError('');
+
+    try {
+      const res = await fetch('/api/auth/verify-pin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin: cleanPin }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setStep('login');
+      } else {
+        setPinError(data.message || 'Incorrect Passcode');
+        setPin('');
+      }
+    } catch {
+      // Fallback
+      if (cleanPin === '6358') {
+        setStep('login');
+      } else {
+        setPinError('Incorrect Passcode');
+        setPin('');
+      }
+    } finally {
+      setIsVerifyingPin(false);
     }
   };
 
@@ -81,6 +143,110 @@ export const Footer: React.FC = () => {
     }
   };
 
+  const handleSendForgotEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setForgotError('');
+    setForgotSuccess('');
+    setIsSendingForgot(true);
+
+    try {
+      const res = await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: forgotEmail.trim(), type: forgotType }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Failed to send recovery email');
+      }
+      setForgotSuccess(
+        `6-digit ${forgotType === 'pin' ? 'PIN' : 'password'} recovery code sent to ${forgotEmail}. Check inbox.`
+      );
+      setResetPin('');
+      setStep('reset');
+    } catch (err: any) {
+      setForgotError(err.message || 'Failed to send recovery code.');
+    } finally {
+      setIsSendingForgot(false);
+    }
+  };
+
+  const handleResetSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setResetError('');
+    setResetSuccess('');
+
+    if (!resetPin.trim()) {
+      setResetError('Please enter the 6-digit code from your email');
+      return;
+    }
+
+    const newPass = resetNewPassword.trim();
+    const newSecurityPin = resetNewPin.trim();
+
+    if (forgotType === 'password' && !newPass) {
+      setResetError('Please enter a new password (min 8 characters)');
+      return;
+    }
+
+    if (forgotType === 'pin' && !newSecurityPin) {
+      setResetError('Please enter a new security PIN (4-8 digits)');
+      return;
+    }
+
+    if (newPass && newPass.length < 8) {
+      setResetError('New password must be at least 8 characters');
+      return;
+    }
+
+    if (newSecurityPin && (newSecurityPin.length < 4 || newSecurityPin.length > 8)) {
+      setResetError('Security PIN must be between 4 and 8 digits');
+      return;
+    }
+
+    setIsResetting(true);
+
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: forgotEmail.trim().toLowerCase(),
+          pin: resetPin.trim(),
+          newPassword: newPass || undefined,
+          newPin: newSecurityPin || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Failed to update credentials. Verify 6-digit code.');
+      }
+
+      if (newPass && newSecurityPin) {
+        setResetSuccess('Password and Security PIN updated successfully!');
+      } else if (newPass) {
+        setResetSuccess('Password updated! You can now sign in.');
+      } else {
+        setResetSuccess('Security PIN updated! You can now enter your new passcode.');
+      }
+
+      setTimeout(() => {
+        if (newPass) {
+          setEmail(forgotEmail);
+          setPassword(newPass);
+          setStep('login');
+        } else {
+          setPin('');
+          setStep('pin');
+        }
+      }, 1500);
+    } catch (err: any) {
+      setResetError(err.message || 'Error updating credentials.');
+    } finally {
+      setIsResetting(false);
+    }
+  };
+
   return (
     <>
       <footer className="bg-forest text-ivory border-t border-forest-800">
@@ -89,27 +255,27 @@ export const Footer: React.FC = () => {
 
             {/* Brand Info Column */}
             <div className="md:col-span-6 space-y-4">
-              <Link href="/" className="inline-flex items-center gap-3">
-                <div className="relative w-12 h-12 flex-shrink-0">
+              <Link href="/" className="inline-flex items-center gap-3.5 group">
+                <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0">
                   <Image
                     src="/images/waseer-emblem.png"
                     alt="WASEER Logo"
                     fill
-                    sizes="48px"
-                    className="object-contain drop-shadow-md"
+                    sizes="64px"
+                    className="object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <div className="flex flex-col text-left">
+                <div className="flex flex-col text-left justify-center">
                   <div className="flex items-center gap-1 leading-none">
-                    <span className="font-serif text-2xl font-bold tracking-widest text-ivory">
+                    <span className="font-serif text-3xl sm:text-4xl font-bold tracking-widest text-ivory">
                       WASEER
                     </span>
-                    <span className="text-[10px] font-sans font-bold text-gold -mt-1">®</span>
+                    <span className="text-xs font-sans font-bold text-gold -mt-1 sm:-mt-1.5">®</span>
                   </div>
-                  <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold font-bold mt-0.5">
+                  <span className="font-sans text-[11px] sm:text-[13px] tracking-[0.38em] sm:tracking-[0.41em] uppercase text-gold font-bold mt-1 block">
                     DAWA KHANA
                   </span>
-                  <span className="font-sans text-[9.5px] tracking-wider uppercase text-cream-200 font-semibold mt-1">
+                  <span className="font-sans text-[10px] sm:text-[11px] tracking-wider uppercase text-cream-300/80 font-medium mt-1">
                     Authentic Unani &amp; Botanical Remedies
                   </span>
                 </div>
@@ -154,7 +320,7 @@ export const Footer: React.FC = () => {
               <span>A Product of WASEER Dawa Khana • 100% Herbal &amp; Pure</span>
             </div>
             <div>
-              <p suppressHydrationWarning className="flex items-center gap-1">
+              <div className="flex items-center gap-1">
                 {/* Secret Gateway Trigger on © */}
                 <button
                   type="button"
@@ -165,7 +331,7 @@ export const Footer: React.FC = () => {
                   ©
                 </button>
                 <span>{new Date().getFullYear()} WASEER DAWA KHANA. All Rights Reserved.</span>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -227,17 +393,51 @@ export const Footer: React.FC = () => {
 
                   <button
                     type="submit"
-                    disabled={!pin.trim()}
+                    disabled={!pin.trim() || isVerifyingPin}
                     className="w-full py-3.5 px-6 rounded-full bg-gold text-forest font-sans text-xs font-bold uppercase tracking-widest hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span>Verify Passcode</span>
-                    <ArrowRight className="w-4 h-4" />
+                    {isVerifyingPin ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Verifying...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Verify Passcode</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
+
+                  <div className="pt-3 border-t border-forest-800/80 text-center space-y-2">
+                    <p className="text-[11px] text-cream-400 font-sans">
+                      Trouble accessing portal?
+                    </p>
+                    <div className="flex items-center justify-center gap-3 font-sans">
+                      <button
+                        type="button"
+                        onClick={() => handleOpenForgot('pin')}
+                        className="text-xs text-gold hover:text-gold-light hover:underline font-bold transition-colors cursor-pointer inline-flex items-center gap-1"
+                      >
+                        <KeyRound className="w-3.5 h-3.5" />
+                        <span>Forgot PIN?</span>
+                      </button>
+                      <span className="text-cream-600 text-xs">•</span>
+                      <button
+                        type="button"
+                        onClick={() => handleOpenForgot('password')}
+                        className="text-xs text-gold hover:text-gold-light hover:underline font-bold transition-colors cursor-pointer inline-flex items-center gap-1"
+                      >
+                        <Lock className="w-3.5 h-3.5" />
+                        <span>Forgot Password?</span>
+                      </button>
+                    </div>
+                  </div>
                 </form>
               </div>
             )}
 
-            {/* STEP 2: Admin Login Form (Revealed ONLY after PIN 6358) */}
+            {/* STEP 2: Admin Login Form (Revealed ONLY after PIN) */}
             {step === 'login' && (
               <div className="space-y-6">
                 <div className="text-center space-y-2">
@@ -265,7 +465,7 @@ export const Footer: React.FC = () => {
                         autoComplete="off"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter email address"
+                        placeholder="waseerdawakhana@gmail.com"
                         className="w-full text-xs font-sans py-3 pl-10 pr-4 rounded-xl bg-forest-950/70 border border-forest-700 text-ivory placeholder-cream-600 focus:outline-none focus:border-gold transition-all"
                       />
                     </div>
@@ -287,6 +487,18 @@ export const Footer: React.FC = () => {
                         className="w-full text-xs font-sans py-3 pl-10 pr-4 rounded-xl bg-forest-950/70 border border-forest-700 text-ivory placeholder-cream-600 focus:outline-none focus:border-gold transition-all"
                       />
                     </div>
+                    <div className="flex justify-end pt-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (email) setForgotEmail(email);
+                          handleOpenForgot('password');
+                        }}
+                        className="text-[11px] text-gold hover:text-gold-light hover:underline font-semibold transition-colors cursor-pointer"
+                      >
+                        Forgot Password?
+                      </button>
+                    </div>
                   </div>
 
                   {loginError && (
@@ -302,7 +514,10 @@ export const Footer: React.FC = () => {
                     className="w-full py-3.5 px-6 rounded-full bg-gold text-forest font-sans text-xs font-bold uppercase tracking-widest hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mt-2"
                   >
                     {isLoading ? (
-                      <span>Signing in...</span>
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Signing in...</span>
+                      </>
                     ) : (
                       <>
                         <span>Enter Dashboard</span>
@@ -310,6 +525,232 @@ export const Footer: React.FC = () => {
                       </>
                     )}
                   </button>
+                </form>
+              </div>
+            )}
+
+            {/* STEP 3: Forgot PIN / Password */}
+            {step === 'forgot' && (
+              <div className="space-y-6">
+                <div className="text-center space-y-2">
+                  <div className="w-12 h-12 rounded-2xl bg-gold/15 text-gold flex items-center justify-center mx-auto border border-gold/30">
+                    <KeyRound className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold tracking-wide text-ivory">
+                    {forgotType === 'pin' ? 'Forgot Security PIN' : 'Forgot Password'}
+                  </h3>
+                  <p className="font-sans text-xs text-cream-300">
+                    {forgotType === 'pin'
+                      ? 'Enter admin email. A 6-digit recovery PIN will be sent to your inbox to reset your security PIN.'
+                      : 'Enter admin email. A 6-digit recovery code will be sent to your inbox to reset your password.'}
+                  </p>
+                </div>
+
+                {forgotError && (
+                  <div className="flex items-center gap-1.5 text-xs text-red-400 justify-center font-sans">
+                    <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>{forgotError}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleSendForgotEmail} className="space-y-4">
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-cream-300">
+                      Admin Email
+                    </label>
+                    <div className="relative">
+                      <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-cream-400" />
+                      <input
+                        type="email"
+                        required
+                        value={forgotEmail}
+                        onChange={(e) => setForgotEmail(e.target.value)}
+                        placeholder="waseerdawakhana@gmail.com"
+                        className="w-full text-xs font-sans py-3 pl-10 pr-4 rounded-xl bg-forest-950/70 border border-forest-700 text-ivory placeholder-cream-600 focus:outline-none focus:border-gold transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSendingForgot}
+                    className="w-full py-3.5 px-6 rounded-full bg-gold text-forest font-sans text-xs font-bold uppercase tracking-widest hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSendingForgot ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Sending {forgotType === 'pin' ? 'Recovery PIN' : 'Reset Code'}...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>{forgotType === 'pin' ? 'Send PIN Recovery Code' : 'Send Password Reset Code'}</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </button>
+
+                  <div className="flex items-center justify-between text-xs text-cream-400 pt-2 border-t border-forest-800">
+                    <button
+                      type="button"
+                      onClick={() => setStep(forgotType === 'pin' ? 'pin' : 'login')}
+                      className="hover:text-gold transition-colors cursor-pointer"
+                    >
+                      &larr; Back to {forgotType === 'pin' ? 'PIN' : 'Login'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setStep('reset')}
+                      className="text-gold hover:underline cursor-pointer"
+                    >
+                      Already have code?
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
+
+            {/* STEP 4: Reset Credentials */}
+            {step === 'reset' && (
+              <div className="space-y-6">
+                <div className="text-center space-y-2">
+                  <div className="w-12 h-12 rounded-2xl bg-gold/15 text-gold flex items-center justify-center mx-auto border border-gold/30">
+                    <CheckCircle2 className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold tracking-wide text-ivory">
+                    {forgotType === 'pin' ? 'Reset Security PIN' : 'Reset Password'}
+                  </h3>
+                  <p className="font-sans text-xs text-cream-300">
+                    Enter the 6-digit code sent to {forgotEmail}
+                  </p>
+                </div>
+
+                {resetSuccess && (
+                  <div className="p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs text-center font-sans">
+                    {resetSuccess}
+                  </div>
+                )}
+
+                {resetError && (
+                  <div className="flex items-center gap-1.5 text-xs text-red-400 justify-center font-sans">
+                    <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span>{resetError}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleResetSubmit} className="space-y-3.5">
+                  <div className="space-y-1">
+                    <label className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-cream-300">
+                      6-Digit Code from Email
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      maxLength={6}
+                      value={resetPin}
+                      onChange={(e) => setResetPin(e.target.value.replace(/\D/g, ''))}
+                      placeholder="e.g. 583921"
+                      className="w-full text-center text-xl font-mono tracking-widest py-2.5 px-4 rounded-xl bg-forest-950/70 border border-forest-700 text-gold placeholder-cream-600 focus:outline-none focus:border-gold transition-all"
+                    />
+                  </div>
+
+                  {forgotType === 'password' && (
+                    <>
+                      <div className="space-y-1">
+                        <label className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-cream-300">
+                          New Password (min 8 chars)
+                        </label>
+                        <input
+                          type="password"
+                          required
+                          minLength={8}
+                          value={resetNewPassword}
+                          onChange={(e) => setResetNewPassword(e.target.value)}
+                          placeholder="Enter new password"
+                          className="w-full text-xs font-sans py-2.5 px-4 rounded-xl bg-forest-950/70 border border-forest-700 text-ivory placeholder-cream-600 focus:outline-none focus:border-gold transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1 pt-1">
+                        <label className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-cream-300">
+                          New Security PIN <span className="text-cream-400 font-normal lowercase">(optional 4-8 digits)</span>
+                        </label>
+                        <input
+                          type="password"
+                          maxLength={8}
+                          value={resetNewPin}
+                          onChange={(e) => setResetNewPin(e.target.value.replace(/\D/g, ''))}
+                          placeholder="Update PIN too (optional)"
+                          className="w-full text-xs font-sans py-2.5 px-4 rounded-xl bg-forest-950/70 border border-forest-700 text-ivory placeholder-cream-600 focus:outline-none focus:border-gold transition-all"
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  {forgotType === 'pin' && (
+                    <>
+                      <div className="space-y-1">
+                        <label className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-cream-300">
+                          New Security PIN (4-8 digits)
+                        </label>
+                        <input
+                          type="password"
+                          required
+                          minLength={4}
+                          maxLength={8}
+                          value={resetNewPin}
+                          onChange={(e) => setResetNewPin(e.target.value.replace(/\D/g, ''))}
+                          placeholder="e.g. 6358"
+                          className="w-full text-xs font-sans py-2.5 px-4 rounded-xl bg-forest-950/70 border border-forest-700 text-ivory placeholder-cream-600 focus:outline-none focus:border-gold transition-all"
+                        />
+                      </div>
+                      <div className="space-y-1 pt-1">
+                        <label className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-cream-300">
+                          New Password <span className="text-cream-400 font-normal lowercase">(optional, min 8 chars)</span>
+                        </label>
+                        <input
+                          type="password"
+                          minLength={8}
+                          value={resetNewPassword}
+                          onChange={(e) => setResetNewPassword(e.target.value)}
+                          placeholder="Update password too (optional)"
+                          className="w-full text-xs font-sans py-2.5 px-4 rounded-xl bg-forest-950/70 border border-forest-700 text-ivory placeholder-cream-600 focus:outline-none focus:border-gold transition-all"
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isResetting}
+                    className="w-full py-3.5 px-6 rounded-full bg-gold text-forest font-sans text-xs font-bold uppercase tracking-widest hover:bg-gold-400 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+                  >
+                    {isResetting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Updating...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>
+                          {resetNewPassword && resetNewPin
+                            ? 'Save Password & PIN'
+                            : forgotType === 'pin'
+                            ? 'Save New Security PIN'
+                            : 'Save New Password'}
+                        </span>
+                        <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </button>
+
+                  <div className="text-center pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setStep('forgot')}
+                      className="text-xs text-cream-400 hover:text-gold transition-colors cursor-pointer"
+                    >
+                      &larr; Request New Code
+                    </button>
+                  </div>
                 </form>
               </div>
             )}
