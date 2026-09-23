@@ -13,8 +13,13 @@ interface SendResetEmailParams {
  * Uses Direct SSL Port 465 for smtp.gmail.com to prevent STARTTLS connection hangs.
  */
 function getEmailTransporter() {
-  const user = process.env.EMAIL_USER || 'waseerdawakhana@gmail.com';
-  const pass = (process.env.EMAIL_APP_PASSWORD || '').replace(/\s+/g, ''); // strip spaces if user copied "abcd efgh ijkl mnop"
+  const user = (process.env.EMAIL_USER || 'waseerdawakhana@gmail.com').trim().replace(/['"]/g, '');
+  const rawPass =
+    process.env.EMAIL_APP_PASSWORD ||
+    process.env.GMAIL_APP_PASSWORD ||
+    process.env.EMAIL_PASSWORD ||
+    '';
+  const pass = rawPass.replace(/[\s'"]/g, '');
 
   if (!pass) {
     console.warn(
@@ -179,6 +184,14 @@ export async function sendAdminPasswordResetEmail({
     return { success: true, messageId: info.messageId };
   } catch (error: any) {
     console.error('[Email Service] SendMail Error:', error.message);
+    if (
+      error.message?.includes('535') ||
+      error.message?.includes('BadCredentials')
+    ) {
+      throw new Error(
+        'Gmail Authentication Error (535): Google ne password reject kar diya hai. Vercel Settings mein ja kar EMAIL_APP_PASSWORD mein 16-character Google App Password set karein aur project ko REDEPLOY karein.'
+      );
+    }
     if (
       error.message?.includes('534') ||
       error.message?.includes('5.7.9') ||
